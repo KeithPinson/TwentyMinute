@@ -1,0 +1,114 @@
+﻿<react:ReactApplication
+    x:Class="TwentyMinute.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TwentyMinute"
+    xmlns:react="using:Microsoft.ReactNative">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+<!--
+                Ideally a file of common styles such as
+                <ResourceDictionary Source="///style/CommonStyles.xaml"/>
+                should be used but am unable to get it working at this time
+-->                
+                <ResourceDictionary>
+                
+                    <!-- 
+                       - Note: Windows Xaml uses aRGB format (alpha leads the RGB, in js it follows) 
+                     -->
+
+                    <!-- Light Mode Colors -->
+                    <Color x:Key="BackgroundLight">#FFF2F2F2</Color>
+                    <Color x:Key="FaceALight">#FFF2F2F2</Color>
+                    <Color x:Key="FaceBLight">#FFE6E6E6</Color>
+                    <Color x:Key="FaceCLight">#FFCCCCCC</Color>
+                    <Color x:Key="TextLight">#FF171717</Color>
+                    <Color x:Key="TextALight">#FF171717</Color>
+                    <Color x:Key="TextBLight">#FF171717</Color>
+                    <Color x:Key="TextCLight">#FF171717</Color>
+                    <Color x:Key="DisabledFaceLight">#FF7A7A7A</Color>
+                    <Color x:Key="DisabledTextLight">#FFCCCCCC</Color>
+                    <Color x:Key="Accent10GrayLight">#19000000</Color>
+                    <Color x:Key="Accent20GrayLight">#33000000</Color>
+                    <Color x:Key="AccentColorLowLight">#663399FF</Color>
+                    <Color x:Key="AccentColorMediumLight">#993399FF</Color>
+                    <Color x:Key="AccentColorHighLight">#823399FF</Color>
+
+                    <!-- Dark Mode Colors -->
+                    <Color x:Key="BackgroundDark">#FF171717</Color>
+                    <Color x:Key="FaceADark">#FF2B2B2B</Color>
+                    <Color x:Key="FaceBDark">#FF1F1F1F</Color>
+                    <Color x:Key="FaceCDark">#FF767676</Color>
+                    <Color x:Key="TextDark">#FFF2F2F2</Color>
+                    <Color x:Key="TextADark">#FFF2F2F2</Color>
+                    <Color x:Key="TextBDark">#FFF2F2F2</Color>
+                    <Color x:Key="TextCDark">#FFF2F2F2</Color>
+                    <Color x:Key="DisabledFaceDark">#FF858585</Color>
+                    <Color x:Key="DisabledTextDark">#FF333333</Color>
+                    <Color x:Key="Accent10GrayDark">#19FFFFFF</Color>
+                    <Color x:Key="Accent20GrayDark">#33FFFFFF</Color>
+                    <Color x:Key="AccentColorLowDark">#993399FF</Color>
+                    <Color x:Key="AccentColorMediumDark">#CC3399FF</Color>
+                    <Color x:Key="AccentColorHighDark">#E53399FF</Color>
+
+                    <!-- Shades of Black -->
+                    <Color x:Key="Color10Black">#19000000</Color>
+                    <Color x:Key="Color20Black">#33000000</Color>
+                    <Color x:Key="Color40Black">#66000000</Color>
+                    <Color x:Key="Color80Black">#99000000</Color>
+                    <Color x:Key="ColorBlack">#FF000000</Color>
+
+                    <!-- High Contrast -->
+                    <Color x:Key="HCButtonFace">#FF0F0F0F</Color>
+                    <Color x:Key="HCButtonText">#FF0F0F0F</Color>
+                    <Color x:Key="HCDisabledText">#FF6D6D6D</Color>
+                    <Color x:Key="HCSelectedText">#FFFFFFFF</Color>
+                    <Color x:Key="HCSelectedBackground">#FF3399FF</Color>
+                    <Color x:Key="HCHyperlink">#FF0066CC</Color>
+                    <Color x:Key="HCBackground">#FFFFFFFF</Color>
+                    <Color x:Key="HCText">#FF000000</Color>
+
+                    <!-- Brushes -->
+                    <AcrylicBrush x:Key="WindowBrushLight" BackgroundSource="HostBackdrop" FallbackColor="{ThemeResource BackgroundLight}" TintColor="{ThemeResource BackgroundLight}" TintOpacity="0.1"/>
+                    <AcrylicBrush x:Key="WindowFaceBrushLight" BackgroundSource="HostBackdrop" FallbackColor="{ThemeResource FaceALight}" TintColor="{ThemeResource FaceALight}" TintOpacity="0.1"/>
+                    <AcrylicBrush x:Key="WindowTextBrushLight" BackgroundSource="HostBackdrop" FallbackColor="{ThemeResource TextLight}" TintColor="{ThemeResource TextLight}" TintOpacity="0.8"/>
+                    <AcrylicBrush x:Key="WindowAccentLowBrushLight" BackgroundSource="HostBackdrop" FallbackColor="{ThemeResource Accent20GrayLight}" TintColor="{ThemeResource Accent20GrayLight}" TintOpacity="0.1"/>
+                    <AcrylicBrush x:Key="WindowAccentHightBrushLight" BackgroundSource="HostBackdrop" FallbackColor="{ThemeResource AccentColorMediumLight}" TintColor="{ThemeResource AccentColorMediumLight}" TintOpacity="0.1"/>
+                    <AcrylicBrush x:Key="ElementBrushLight" BackgroundSource="Backdrop" FallbackColor="{ThemeResource BackgroundLight}" TintColor="{ThemeResource BackgroundLight}" TintOpacity="0.8"/>					
+                    <AcrylicBrush x:Key="ElementFaceBrushLight" BackgroundSource="Backdrop" FallbackColor="{ThemeResource FaceALight}" TintColor="{ThemeResource FaceALight}" TintOpacity="0.8"/>
+                    <AcrylicBrush x:Key="ElementTextBrushLight" BackgroundSource="Backdrop" FallbackColor="{ThemeResource TextLight}" TintColor="{ThemeResource TextLight}" TintOpacity="0.8"/>
+                    <AcrylicBrush x:Key="ElementDisabledTextBrushLight" BackgroundSource="Backdrop" FallbackColor="{ThemeResource DisabledTextLight}" TintColor="{ThemeResource DisabledTextLight}" TintOpacity="0.8"/>
+                    <AcrylicBrush x:Key="ElementAccentLowBrushLight" BackgroundSource="Backdrop" FallbackColor="{ThemeResource Accent20GrayLight}" TintColor="{ThemeResource Accent20GrayLight}" TintOpacity="0.8"/>
+                    <AcrylicBrush x:Key="ElementAccentHightBrushLight" BackgroundSource="Backdrop" FallbackColor="{ThemeResource AccentColorMediumLight}" TintColor="{ThemeResource AccentColorMediumLight}" TintOpacity="0.8"/>
+
+                    <AcrylicBrush x:Key="WindowBrushDark" BackgroundSource="HostBackdrop" FallbackColor="{ThemeResource BackgroundDark}" TintColor="{ThemeResource BackgroundDark}" TintOpacity="0.1"/>
+                    <AcrylicBrush x:Key="WindowFaceBrushDark" BackgroundSource="HostBackdrop" FallbackColor="{ThemeResource FaceADark}" TintColor="{ThemeResource FaceADark}" TintOpacity="0.1"/>
+                    <AcrylicBrush x:Key="WindowTextBrushDark" BackgroundSource="HostBackdrop" FallbackColor="{ThemeResource TextDark}" TintColor="{ThemeResource TextDark}" TintOpacity="0.1"/>
+                    <AcrylicBrush x:Key="WindowAccentLowBrushDark" BackgroundSource="HostBackdrop" FallbackColor="{ThemeResource Accent20GrayDark}" TintColor="{ThemeResource Accent20GrayDark}" TintOpacity="0.1"/>
+                    <AcrylicBrush x:Key="WindowAccentHightBrushDark" BackgroundSource="HostBackdrop" FallbackColor="{ThemeResource AccentColorMediumDark}" TintColor="{ThemeResource AccentColorMediumDark}" TintOpacity="0.1"/>
+                    <AcrylicBrush x:Key="ElementBrushDark" BackgroundSource="Backdrop" FallbackColor="{ThemeResource BackgroundDark}" TintColor="{ThemeResource BackgroundDark}" TintOpacity="0.8"/>					
+                    <AcrylicBrush x:Key="ElementFaceBrushDark" BackgroundSource="Backdrop" FallbackColor="{ThemeResource FaceADark}" TintColor="{ThemeResource FaceADark}" TintOpacity="0.8"/>
+                    <AcrylicBrush x:Key="ElementTextBrushDark" BackgroundSource="Backdrop" FallbackColor="{ThemeResource TextDark}" TintColor="{ThemeResource TextDark}" TintOpacity="0.8"/>
+                    <AcrylicBrush x:Key="ElementDisabledTextBrushDark" BackgroundSource="Backdrop" FallbackColor="{ThemeResource DisabledTextDark}" TintColor="{ThemeResource DisabledTextDark}" TintOpacity="0.8"/>
+                    <AcrylicBrush x:Key="ElementAccentLowBrushDark" BackgroundSource="Backdrop" FallbackColor="{ThemeResource Accent20GrayDark}" TintColor="{ThemeResource Accent20GrayDark}" TintOpacity="0.8"/>
+                    <AcrylicBrush x:Key="ElementAccentHightBrushDark" BackgroundSource="Backdrop" FallbackColor="{ThemeResource AccentColorMediumDark}" TintColor="{ThemeResource AccentColorMediumDark}" TintOpacity="0.8"/>
+
+                    <SolidColorBrush x:Key="WindowBrushHighContrast" Color="{ThemeResource HCBackground}" />
+                    <SolidColorBrush x:Key="WindowFaceBrushHighContrast" Color="{ThemeResource HCButtonFace}" />
+                    <SolidColorBrush x:Key="WindowTextBrushHighContrast" Color="{ThemeResource HCText}" />
+                    <SolidColorBrush x:Key="WindowAccentLowBrushHightContrast" Color="{ThemeResource Accent20GrayLight}" />
+                    <SolidColorBrush x:Key="WindowAccentHightBrushHighContrast" Color="{ThemeResource AccentColorMediumLight}" />
+                    <SolidColorBrush x:Key="ElementBrushHighContrast" Color="{ThemeResource BackgroundLight}" />					
+                    <SolidColorBrush x:Key="ElementFaceBrushHighContrast" Color="{ThemeResource FaceALight}" />
+                    <SolidColorBrush x:Key="ElementTextBrushHighContrast" Color="{ThemeResource TextLight}" />
+                    <SolidColorBrush x:Key="ElementDisabledTextBrushHighContrast" Color="{ThemeResource DisabledTextLight}" />
+                    <SolidColorBrush x:Key="ElementAccentLowBrushHighContrast" Color="{ThemeResource Accent20GrayLight}" />
+                    <SolidColorBrush x:Key="ElementAccentHightBrushHighContrast" Color="{ThemeResource AccentColorMediumLight}" />
+
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</react:ReactApplication>
