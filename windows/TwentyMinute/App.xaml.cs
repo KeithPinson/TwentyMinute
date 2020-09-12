@@ -104,19 +104,6 @@ namespace TwentyMinute
       }
       // <=KIP
 
-      //
-      // KIP=> Added for Titlebar Buttons
-      //
-      if (view != null && titleBar != null && coreTitleBar != null)
-      {
-        AdjustTitleBarLayout(coreTitleBar);
-
-        Window.Current.SetTitleBar(AppTitleBar);
-
-        coreTitleBar.LayoutMetricsChanged += CoreTitleBar_LayoutMetricsChanged;
-        coreTitleBar.IsVisibleChanged += CoreTitleBar_IsVisibleChanged;
-      }
-      // <=KIP        
     }
 
     // KIP=> Check for minimum required Windows 10 version
@@ -173,38 +160,5 @@ namespace TwentyMinute
     }
     // <=KIP
 
-    // KIP=> Added to support Titlebar Buttons
-    private void AdjustTitleBarLayout(CoreApplicationViewTitleBar coreTitleBar)
-    {
-      // Set the Left and Right Padding Column widths in the TitleBar.xaml
-      LeftPaddingColumn.Width = new GridLength(coreTitleBar.SystemOverlayLeftInset);
-      RightPaddingColumn.Width = new GridLength(coreTitleBar.SystemOverlayRightInset);
-
-      TitleBarButton.Margin = new Thickness(0, 0, coreTitleBar.SystemOverlayLeftInset, 0);
-
-      AppTitleBar.Height = coreTitleBar.Height;
-    }
-
-    private void CoreTitleBar_LayoutMetricsChanged(CoreApplicationViewTitleBar sender, object args)
-    {
-      LeftPaddingColumn.Width = new GridLength(coreTitleBar.SystemOverlayLeftInset);
-      RightPaddingColumn.Width = new GridLength(coreTitleBar.SystemOverlayRightInset);
-      TitleBarButton.Margin = new Thickness(0, 0, coreTitleBar.SystemOverlayRightInset, 0);
-
-      AppTitleBar.Height = sender.Height;
-    }
-
-    private void CoreTitleBar_IsVisibleChanged(CoreApplicationViewTitleBar sender, object args)
-    {
-      if (sender.IsVisible)
-      {
-        AppTitleBar.Visibility = Visibility.Visible;
-      }
-      else
-      {
-        AppTitleBar.Visibility = Visibility.Collapsed;
-      }
-    }
-    // <=KIP
   }
 }

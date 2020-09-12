@@ -4,8 +4,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.Core;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -18,16 +21,42 @@ using Windows.UI.Xaml.Navigation;
 
 namespace TwentyMinute
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
-    public sealed partial class MainPage : Page
+  /// <summary>
+  /// An empty page that can be used on its own or navigated to within a Frame.
+  /// </summary>
+  public sealed partial class MainPage : Page
+  {
+    private ApplicationViewTitleBar titleBar;
+    private AppTitleBar appTitleBar;
+    private UIElement cacheContent;
+    public MainPage()
     {
-        public MainPage()
-        {
-            this.InitializeComponent();
-            var app = Application.Current as App;
-            reactRootView.ReactNativeHost = app.Host;
-        }
+      this.InitializeComponent();
+      var app = Application.Current as App;
+      reactRootView.ReactNativeHost = app.Host;
+
+      titleBar = ApplicationView.GetForCurrentView().TitleBar;
     }
+    private void RadioButton_Click(object sender, RoutedEventArgs e)
+    {
+      if (appTitleBar == null)
+      {
+        appTitleBar = new AppTitleBar();
+
+        if (/*UseExtenTitleBar.IsChecked.Value*/ true)
+        {
+          cacheContent = this.Content;
+          this.Content = appTitleBar;
+          appTitleBar.SetContent(cacheContent);
+        }
+        else
+        {
+          this.Content = cacheContent;
+          appTitleBar.RemoveContent(cacheContent);
+          cacheContent = null;
+        }
+      }
+
+    }
+  }
 }
