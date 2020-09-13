@@ -1,4 +1,5 @@
 ﻿using Microsoft.ReactNative;
+using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -22,6 +23,9 @@ namespace TwentyMinute
 {
   sealed partial class App : ReactApplication
   {
+    private AppTitleBar appTitleBar;
+    private UIElement cacheContent;
+
     public App()
     {
 #if BUNDLE
@@ -57,7 +61,7 @@ namespace TwentyMinute
     {
       base.OnLaunched(e);
       var frame = Window.Current.Content as Frame;
-      frame.Navigate(typeof(MainPage));
+      frame.Navigate(typeof(MainPage), e.Arguments);
 
       Window.Current.Activate();
 
@@ -104,7 +108,23 @@ namespace TwentyMinute
       }
       // <=KIP
 
+      //
+      // KIP=> Added for Titlebar Buttons
+      //
+      if (view != null && titleBar != null && coreTitleBar != null)
+      {
+        if (appTitleBar == null)
+        {
+          appTitleBar = new AppTitleBar();
+
+          //          cacheContent = this.Content;
+          //          this.Content = appTitleBar;
+          //          appTitleBar.SetContent(cacheContent);
+        }
+      }
+      // <=KIP        
     }
+
 
     // KIP=> Check for minimum required Windows 10 version
     /// <summary>
@@ -156,9 +176,7 @@ namespace TwentyMinute
           await view.TryEnterViewModeAsync(ApplicationViewMode.Default);
         }
       }
-
     }
     // <=KIP
-
   }
 }

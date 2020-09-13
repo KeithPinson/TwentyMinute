@@ -26,37 +26,11 @@ namespace TwentyMinute
   /// </summary>
   public sealed partial class MainPage : Page
   {
-    private ApplicationViewTitleBar titleBar;
-    private AppTitleBar appTitleBar;
-    private UIElement cacheContent;
     public MainPage()
     {
       this.InitializeComponent();
       var app = Application.Current as App;
       reactRootView.ReactNativeHost = app.Host;
-
-      titleBar = ApplicationView.GetForCurrentView().TitleBar;
-    }
-    private void RadioButton_Click(object sender, RoutedEventArgs e)
-    {
-      if (appTitleBar == null)
-      {
-        appTitleBar = new AppTitleBar();
-
-        if (/*UseExtenTitleBar.IsChecked.Value*/ true)
-        {
-          cacheContent = this.Content;
-          this.Content = appTitleBar;
-          appTitleBar.SetContent(cacheContent);
-        }
-        else
-        {
-          this.Content = cacheContent;
-          appTitleBar.RemoveContent(cacheContent);
-          cacheContent = null;
-        }
-      }
-
     }
   }
 }
