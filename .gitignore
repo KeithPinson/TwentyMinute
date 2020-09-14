@@ -57,3 +57,7 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
+
+# Licensed Assets and/or keys
+**/keystores
+*.binlog
