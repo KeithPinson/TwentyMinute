@@ -1,3 +1,6 @@
+# Developer scratch pad folder
+.scratch/
+
 # OSX
 #
 .DS_Store
@@ -57,8 +60,3 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
-
-# Licensed Assets and/or keys
-**/keystores
-*.binlog
-
