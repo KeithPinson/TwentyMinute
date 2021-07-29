@@ -393,6 +393,7 @@ Example of how to add Dev Dependency, `yarn add -D --tilde eslint`
 | eslint-plugin-react-hooks             | ~4.2.0  | Enforce proper calling of Hooks          |
 | commitizen                            | ^4.2.4  | Guide to help with Conventional Commits  |
 | cz-emoji                              | ^1.3.1  | Commitizen adapter which includes emojis |
+| commitlint-config-gitmoji      | ^2.2.5 | Commit linter |
 
 ## VSCode
 
