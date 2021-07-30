@@ -1,24 +1,23 @@
 # Twenty Minute
 
-The Twenty Minute Solution, as I once called an earlier version of this app, was inspired by my practice of racing the clock to help keep my mind from wandering. This evolved into tallying 20 minute races of "uninterrupted" work in a day. In this iteration I am keeping the simple design of the old "Solution" version but will be incorporating my _pools_ and _strings_ style of to do lists.
+The Twenty Minute Solution, as I once called an earlier version of this app, was inspired to solve the problem of frequent interruptions. When the timer is running I can feel free to say, "Sorry I can't be interrupted right now, but we can talk in about 20 minutes."
 
-## version 0.1
+Twenty minutes was chosen was because it is the most I could realistically ask someone to wait until I was done.
 
-This is a work-in-progress, wait until version 1.0 to actually use the app.
-
-## Timers
-
-By the way this is not a Pomodoro Timer. Although both Twenty Minute and the Pomodoro Technique are inspired by kitchen timers they have different goals. The Pomodoro seems to have been invented for someone who could work uninterrupted for hours forgetting to take a break -- is that really a problem? _Twenty Minute_ is for those of us that find our day continually interrupted by things unplanned.
+You might think this is a Pomodoro Timer but it is not. Although both Twenty Minute and the Pomodoro Technique are inspired by kitchen timers they have different goals. The Pomodoro seems to have been invented for someone who can work uninterrupted for hours forgetting to take a break, hence the work for 25 minutes and break for 5 minutes emphasis. In my world, and maybe yours too, breaks are often and many but not by choice but because they are interruptions; distracting and unplanned. Uninterrupted blocks of time are a rarity, so the emphasis is on working short 20 minute bursts without interruption.
 
 ## To Do Lists
 
-_Pools_ and _Strings_ style of to do lists will be added to the app -- more on this later.
+It needs to be said, that To Do Lists and Twenty Minute Task Lists are not the same. Some To Do items can't
+be done in 20 minutes, some have to be done no matter how long it takes. And, certainly if you tried to make Twenty Minute a To Do List, you'd have one long string of 20 minute uninterrupted blocks from the beginning of your day until the end. Still, Twenty Minute is a tool that can help with To Do's.
 
-## Notes:
+## Appropriate 20 Minute Tasks
 
-### Windows 10
+Twenty Minute is more of a management solution than a productivity technique. Tasks are twenty minutes long or chains of twenty-minute-in-length steps. Similar to Agile where projects are parsed by time, you work for about 20 minutes and then stop. Depending on the task, you may pick it up the next day or later sometime. It is important to have the mindset of, "I am working on this task for 20 minutes uninterrupted" and set aside the idea, "I am working on this task until done."
 
-This is written using React Native. RNW (React Native Windows) requires Windows 10 version 1511, build 10586. To make use of all the Windows features, Windows 10 version 1703, build 15063 is required.
+Twenty Minute tasks are often general and not specific. For example, "Review Action Logs from Overnight". They are often tasks that can't be stopped and picked up later. They are often tasks that require concentration.
+
+Twenty Minute tasks can also specific tasks, but tasks that require intense concentration. For example, "Write the Executive Summary for Grand-Boss".
 
 ## License
 
