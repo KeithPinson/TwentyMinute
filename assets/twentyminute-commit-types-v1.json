@@ -1,0 +1,159 @@
+
+{
+  "config": {
+    "cz-emoji": {
+      "types": [
+        {
+  "emoji": "♿",
+  "code": ":wheelchair:",
+  "description": "Improvement for accessibility",
+  "name": "access"
+},
+{
+  "emoji": "📸",
+  "code": ":camera_flash:",
+  "description": "Add or update assets",
+  "name": "asset"
+},
+{
+  "emoji": "👷",
+  "code": ":construction_worker:",
+  "description": "CI config files and scripts",
+  "name": "ci"
+},
+{
+  "emoji": "🗑️",
+  "code": ":wastebasket:",
+  "description": "Delete, deprecate, prune, or otherwise remove files",
+  "name": "clean"
+},
+{
+  "emoji": "🔧",
+  "code": ":wrench:",
+  "description": "Change to build configs, scripts, or external dependencies",
+  "name": "config"
+},
+{
+  "emoji": "📝",
+  "code": ":memo:",
+  "description": "Documentation changes including source comments",
+  "name": "doc"
+},
+{
+  "emoji": "👽️",
+  "code": ":alien:",
+  "description": "Update due to external API or other changes",
+  "name": "extern"
+},
+{
+  "emoji": "✨",
+  "code": ":sparkles:",
+  "description": "A new feature",
+  "name": "feat"
+},
+{
+  "emoji": "🐛",
+  "code": ":bug:",
+  "description": "A bug fix",
+  "name": "fix"
+},
+{
+  "emoji": "🙈",
+  "code": ":see_no_evil:",
+  "description": "Change to .gitignore file",
+  "name": "gitignore"
+},
+{
+  "emoji": "🚨",
+  "code": ":rotating_light:",
+  "description": "Critical hotfix",
+  "name": "hotfix"
+},
+{
+  "emoji": "🌐",
+  "code": ":globe_with_meridians:",
+  "description": "Internationalization and localization",
+  "name": "i18n"
+},
+{
+  "emoji": "🎉",
+  "code": ":tada:",
+  "description": "Begin a project",
+  "name": "initial"
+},
+{
+  "emoji": "👕",
+  "code": ":shirt:",
+  "description": "Lint or other warning clean up",
+  "name": "lint"
+},
+{
+  "emoji": "📋",
+  "code": ":clipboard:",
+  "description": "Changes that effect logs",
+  "name": "log"
+},
+{
+  "emoji": "📡",
+  "code": ":satellite:",
+  "description": "Instrumentation or metrics",
+  "name": "metric"
+},
+{
+  "emoji": "🏃",
+  "code": ":running:",
+  "description": "Improve performance",
+  "name": "perf"
+},
+{
+  "emoji": "♻️",
+  "code": ":recycle:",
+  "description": "Improve structure or format of code",
+  "name": "refactor"
+},
+{
+  "emoji": "⏪",
+  "code": ":rewind:",
+  "description": "Reverts a previous commit",
+  "name": "revert"
+},
+{
+  "emoji": "🎌",
+  "code": ":crossed_flags:",
+  "description": "SEO improvements, A/B tests, or other changes",
+  "name": "seo"
+},
+{
+  "emoji": "✅",
+  "code": ":white_check_mark:",
+  "description": "Add or fix  tests",
+  "name": "test"
+},
+{
+  "emoji": "💄",
+  "code": ":lipstick:",
+  "description": "Fix typos, whitespace, or cosmetic change",
+  "name": "typo"
+},
+{
+  "emoji": "🎨",
+  "code": ":art:",
+  "description": "Improve user experience, usability, responsiveness",
+  "name": "ui"
+},
+{
+  "emoji": "🔖",
+  "code": ":bookmark:",
+  "description": "Simple marker to tag a version bump",
+  "name": "version"
+},
+{
+  "emoji": "⚗️",
+  "code": ":alembic:",
+  "description": "Mark the beginning of a major change to code",
+  "name": "wip"
+}
+      ]
+    }
+  }
+}

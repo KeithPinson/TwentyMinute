@@ -1,4 +1,4 @@
-Type,Emoji,Code,Reason
+Name,Emoji,Code,Description
 access,"♿",":wheelchair:","Improvement for accessibility"
 asset,"📸",":camera_flash:","Add or update assets"
 ci,"👷",":construction_worker:","CI config files and scripts"
