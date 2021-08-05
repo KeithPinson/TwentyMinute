@@ -3,7 +3,7 @@
   "config": {
     "cz-emoji": {
       "types": [
-        {
+{
   "emoji": "♿",
   "code": ":wheelchair:",
   "description": "Improvement for accessibility",

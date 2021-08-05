@@ -7,14 +7,14 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="c5ca9409-16ca-47d1-94d4-43d829cfca2f"
+    Name="1633ac69-6ff4-4337-a73a-2e6e7a0cbcba"
     Publisher="CN=keith"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="c5ca9409-16ca-47d1-94d4-43d829cfca2f" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="1633ac69-6ff4-4337-a73a-2e6e7a0cbcba" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>TwentyMinute</DisplayName>
+    <DisplayName>twentyminute</DisplayName>
     <PublisherDisplayName>keith</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -31,12 +31,12 @@
     <Application
       Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="TwentyMinute.App">
+      EntryPoint="twentyminute.App">
       <uap:VisualElements
-        DisplayName="TwentyMinute"
+        DisplayName="twentyminute"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="TwentyMinute"
+        Description="twentyminute"
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />

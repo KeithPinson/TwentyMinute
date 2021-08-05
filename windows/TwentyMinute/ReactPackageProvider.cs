@@ -1,6 +1,6 @@
 using Microsoft.ReactNative;
 
-namespace TwentyMinute
+namespace twentyminute
 {
     public partial class ReactPackageProvider : IReactPackageProvider
     {

@@ -1,5 +1,4 @@
 ﻿using Microsoft.ReactNative;
-using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -14,18 +13,10 @@ using Windows.UI;
 using Windows.ApplicationModel.Core;
 // <=KIP
 
-// KIP=> Added for CompactOverlay (Always On Top) behavior
-using System;
-using System.Threading.Tasks;
-// <=KIP
-
-namespace TwentyMinute
+namespace twentyminute
 {
   sealed partial class App : ReactApplication
   {
-    private AppTitleBar appTitleBar;
-    private UIElement cacheContent;
-
     public App()
     {
 #if BUNDLE
@@ -33,13 +24,13 @@ namespace TwentyMinute
             InstanceSettings.UseWebDebugger = false;
             InstanceSettings.UseFastRefresh = false;
 #else
-      JavaScriptMainModuleName = "index";
+      JavaScriptBundleFile = "index";
       InstanceSettings.UseWebDebugger = true;
       InstanceSettings.UseFastRefresh = true;
 #endif
 
 #if DEBUG
-      InstanceSettings.UseDeveloperSupport = true;
+            InstanceSettings.UseDeveloperSupport = true;
 #else
       InstanceSettings.UseDeveloperSupport = false;
 #endif
@@ -60,10 +51,8 @@ namespace TwentyMinute
     protected override void OnLaunched(LaunchActivatedEventArgs e)
     {
       base.OnLaunched(e);
-      var frame = Window.Current.Content as Frame;
+      var frame = (Frame)Window.Current.Content;
       frame.Navigate(typeof(MainPage), e.Arguments);
-
-      Window.Current.Activate();
 
       //
       // KIP=> Added to adjust app dimensions
@@ -89,7 +78,7 @@ namespace TwentyMinute
 
         view.TryResizeView(desiredSize);
       }
-      // <=KIP
+      // <=KIP - adjust app dimensions
 
       //
       // KIP=> Added for transparent Titlebar
@@ -100,31 +89,31 @@ namespace TwentyMinute
 
       if (titleBar != null && coreTitleBar != null)
       {
+        // Early versions of WinUI3 will crash if the titleBar is set
         titleBar.BackgroundColor = Windows.UI.Colors.Transparent;
         titleBar.ButtonBackgroundColor = Windows.UI.Colors.Transparent;
         titleBar.InactiveBackgroundColor = Windows.UI.Colors.Transparent;
         titleBar.ButtonInactiveBackgroundColor = Windows.UI.Colors.Transparent;
+
         coreTitleBar.ExtendViewIntoTitleBar = true;
       }
-      // <=KIP
-
-      //
-      // KIP=> Added for Titlebar Buttons
-      //
-      if (view != null && titleBar != null && coreTitleBar != null)
-      {
-        if (appTitleBar == null)
-        {
-          appTitleBar = new AppTitleBar();
-
-          //          cacheContent = this.Content;
-          //          this.Content = appTitleBar;
-          //          appTitleBar.SetContent(cacheContent);
-        }
-      }
-      // <=KIP        
+      // <=KIP - transparent Titlebar
     }
 
+    /// <summary>
+    /// Invoked when the application is activated by some means other than normal launching.
+    /// </summary>
+    protected override void OnActivated(IActivatedEventArgs e)
+    {
+      var preActivationContent = Window.Current.Content;
+      base.OnActivated(e);
+      if (preActivationContent == null && Window.Current != null)
+      {
+        // Display the initial content
+        var frame = (Frame)Window.Current.Content;
+        frame.Navigate(typeof(MainPage), null);
+      }
+    }
 
     // KIP=> Check for minimum required Windows 10 version
     /// <summary>
@@ -140,43 +129,6 @@ namespace TwentyMinute
 
       return (osbuild < build);
     }
-
-    // KIP=> Added for CompactOverlay (Always On Top) behavior
-    /// <summary>
-    /// Use the PiP support to substitute for Always On Top behavior.
-    /// </summary>
-    /// <param name="isOnTop">Defaults to true. Use false to turn the on-top behavior off.</param>
-    private static async Task KeepAlwaysOnTop(bool isOnTop = true)
-    {
-      if (IsOSTooOld(15063))
-      {
-        return;
-      }
-
-      var view = ApplicationView.GetForCurrentView();
-
-      if (view != null)
-      {
-        if (isOnTop)
-        {
-          // Need to handle full screen and always on top, for now make sure we don't start full screen
-          view.ExitFullScreenMode();
-
-          // KIP=> This will be moved to private async method
-          var customOptions = ViewModePreferences.CreateDefault(ApplicationViewMode.CompactOverlay);
-          customOptions.CustomSize = new Windows.Foundation.Size(200, 220);
-          customOptions.ViewSizePreference = ViewSizePreference.Custom;
-
-          // Keep always on top...
-          await view.TryEnterViewModeAsync(ApplicationViewMode.CompactOverlay, customOptions);
-        }
-        else
-        {
-          // Go back to a regular layering window...
-          await view.TryEnterViewModeAsync(ApplicationViewMode.Default);
-        }
-      }
-    }
-    // <=KIP
+    // <= KIP - check for min version
   }
 }

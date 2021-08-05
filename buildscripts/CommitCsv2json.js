@@ -205,6 +205,10 @@ if (haveCsvFile && haveOutFile) {
           out += '|' + column[4];
           out += '|';
         }
+      } else if (lines[n] !== '') {
+        console.log('Line ' + n + ' malformed: ' + lines[n]);
+
+        process.exit();
       }
     }
   }
