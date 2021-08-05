@@ -1,0 +1,6 @@
+This folder is for resources used only 
+by the repo, like the readme and docs.
+
+Shared assets or assets exclusive to
+the project should go in the /assets
+folder.
