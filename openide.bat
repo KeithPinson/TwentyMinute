@@ -1,3 +1,4 @@
+@echo off
 @echo open-vscode
-@CMD /K open-vscode
+open-vscode
 
