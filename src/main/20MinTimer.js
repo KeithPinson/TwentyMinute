@@ -16,7 +16,7 @@
 
 import React, {Component, useEffect, useState, useRef} from 'react';
 import useInterval from 'use-interval'; // Dan Abramov's fix for using intervals with hooks
-import {ErrorBoundary} from 'react-error-boundary';
+import {ErrorBoundary} from 'react-native-error-boundary';
 import {
   StyleSheet,
   View,
@@ -28,7 +28,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import Color from '../components/Color';
+import AppColor from '../components/AppColor';
 import TimerGraphic from '../components/TimerGraphic';
 import {
   differenceInDays,
@@ -132,8 +132,8 @@ export default function TwentyMinuteTimer() {
 const styles = StyleSheet.create({
   twentyMinuteTime: {
     fontSize: 30,
-    backgroundColor: Color.lightBackground,
-    color: Color.lightBodyText,
+    backgroundColor: '#010101', //AppColor.background(),
+    color: AppColor.bodyText(),
     alignContent: 'center',
     justifyContent: 'center',
   },

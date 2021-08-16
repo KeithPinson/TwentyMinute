@@ -20,6 +20,7 @@ import {
   Text,
   StatusBar,
   Platform,
+  useColorScheme,
 } from 'react-native';
 
 import {
@@ -30,9 +31,9 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import Color from '../components/Color';
+import AppColor from '../components/AppColor';
 import TwentyMinTimer from './20MinTimer';
-import PlatformTheme from '../components/Theme';
+import Environment from '../components/Environment';
 
 /*
 <KeyboardAvoidingView
@@ -46,16 +47,18 @@ import PlatformTheme from '../components/Theme';
 //<TitleBar style={styles.titleBar} />
 
 const App = () => {
+  AppColor.scheme(useColorScheme());
+
   return (
     <>
-      {PlatformTheme.hasCustomTitlebar && (
+      {Environment.hasCustomTitlebar && (
         <View style={styles.titleBar}>
           <Text> </Text>
         </View>
       )}
       <SafeAreaView style={[styles.container]}>
         <View style={styles.header}>
-          <Text>Task</Text>
+          <Text style={styles.text}>Task</Text>
         </View>
         <View style={[styles.body]}>
           <TwentyMinTimer />
@@ -83,31 +86,34 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
     padding: 10,
-    backgroundColor: Color.lightBackground,
+    backgroundColor: AppColor.background(),
     alignContent: 'center',
     justifyContent: 'center',
   },
-  titleBar: {marginTop: 0, backgroundColor: Color.lightBackground},
+  titleBar: {marginTop: 0, backgroundColor: AppColor.background()},
+  text: {
+    color: AppColor.bodyText(),
+  },
   header: {
     flex: 0.15,
     margin: 6,
     fontSize: 24,
     fontWeight: '600',
-    color: Color.dark,
+    color: AppColor.bodyText(),
     alignItems: 'center',
     justifyContent: 'center',
   },
   body: {
     flex: 0.7,
-    color: Color.dark,
+    color: AppColor.bodyText(),
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: Color.primary,
+    backgroundColor: AppColor.background(),
   },
   footer: {
     flex: 0.15,
     margin: 6,
-    color: Color.dark,
+    color: AppColor.bodyText(),
     fontSize: 12,
     fontWeight: '600',
     alignItems: 'center',
@@ -115,7 +121,7 @@ const styles = StyleSheet.create({
   },
   h1: {
     fontSize: 32,
-    color: Color.dark,
+    color: AppColor.bodyText(),
   },
 });
 
