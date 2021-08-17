@@ -24,7 +24,7 @@
                     <Color x:Key="FaceALight">#FFF2F2F2</Color>
                     <Color x:Key="FaceBLight">#FFE6E6E6</Color>
                     <Color x:Key="FaceCLight">#FFCCCCCC</Color>
-                    <Color x:Key="TextLight">#FF171717</Color>
+                    <Color x:Key="TextLight">#FF171717</Color>                <!-- #171717 -->
                     <Color x:Key="TextALight">#FF171717</Color>
                     <Color x:Key="TextBLight">#FF171717</Color>
                     <Color x:Key="TextCLight">#FF171717</Color>
@@ -37,11 +37,11 @@
                     <Color x:Key="AccentColorHighLight">#823399FF</Color>
 
                     <!-- Dark Mode Colors -->
-                    <Color x:Key="BackgroundDark">#FF171717</Color>
+                    <Color x:Key="BackgroundDark">#FF171717</Color>             <!-- #171717 -->
                     <Color x:Key="FaceADark">#FF2B2B2B</Color>
                     <Color x:Key="FaceBDark">#FF1F1F1F</Color>
                     <Color x:Key="FaceCDark">#FF767676</Color>
-                    <Color x:Key="TextDark">#FFF2F2F2</Color>
+                    <Color x:Key="TextDark">#FFF2F2F2</Color>                   <!-- #F2F2F2 -->
                     <Color x:Key="TextADark">#FFF2F2F2</Color>
                     <Color x:Key="TextBDark">#FFF2F2F2</Color>
                     <Color x:Key="TextCDark">#FFF2F2F2</Color>
@@ -81,10 +81,10 @@
                     <Color x:Key="HCTextDark">#FFFFFFFF</Color>                 <!-- #FFFFFF -->
 
                     <!-- Brushes -->
-                    <AcrylicBrush x:Key="WindowBrushLight" BackgroundSource="HostBackdrop" FallbackColor="{ThemeResource BackgroundLight}" TintColor="{ThemeResource BackgroundLight}" TintOpacity="0.1"/>
-                    <AcrylicBrush x:Key="WindowFaceBrushLight" BackgroundSource="HostBackdrop" FallbackColor="{ThemeResource FaceALight}" TintColor="{ThemeResource FaceALight}" TintOpacity="0.1"/>
+                    <AcrylicBrush x:Key="WindowBrushLight" BackgroundSource="HostBackdrop" FallbackColor="{ThemeResource BackgroundLight}" TintColor="{ThemeResource BackgroundLight}" TintOpacity="0.7"/>
+                    <AcrylicBrush x:Key="WindowFaceBrushLight" BackgroundSource="HostBackdrop" FallbackColor="{ThemeResource FaceALight}" TintColor="{ThemeResource FaceALight}" TintOpacity="0.8"/>
                     <AcrylicBrush x:Key="WindowTextBrushLight" BackgroundSource="HostBackdrop" FallbackColor="{ThemeResource TextLight}" TintColor="{ThemeResource TextLight}" TintOpacity="0.8"/>
-                    <AcrylicBrush x:Key="WindowAccentLowBrushLight" BackgroundSource="HostBackdrop" FallbackColor="{ThemeResource Accent20GrayLight}" TintColor="{ThemeResource Accent20GrayLight}" TintOpacity="0.1"/>
+                    <AcrylicBrush x:Key="WindowAccentLowBrushLight" BackgroundSource="HostBackdrop" FallbackColor="{ThemeResource Accent20GrayLight}" TintColor="{ThemeResource Accent20GrayLight}" TintOpacity="0.8"/>
                     <AcrylicBrush x:Key="WindowAccentHighBrushLight" BackgroundSource="HostBackdrop" FallbackColor="{ThemeResource AccentColorMediumLight}" TintColor="{ThemeResource AccentColorMediumLight}" TintOpacity="0.1"/>
                     <AcrylicBrush x:Key="ElementBrushLight" BackgroundSource="Backdrop" FallbackColor="{ThemeResource BackgroundLight}" TintColor="{ThemeResource BackgroundLight}" TintOpacity="0.8"/>					
                     <AcrylicBrush x:Key="ElementFaceBrushLight" BackgroundSource="Backdrop" FallbackColor="{ThemeResource FaceALight}" TintColor="{ThemeResource FaceALight}" TintOpacity="0.8"/>
@@ -93,11 +93,11 @@
                     <AcrylicBrush x:Key="ElementAccentLowBrushLight" BackgroundSource="Backdrop" FallbackColor="{ThemeResource Accent20GrayLight}" TintColor="{ThemeResource Accent20GrayLight}" TintOpacity="0.8"/>
                     <AcrylicBrush x:Key="ElementAccentHighBrushLight" BackgroundSource="Backdrop" FallbackColor="{ThemeResource AccentColorMediumLight}" TintColor="{ThemeResource AccentColorMediumLight}" TintOpacity="0.8"/>
 
-                    <AcrylicBrush x:Key="WindowBrushDark" BackgroundSource="HostBackdrop" FallbackColor="{ThemeResource BackgroundDark}" TintColor="{ThemeResource BackgroundDark}" TintOpacity="0.1"/>
-                    <AcrylicBrush x:Key="WindowFaceBrushDark" BackgroundSource="HostBackdrop" FallbackColor="{ThemeResource FaceADark}" TintColor="{ThemeResource FaceADark}" TintOpacity="0.1"/>
-                    <AcrylicBrush x:Key="WindowTextBrushDark" BackgroundSource="HostBackdrop" FallbackColor="{ThemeResource TextDark}" TintColor="{ThemeResource TextDark}" TintOpacity="0.1"/>
-                    <AcrylicBrush x:Key="WindowAccentLowBrushDark" BackgroundSource="HostBackdrop" FallbackColor="{ThemeResource Accent20GrayDark}" TintColor="{ThemeResource Accent20GrayDark}" TintOpacity="0.1"/>
-                    <AcrylicBrush x:Key="WindowAccentHighBrushDark" BackgroundSource="HostBackdrop" FallbackColor="{ThemeResource AccentColorMediumDark}" TintColor="{ThemeResource AccentColorMediumDark}" TintOpacity="0.1"/>
+                    <AcrylicBrush x:Key="WindowBrushDark" BackgroundSource="HostBackdrop" FallbackColor="{ThemeResource BackgroundDark}" TintColor="{ThemeResource BackgroundDark}" TintOpacity="0.7"/>
+                    <AcrylicBrush x:Key="WindowFaceBrushDark" BackgroundSource="HostBackdrop" FallbackColor="{ThemeResource FaceADark}" TintColor="{ThemeResource FaceADark}" TintOpacity="0.8"/>
+                    <AcrylicBrush x:Key="WindowTextBrushDark" BackgroundSource="HostBackdrop" FallbackColor="{ThemeResource TextDark}" TintColor="{ThemeResource TextDark}" TintOpacity="0.8"/>
+                    <AcrylicBrush x:Key="WindowAccentLowBrushDark" BackgroundSource="HostBackdrop" FallbackColor="{ThemeResource Accent20GrayDark}" TintColor="{ThemeResource Accent20GrayDark}" TintOpacity="0.8"/>
+                    <AcrylicBrush x:Key="WindowAccentHighBrushDark" BackgroundSource="HostBackdrop" FallbackColor="{ThemeResource AccentColorMediumDark}" TintColor="{ThemeResource AccentColorMediumDark}" TintOpacity="0.8"/>
                     <AcrylicBrush x:Key="ElementBrushDark" BackgroundSource="Backdrop" FallbackColor="{ThemeResource BackgroundDark}" TintColor="{ThemeResource BackgroundDark}" TintOpacity="0.8"/>					
                     <AcrylicBrush x:Key="ElementFaceBrushDark" BackgroundSource="Backdrop" FallbackColor="{ThemeResource FaceADark}" TintColor="{ThemeResource FaceADark}" TintOpacity="0.8"/>
                     <AcrylicBrush x:Key="ElementTextBrushDark" BackgroundSource="Backdrop" FallbackColor="{ThemeResource TextDark}" TintColor="{ThemeResource TextDark}" TintOpacity="0.8"/>
