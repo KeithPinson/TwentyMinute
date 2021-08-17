@@ -59,7 +59,7 @@ const AppColor = {
     if (colorScheme === 'dark') {
       this.isDarkMode = true;
     } else if (colorScheme === 'light') {
-      this.isHcMode = false;
+      this.isDarkMode = false;
     }
   },
 
@@ -70,16 +70,16 @@ const AppColor = {
   background() {
     // prettier-ignore
     const darkBackground =
-        Environment.isAndroid ? 'rgba(36,39,38,0.3)'
-      : Environment.isIos     ? 'rgba(36,39,38,0.3)'
+        Environment.isAndroid ? 'rgba(36,39,38,0.7)'
+      : Environment.isIos     ? 'rgba(36,39,38,0.7)'
       : Environment.isWindows ? {windowsbrush: 'WindowBrushDark'}
-      :                         'rgba(36,39,38,0.3)';
+      :                         'rgba(36,39,38,0.7)';
 
     const lightBackground =
-        Environment.isAndroid ? 'rgba(247,249,249,0.3)'
-      : Environment.isIos     ? 'rgba(247,249,249,0.3)'
+        Environment.isAndroid ? 'rgba(247,249,249,0.7)'
+      : Environment.isIos     ? 'rgba(247,249,249,0.7)'
       : Environment.isWindows ? {windowsbrush: 'WindowBrushLight'}
-      :                         'rgba(247,249,249,0.3)';
+      :                         'rgba(247,249,249,0.7)';
 
     const hcDarkBackground =
         Environment.isAndroid ? '#010101'
