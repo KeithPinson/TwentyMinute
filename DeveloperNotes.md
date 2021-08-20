@@ -438,9 +438,9 @@ If things are correct you will see, "[Info] About to get:"
 
 ## High-Contrast Mode
 
-Browsers, React, React-Native, etc. all support a dark-mode and light-mode for color themes. They currently only browsers have begun to support a high-contrast mode. Windows has supported high-contrast and other accessibility features for decades.
+Browsers, React, React-Native, etc. all support a dark-mode and light-mode for color themes. Currently only browsers have begun to support a high-contrast mode. Windows has supported high-contrast and other accessibility features for decades.
 
-A React-native-windows app, it would seem, must be required to support high-contrast.
+A React-native-windows app, it would seem, must be required at some point to support high-contrast.
 
 ### Development
 
