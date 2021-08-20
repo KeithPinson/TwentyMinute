@@ -415,6 +415,17 @@ Example of how to add Dev Dependency, `yarn add -D --tilde eslint`
 | eslint-plugin-react-hooks             | ~4.2.0  | Enforce proper calling of Hooks |
 | commander                             | ~8.1.0  | CLI argument parsing            |
 
+## React-Native-SVG
+
+If React Native SVG is installed but throws the error `"RNSVGPath" was not found` it may not have autolinked.
+
+This seems to be a persistent problem with this module and may require the following steps to fix:
+
+- Delete the `react-native-svg` directory from the `node_modules`
+- Run `yarn cache clean`
+- Run `yarn add --tilde react-native-svg`
+- Run `react-native link react-native-svg`
+
 ## VSCode
 
 `Ctrl-Shift-P`

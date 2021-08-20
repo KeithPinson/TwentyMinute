@@ -3,14 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "commit-csv-to-json": "node ./buildscripts/CommitCsv2json.js",
+    "translate-commit-csv-to-json": "node ./buildscripts/CommitCsv2json.js",
     "test": "jest",
     "lint": "eslint ."
-  },
-  "config": {
-    "commitizen": {
-      "path": "git-cz"
-    }
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "~1.15.5",
