@@ -15,9 +15,9 @@ be done in 20 minutes, some have to be done no matter how long it takes. And, ce
 
 Twenty Minute is more of a management solution than a productivity technique. Tasks are twenty minutes long or chains of twenty-minute-in-length steps. Similar to Agile where projects are parsed by time, you work for about 20 minutes and then stop. Depending on the task, you may pick it up the next day or later sometime. It is important to have the mindset of, "I am working on this task for 20 minutes uninterrupted" and set aside the idea, "I am working on this task until done."
 
-Twenty Minute tasks are often general and not specific. For example, "Review Action Logs from Overnight". They are often tasks that can't be stopped and picked up later. They are often tasks that require concentration.
+Twenty Minute tasks are often general and not specific. For example, "Review Action Logs from Overnight". They are often tasks that can't be stopped and picked up later.
 
-Twenty Minute tasks can also specific tasks, tasks that require intense concentration. For example, "Write the Executive Summary for Grand-Boss".
+Twenty Minute tasks can also be specific tasks, tasks that require intense concentration. For example, "Write the Executive Summary for Grand-Boss".
 
 ## License
 
