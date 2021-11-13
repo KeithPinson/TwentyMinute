@@ -17,7 +17,7 @@ Twenty Minute is more of a management solution than a productivity technique. Ta
 
 Twenty Minute tasks are often general and not specific. For example, "Review Action Logs from Overnight". They are often tasks that can't be stopped and picked up later.
 
-Twenty Minute tasks can also be specific tasks, tasks that require intense concentration. For example, "Write the Executive Summary for Grand-Boss".
+Twenty Minute tasks can also specific tasks, tasks that require intense concentration. For example, "Write the Executive Summary for Grand-Boss".
 
 ## License
 
