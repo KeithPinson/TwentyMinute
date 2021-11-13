@@ -1,5 +1,0 @@
-Name,Emoji,Code,Description
-doc,"📝",":memo:","Documentation changes including source comments"
-extern,"👽️",":alien:","Update due to external API or other changes"
-feat,✨,":sparkles:","A new feature"
-fix,"🐛",":bug:","A bug fix"
