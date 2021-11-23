@@ -1,8 +1,12 @@
+**twentyminute**
+
+A "no interrupts" Twenty Minute Timer
+
 # Twenty Minute
 
 The Twenty Minute Solution, as I once called an earlier version of this app, was inspired to solve the problem of frequent interruptions. When the timer is running I can feel free to say, "Sorry I can't be interrupted right now, but we can talk in about 20 minutes."
 
-Twenty minutes was chosen was because it is the most I could realistically ask someone to wait until I was done.
+Twenty minutes was chosen was because it seemed the most I could realistically ask someone to wait until I was done.
 
 You might think this is a Pomodoro Timer but it is not. Although both Twenty Minute and the Pomodoro Technique are inspired by kitchen timers they have different goals. The Pomodoro seems to have been invented for someone who can work uninterrupted for hours forgetting to take a break, hence the work for 25 minutes and break for 5 minutes emphasis. In my world, and maybe yours too, breaks are often and many but not by choice but because they are interruptions; distracting and unplanned. Uninterrupted blocks of time are a rarity, so the emphasis is on working short 20 minute bursts without interruption.
 
@@ -13,7 +17,7 @@ be done in 20 minutes, some have to be done no matter how long it takes. And, ce
 
 ## Appropriate 20 Minute Tasks
 
-Twenty Minute is more of a management solution than a productivity technique. Tasks are twenty minutes long or chains of twenty-minute-in-length steps. Similar to Agile where projects are parsed by time, you work for about 20 minutes and then stop. Depending on the task, you may pick it up the next day or later sometime. It is important to have the mindset of, "I am working on this task for 20 minutes uninterrupted" and set aside the idea, "I am working on this task until done."
+Twenty Minute is more of a management solution than a productivity technique. Tasks are twenty minutes long or chains of twenty-minute-in-length steps. Similar to Agile where projects are parsed by sprints of time, you work for about 20 minutes and then stop. Depending on the task, you may pick it up the next day or later sometime. It is important to have the mindset of, "I am working on this task for 20 minutes uninterrupted" and set aside the idea, "I am working on this task until done."
 
 Twenty Minute tasks are often general and not specific. For example, "Review Action Logs from Overnight". They are often tasks that can't be stopped and picked up later.
 

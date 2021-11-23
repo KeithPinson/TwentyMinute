@@ -1,4 +1,4 @@
 @echo off
-@echo open-vscode
-open-vscode
+@echo open-androidstudio
+open-androidstudio
 
