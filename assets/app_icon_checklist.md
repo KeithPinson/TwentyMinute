@@ -1,37 +1,38 @@
 # App Icon Checklist
 
-|  | Required Sizes | Make or Resize | From |
-| --- | -------------- | -------------- | ---- |
-| ✔ | 16x16 | Make |  |
-|   | 20x20 | Resize | 24x24 |
-| ✔ | 24x24 | Make |  |
-|   | 29x29 | Resize | 24x24 |
-| ✔ | 48x48 | Make |  |
-|   | 50x50 | Resize | 48x48 |
-|   | 58x58 | Resize | 96x96 |
-|   | 64x64 | Resize | 96x96 |
-|   | 72x72 | Resize | 96x96 |
-|   | 76x76 | Resize | 96x96 |
-|   | 80x80 | Resize | 96x96 |
-|   | 87x87 | Resize | 96x96 |
-|   | 88x88 | Resize | 96x96 |
-| ✔ | 96x96 | Make |  |
-|   | 120x120 | Resize | 300x300 |
-|   | 128x128 | Resize | 300x300 |
-|   | 144x144 | Resize | 300x300 |
-|   | 152x152 | Resize | 300x300 |
-|   | 167x167 | Resize | 300x300 |
-|   | 180x180 | Resize | 300x300 |
-|   | 192x192 | Resize | 300x300 |
-|   | 180x180 | Resize | 300x300 |
-|   | 192x192 | Resize | 300x300 |
-|   | 256x256 | Resize | 300x300 |
-| ✔ | 300x300 | Make |  |
-| ✔ | 512x512 | Make |  |
-| ✔ | 1024x1024 | Make |  |
-| ✔ | 620x300 | Make (icon) |  |
-| ✔ | 1240x600 | Make (splash) |  |
+This checklist is mirrored (by rows) in a CSV file of the same name as this markdown file. Use the scripts as described below to generate and copy the icons.
 
+| Crafted | Icon Size | Source           | From Size |
+| :-----: | -------------- | -------------- | ---- |
+| ✔ | 16x16 | Crafted |  |
+|   | 20x20 | Resized copy | 24x24 |
+| ✔ | 24x24 | Crafted |  |
+|   | 29x29 | Resized copy | 24x24 |
+| ✔ | 48x48 | Crafted |  |
+|   | 50x50 | Resized copy | 48x48 |
+|   | 58x58 | Resized copy | 96x96 |
+|   | 64x64 | Resized copy | 96x96 |
+|   | 72x72 | Resized copy | 96x96 |
+|   | 76x76 | Resized copy | 96x96 |
+|   | 80x80 | Resized copy | 96x96 |
+|   | 87x87 | Resized copy | 96x96 |
+|   | 88x88 | Resized copy | 96x96 |
+| ✔ | 96x96 | Crafted |  |
+|   | 120x120 | Resized copy | 300x300 |
+|   | 128x128 | Resized copy | 300x300 |
+|   | 144x144 | Resized copy | 300x300 |
+|   | 152x152 | Resized copy | 300x300 |
+|   | 167x167 | Resized copy | 300x300 |
+|   | 180x180 | Resized copy | 300x300 |
+|   | 192x192 | Resized copy | 300x300 |
+|   | 180x180 | Resized copy | 300x300 |
+|   | 192x192 | Resized copy | 300x300 |
+|   | 256x256 | Resized copy | 300x300 |
+| ✔ | 300x300 | Crafted |  |
+| ✔ | 512x512 | Crafted |  |
+| ✔ | 1024x1024 | Crafted |  |
+| ✔ | 620x300 (icon) | Crafted |  |
+| ✔ | 1240x600 (splash) | Crafted |  |
 
 ---
 
@@ -85,4 +86,6 @@
 - 1240x600 (SplashScreen.scale-200)
 
 ---
+
+## Scripts
 
