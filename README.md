@@ -1,4 +1,4 @@
-**twentyminute**
+![Twenty Minute](buildResources/icons/20min_logo.png "Twenty Minute")
 
 A "no interrupts" Twenty Minute Timer
 
