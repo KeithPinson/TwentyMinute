@@ -4,8 +4,8 @@ Icon Size,From Size,Original,Extension,Platform,Copy Name
 20x20,24x24,,png,iOS,ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@1x.png
 24x24,24x24,1,png,Windows,windows/Assets/Square44x44Logo.targetsize-24_altform-unplated.png
 29x29,24x24,,png,iOS,ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@1x.png
-32x32,48x48,1,png,Linux,linux/assets/app_icon_32.png
-32x32,48x48,1,png,MacOS,macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_32.png
+32x32,48x48,,png,Linux,linux/assets/app_icon_32.png
+32x32,48x48,,png,MacOS,macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_32.png
 40x40,48x48,,png,iOS,ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png
 40x40,48x48,,png,iOS,ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@1x.png
 48x48,48x48,1,png,Android,android/app/src/main/res/mipmap-mdpi/ic_launcher.png
