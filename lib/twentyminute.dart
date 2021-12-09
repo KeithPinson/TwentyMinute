@@ -1,4 +1,4 @@
-export 'widgets/tally_marks.dart';
-export 'widgets/timer_animation.dart';
-export 'widgets/timer_digits.dart';
-export 'screens/app.dart';
+export 'ui/tally_marks.dart';
+export 'ui/timer_animation.dart';
+export 'ui/timer_digits.dart';
+export 'ui/app.dart';
