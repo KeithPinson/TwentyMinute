@@ -1,0 +1,29 @@
+Structure ≠ Design
+------------------
+
+We divide the source code into folders favored by discipline,
+ie. designers and coders of:
+
+ - Business logic
+ - Data source
+ - user experience
+ - user interface
+
+This division may be misleading.
+
+Dividing the architecture in this way make projects easier
+to manage but can obscure the features of the software itself.
+Within each folder is typically a file with a piece of the
+feature or function.
+
+Like a cake, our business logic, user-interface, etc. form
+the layers but the slice of a single feature is what care
+about when the software is all done and baked.
+
+---
+
+1. Practice "separation of concerns". Keep the Tests and
+Design clean with separate files for each feature.
+
+2. Use the same keyword(s) in the file names to identify the
+design feature or function across folders.
