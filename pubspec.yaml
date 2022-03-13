@@ -51,6 +51,7 @@ dependencies:
   launch_at_startup: ^0.1.1
   window_manager: ^0.1.1
   wave: ^0.2.0
+  sleek_circular_slider: ^2.0.1
 
 dev_dependencies:
   flutter_test:

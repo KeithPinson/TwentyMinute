@@ -1,4 +1,4 @@
-![Twenty Minute](gitResources/icons/20min_logo.png "Twenty Minute")
+![Twenty Minute](DocResources/icons/20min_logo.png "Twenty Minute")
 
 A "no interrupts" Twenty Minute Timer
 

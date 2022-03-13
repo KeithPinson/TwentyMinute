@@ -5,6 +5,8 @@
 /// @see [[LICENSE]] file in the root directory of this source.
 ///
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
@@ -14,6 +16,7 @@ import 'package:easy_localization/easy_localization.dart';
 
 import 'package:provider/provider.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
 import 'package:twentyminute/resources/tally_repository.dart';
 import 'package:twentyminute/components/theme_cubit.dart';
@@ -32,6 +35,31 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
+
+/*
+Screen
+  ...
+  Timer
+    Running
+      Circle Animation
+      Time Ticking Down
+
+      One Minute Animated Graphic
+
+    Paused
+
+      Circle Blobby Animation
+      Time Frozen
+      Time Paused Flashed "Paused: <elapsed>"
+
+    Long Press Menu
+
+      Cancel
+      Mark Done
+
+  Tally Marks
+ */
+
 class TimerView extends StatelessWidget {
   const TimerView({Key? key}) : super(key: key);
   @override
@@ -42,14 +70,9 @@ class TimerView extends StatelessWidget {
         children: [
           const Background(),
           Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: const <Widget>[
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 100.0),
-                child: Center(child: TimerText()),
-              ),
-              Actions(),
+              Timer(),
+              TallyMarks(),
             ],
           ),
         ],
@@ -57,6 +80,95 @@ class TimerView extends StatelessWidget {
     );
   }
 }
+
+class Timer extends StatelessWidget {
+  const Timer({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        const Background(),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: const <Widget>[
+            Center(child: TimerText()),
+            /*Task(),*/
+            Actions(),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class HexColor extends Color {
+  static int _getColorFromHex(String hexColor) {
+  hexColor = hexColor.toUpperCase().replaceAll('#', '');
+  if (hexColor.length == 6) {
+  hexColor = 'FF' + hexColor;
+  }
+  return int.parse(hexColor, radix: 16);
+  }
+
+  HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
+}
+
+
+final customWidth01 =
+  CustomSliderWidths(trackWidth: 2, progressBarWidth: 10, shadowWidth: 20);
+final customColors01 = CustomSliderColors(
+      dotColor: Colors.white.withOpacity(0.8),
+      trackColor: HexColor('#FFD4BE').withOpacity(0.4),
+      progressBarColor: HexColor('#F6A881'),
+      shadowColor: HexColor('#FFD4BE'),
+      shadowStep: 10.0,
+      shadowMaxOpacity: 0.6);
+
+final CircularSliderAppearance appearance01 = CircularSliderAppearance(
+      customWidths: customWidth01,
+      customColors: customColors01,
+      startAngle: 270,
+      angleRange: 360,
+      size: 350.0,
+      animationEnabled: false);
+
+final customWidth02 =
+  CustomSliderWidths(trackWidth: 5, progressBarWidth: 15, shadowWidth: 30);
+final customColors02 = CustomSliderColors(
+      dotColor: Colors.white.withOpacity(0.8),
+      trackColor: HexColor('#98DBFC').withOpacity(0.3),
+      progressBarColor: HexColor('#6DCFFF'),
+      shadowColor: HexColor('#98DBFC'),
+      shadowStep: 15.0,
+      shadowMaxOpacity: 0.3);
+
+final CircularSliderAppearance appearance02 = CircularSliderAppearance(
+      customWidths: customWidth02,
+      customColors: customColors02,
+      startAngle: 270,
+      angleRange: 360,
+      size: 290.0,
+      animationEnabled: false);
+
+final customWidth03 =
+  CustomSliderWidths(trackWidth: 8, progressBarWidth: 20, shadowWidth: 40);
+final customColors03 = CustomSliderColors(
+      dotColor: Colors.white.withOpacity(0.8),
+      trackColor: HexColor('#EFC8FC').withOpacity(0.3),
+      progressBarColor: HexColor('#A177B0'),
+      shadowColor: HexColor('#EFC8FC'),
+      shadowStep: 20.0,
+      shadowMaxOpacity: 0.3);
+
+final CircularSliderAppearance appearance03 = CircularSliderAppearance(
+      customWidths: customWidth03,
+      customColors: customColors03,
+      startAngle: 270,
+      angleRange: 360,
+      size: 210.0,
+      animationEnabled: false);
+
 
 class TimerText extends StatelessWidget {
   const TimerText({Key? key}) : super(key: key);
@@ -66,9 +178,32 @@ class TimerText extends StatelessWidget {
     final minutesStr =
     ((duration / 60) % 60).floor().toString().padLeft(2, '0');
     final secondsStr = (duration % 60).floor().toString().padLeft(2, '0');
-    return Text(
-      '$minutesStr:$secondsStr',
-      style: Theme.of(context).textTheme.headline1,
+
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 100.0),
+      child: Center(
+        child: Text(
+          '$minutesStr:$secondsStr',
+          style: Theme.of(context).textTheme.headline1,
+        )
+      )
+    );
+  }
+}
+
+class TallyMarks extends StatelessWidget {
+  const TallyMarks({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    const marks = 3;
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 60.0),
+      child: Center(
+        child: Text(
+          '$marks',
+          style: Theme.of(context).primaryTextTheme.bodyText1,
+        )
+      )
     );
   }
 }
@@ -123,6 +258,7 @@ class Actions extends StatelessWidget {
     );
   }
 }
+
 
 class Background extends StatelessWidget {
   const Background({Key? key}) : super(key: key);
