@@ -1,4 +1,4 @@
-![Twenty Minute](DocResources/icons/20min_logo.png "Twenty Minute")
+![Twenty Minute](BuildResources/icons/20min_logo.png "Twenty Minute")
 
 # Twenty Minute Developer Notes
 
