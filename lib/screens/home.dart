@@ -41,21 +41,27 @@ Screen
   ...
   Timer
     Running
-      Circle Animation
+      Circle countdown animation
       Time Ticking Down
-
-      One Minute Animated Graphic
+      Tap event will pause timer with a "hold"
 
     Paused
 
-      Circle Blobby Animation
-      Time Frozen
-      Time Paused Flashed "Paused: <elapsed>"
+      Circle holding throb animation
+      Time frozen with hold label
+      Hold elapsed time throb
+      Tap event will remove hold
+
+    Time's Elapsed
+
+      Circle ghost
+      Time replace with finish word
+      Tap event will allow new task to be picked
 
     Long Press Menu
 
-      Cancel
-      Mark Done
+      Cancel button
+      Mark Done button
 
   Tally Marks
  */
@@ -71,6 +77,8 @@ class TimerView extends StatelessWidget {
           const Background(),
           Column(
             children: const <Widget>[
+              // TaskLabel()
+              // HoldTimer()
               Timer(),
               TallyMarks(),
             ],
@@ -85,22 +93,49 @@ class Timer extends StatelessWidget {
   const Timer({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        const Background(),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: const <Widget>[
-            Center(child: TimerText()),
-            /*Task(),*/
-            Actions(),
-          ],
-        ),
-      ],
+    return BlocBuilder<TimerBloc, TimerState>(
+      buildWhen: (prev, state) => prev.runtimeType != state.runtimeType,
+      builder: (context, state) {
+        return InkWell(
+          onTap: () {
+            if (state is TimerInitial) {
+              context
+                  .read<TimerBloc>()
+                  .add(TimerStarted(duration: state.duration));
+            }
+            if (state is TimerRunInProgress) {
+              context.read<TimerBloc>().add(const TimerPaused());
+            }
+            if (state is TimerRunPause) {
+              context.read<TimerBloc>().add(const TimerResumed());
+            }
+            if (state is TimerRunComplete) {
+              context.read<TimerBloc>().add(const TimerReset());
+            }
+          },
+          onLongPress: () {
+            const snackBar = SnackBar(content: Text('Long Press'));
+            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            // context.read<TimerBloc>().add(TimerReset())
+          },
+          child: Stack(
+            children: [
+              const Background(),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: const <Widget>[
+                  Center(child: TimerText()),
+                ],
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }
+
 
 class HexColor extends Color {
   static int _getColorFromHex(String hexColor) {
@@ -204,57 +239,6 @@ class TallyMarks extends StatelessWidget {
           style: Theme.of(context).primaryTextTheme.bodyText1,
         )
       )
-    );
-  }
-}
-
-class Actions extends StatelessWidget {
-  const Actions({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<TimerBloc, TimerState>(
-      buildWhen: (prev, state) => prev.runtimeType != state.runtimeType,
-      builder: (context, state) {
-        return Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            if (state is TimerInitial) ...[
-              FloatingActionButton(
-                child: Icon(Icons.play_arrow),
-                onPressed: () => context
-                    .read<TimerBloc>()
-                    .add(TimerStarted(duration: state.duration)),
-              ),
-            ],
-            if (state is TimerRunInProgress) ...[
-              FloatingActionButton(
-                child: Icon(Icons.pause),
-                onPressed: () => context.read<TimerBloc>().add(TimerPaused()),
-              ),
-              FloatingActionButton(
-                child: Icon(Icons.replay),
-                onPressed: () => context.read<TimerBloc>().add(TimerReset()),
-              ),
-            ],
-            if (state is TimerRunPause) ...[
-              FloatingActionButton(
-                child: Icon(Icons.play_arrow),
-                onPressed: () => context.read<TimerBloc>().add(TimerResumed()),
-              ),
-              FloatingActionButton(
-                child: Icon(Icons.replay),
-                onPressed: () => context.read<TimerBloc>().add(TimerReset()),
-              ),
-            ],
-            if (state is TimerRunComplete) ...[
-              FloatingActionButton(
-                child: Icon(Icons.replay),
-                onPressed: () => context.read<TimerBloc>().add(TimerReset()),
-              ),
-            ]
-          ],
-        );
-      },
     );
   }
 }
