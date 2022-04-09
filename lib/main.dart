@@ -27,7 +27,7 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:window_manager/window_manager.dart';
 
 import 'package:twentyminute/resources/preferences.dart';
-import 'package:twentyminute/screens/app.dart';
+import 'package:twentyminute/screens/home.dart';
 import 'package:twentyminute/components/app_bloc_observer.dart';
 import 'package:twentyminute/components/timer_bloc.dart';
 import 'package:twentyminute/resources/time_ticks.dart';
