@@ -16,12 +16,20 @@
 
 - https://visualstudio.microsoft.com/downloads/ 
 - Download "Visual Studio 2022 with C++" Community edition.
+- Run *Visual Studio Installer*
 
 <u>Check the Installation</u>
 
 ```bash
 > flutter doctor -v
 ```
+
+<u>Confirm Environment Variables</u>
+
+Visual Studio Installer may not have updated the environment variables, they should match and be set to something like:
+
+- `VCToolsVersion=14.29.30037`
+- `VCToolsInstallDir=%ProgramFiles%\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\%VCToolsVersion%`
 
 ## Step 1: Building From Scratch
 

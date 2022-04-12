@@ -90,7 +90,7 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.keithpinson" "\0"
-            VALUE "FileDescription", "A "no interrupts" Twenty Minute Timer" "\0"
+            VALUE "FileDescription", "A 'no interrupts' Twenty Minute Timer" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "twentyminute" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2021 com.keithpinson. All rights reserved." "\0"
