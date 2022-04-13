@@ -31,7 +31,11 @@ Visual Studio Installer may not have updated the environment variables, they sho
 - `VCToolsVersion=14.29.30037`
 - `VCToolsInstallDir=%ProgramFiles%\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\%VCToolsVersion%`
 
-## Step 1: Building From Scratch
+## Step 1: Building the Apps
+
+```bash
+> flutter build windows  :: Builds ./build/windows/runner/Release/<app name>.exe
+```
 
 ## Step 2: Install the Dependencies
 

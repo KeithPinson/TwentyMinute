@@ -1,6 +1,6 @@
 ![Twenty Minute](BuildResources/icons/20min_logo.png "Twenty Minute")
 
-A "no interrupts" Twenty Minute Timer
+A *"no interrupts"* Twenty Minute Timer
 
 # Twenty Minute
 
