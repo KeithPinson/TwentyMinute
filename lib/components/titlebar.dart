@@ -8,9 +8,46 @@
 /// @see [[LICENSE]] file in the root directory of this source.
 ///
 
+import 'dart:io' show Platform;
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 
+class Titlebar extends WindowTitleBarBox {
+  final Widget? child;
+  Titlebar({Key? key, this.child}) : super(key: key);
+
+  bool isDesktop() {
+    bool isDesktop = false;
+
+    if (!kIsWeb &&
+        (Platform.isWindows || Platform.isLinux || Platform.isMacOS)) {
+      isDesktop = true;
+    }
+
+     return isDesktop;
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+
+    if (!isDesktop()) {
+      return Container();
+    }
+
+    final titlebarHeight = appWindow.titleBarHeight;
+    return SizedBox(
+        height: titlebarHeight,
+        child: Row(
+          children: [
+            Expanded(child:MoveWindow()),
+            const WindowButtons()
+          ]
+        )
+    );
+  }
+}
 
 final buttonColors = WindowButtonColors(
     iconNormal: const Color(0xFF805306),

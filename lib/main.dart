@@ -156,15 +156,7 @@ class AppShell extends StatelessWidget {
                 Expanded(
                   child: Column(
                     children: <Widget>[
-                      // Titlebar(),
-                      WindowTitleBarBox(
-                        child: Row(
-                          children: [
-                            Expanded(child:MoveWindow()),
-                            const WindowButtons()
-                          ]
-                        )
-                      ),
+                      Titlebar(),
                       const HomeScreen(),
                     ],
                   ),
