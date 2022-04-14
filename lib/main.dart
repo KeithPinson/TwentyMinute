@@ -26,8 +26,11 @@ import 'package:launch_at_startup/launch_at_startup.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:window_manager/window_manager.dart';
 
+import 'package:bitsdojo_window/bitsdojo_window.dart';
+
 import 'package:twentyminute/resources/preferences.dart';
 import 'package:twentyminute/screens/home.dart';
+import 'package:twentyminute/components/titlebar.dart';
 import 'package:twentyminute/components/app_bloc_observer.dart';
 import 'package:twentyminute/components/timer_bloc.dart';
 import 'package:twentyminute/resources/time_ticks.dart';
@@ -112,6 +115,13 @@ void main() async {
     storage: storage,
   );
 
+  doWhenWindowReady(() {
+    const initialSize = Size(312, 600);
+    appWindow.minSize = initialSize;
+    appWindow.size = initialSize;
+    appWindow.alignment = Alignment.center;
+    appWindow.show();
+  });
 }
 
 @immutable
@@ -120,6 +130,7 @@ class AppShell extends StatelessWidget {
 
   const AppShell({Key? key, this.savedThemeMode}) : super(key: key);
 
+  @override
   Widget build(BuildContext context) {
     return AdaptiveTheme(
       light: ThemeData.light().copyWith(
@@ -134,7 +145,34 @@ class AppShell extends StatelessWidget {
         theme: light,
         darkTheme: dark,
         debugShowCheckedModeBanner: false,
-        home: const HomeScreen(),
+        //home: const HomeScreen(),
+        home: Scaffold(
+          // appBar: AppBar(title: const Text('Twenty Minute')),
+          body: WindowBorder(
+            color: Colors.blueGrey.shade400,
+            width: 1,
+            child: Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    children: <Widget>[
+                      // Titlebar(),
+                      WindowTitleBarBox(
+                        child: Row(
+                          children: [
+                            Expanded(child:MoveWindow()),
+                            const WindowButtons()
+                          ]
+                        )
+                      ),
+                      const HomeScreen(),
+                    ],
+                  ),
+                ),
+              ]
+            )
+          )
+        ),
       ),
     );
   }

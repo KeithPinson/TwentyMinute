@@ -70,21 +70,18 @@ class TimerView extends StatelessWidget {
   const TimerView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Twenty Minute')),
-      body: Stack(
-        children: [
-          const Background(),
-          Column(
-            children: const <Widget>[
-              // TaskLabel()
-              // HoldTimer()
-              Timer(),
-              TallyMarks(),
-            ],
-          ),
-        ],
-      ),
+    return Stack(
+      children: [
+        const Background(),
+        Column(
+          children: const <Widget>[
+            // TaskLabel()
+            // HoldTimer()
+            Timer(),
+            TallyMarks(),
+          ],
+        ),
+      ],
     );
   }
 }

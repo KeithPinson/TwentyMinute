@@ -52,6 +52,7 @@ dependencies:
   window_manager: ^0.1.1
   wave: ^0.2.0
   sleek_circular_slider: ^2.0.1
+  bitsdojo_window: ^0.1.1+1
 
 dev_dependencies:
   flutter_test:
