@@ -29,7 +29,7 @@ the statement:
 |extern|👽️|`:alien:`|Update due to external API or other changes|
 |feat|✨|`:sparkles:`|A new feature|
 |fix|🐛|`:bug:`|A bug fix|
-|gitignore|🙈|`:see_no_evil:`|Change to .gitignore file|
+|gitignore|🙈|`:see_no_evil:`|Change to .gitignore or other VCS file|
 |hotfix|🚨|`:rotating_light:`|Critical hotfix|
 |i18n|🌐|`:globe_with_meridians:`|Internationalization and localization|
 |init|🎉|`:tada:`|Begin a project|
@@ -44,4 +44,4 @@ the statement:
 |typo|💄|`:lipstick:`|Fix typos, whitespace, or cosmetic change|
 |ui|🎨|`:art:`|Improve user experience, usability, responsiveness|
 |version|🔖|`:bookmark:`|Simple marker to tag a version bump|
-|wip|⚗️|`:alembic:`|Mark the beginning of a major change to code|
+|wip|⚗️|`:alembic:`|Mark code as stable but still being worked on|
