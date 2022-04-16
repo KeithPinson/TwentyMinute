@@ -22,6 +22,7 @@ import 'package:twentyminute/resources/tally_repository.dart';
 import 'package:twentyminute/components/theme_cubit.dart';
 import 'package:twentyminute/components/timer_bloc.dart';
 import 'package:twentyminute/resources/time_ticks.dart';
+import 'package:twentyminute/ui/tally_marks.dart';
 
 
 class HomeScreen extends StatelessWidget {
@@ -217,23 +218,6 @@ class TimerText extends StatelessWidget {
         child: Text(
           '$minutesStr:$secondsStr',
           style: Theme.of(context).textTheme.headline1,
-        )
-      )
-    );
-  }
-}
-
-class TallyMarks extends StatelessWidget {
-  const TallyMarks({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    const marks = 3;
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 60.0),
-      child: Center(
-        child: Text(
-          '$marks',
-          style: Theme.of(context).primaryTextTheme.bodyText1,
         )
       )
     );

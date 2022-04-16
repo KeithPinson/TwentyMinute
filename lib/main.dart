@@ -12,6 +12,8 @@
 /// @see [[LICENSE]] file in the root directory of this source.
 ///
 
+import 'dart:io' show Platform;
+
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 
@@ -52,7 +54,7 @@ import 'package:twentyminute/components/theme_cubit.dart';
 ///     </dict>
 
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   //
