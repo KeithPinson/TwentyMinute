@@ -50,3 +50,17 @@ Visual Studio Installer may not have updated the environment variables, they sho
 ## Step 7: Windows -- Always On Top Button
 
 ## High-Contrast Mode
+
+## Tally Marks
+
+<u>In Unicode:</u>
+
+1D377 &#x1D377; Tally Mark One
+1D378 &#x1D378; Tally Mark Five
+
+<u>With custom font use</u>
+
+ascii character:     1 2 3 4 5 6 7 8 9 a b c d e f  A B C D E
+                             |              |              |              |              |
+to get tally mark:  |1 2 3 4 5|1 2 3 4 5|1 2 3 4 5|1 2 3 4 5|
+
