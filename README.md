@@ -26,3 +26,5 @@ Twenty Minute tasks can also be specific tasks, tasks that require intense conce
 ## License
 
 [MIT](./LICENSE)
+
+Tallymarks Font licensed under [SIL Open Font License](https://scripts.sil.org/OFL)
