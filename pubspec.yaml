@@ -53,6 +53,7 @@ dependencies:
   wave: ^0.2.0
   sleek_circular_slider: ^2.0.1
   bitsdojo_window: ^0.1.1+1
+  get: ^4.6.1
 
 dev_dependencies:
   flutter_test:
@@ -107,3 +108,8 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+  fonts:
+   - family: Tallymarks
+     fonts:
+       - asset: assets/fonts/Tallymarks-Regular.otf
