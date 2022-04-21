@@ -13,6 +13,7 @@ import 'package:flutter/services.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:get/get.dart';
 
 import 'package:provider/provider.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
@@ -23,6 +24,7 @@ import 'package:twentyminute/components/theme_cubit.dart';
 import 'package:twentyminute/components/timer_bloc.dart';
 import 'package:twentyminute/resources/time_ticks.dart';
 import 'package:twentyminute/ui/tally_marks.dart';
+import 'package:twentyminute/ui/task_label.dart';
 
 
 class HomeScreen extends StatelessWidget {
@@ -76,7 +78,7 @@ class TimerView extends StatelessWidget {
         const Background(),
         Column(
           children: const <Widget>[
-            // TaskLabel()
+            TaskLabel(),
             // HoldTimer()
             Timer(),
             TallyMarks(),
