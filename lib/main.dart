@@ -101,6 +101,8 @@ Future<void> main() async {
 
   final savedThemeMode = await AdaptiveTheme.getThemeMode();
 
+  // await GetStorage.init();
+
   // Bloc will be used for managing application state
   //
   HydratedBlocOverrides.runZoned(
