@@ -77,7 +77,7 @@ class TimerView extends StatelessWidget {
       children: [
         const Background(),
         Column(
-          children: const <Widget>[
+          children: <Widget>[
             TaskLabel(),
             // HoldTimer()
             Timer(),

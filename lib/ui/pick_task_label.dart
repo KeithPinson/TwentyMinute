@@ -11,13 +11,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:twentyminute/components/task_controller.dart';
+import 'package:twentyminute/ui/task_controller.dart';
 import 'package:twentyminute/components/task_model.dart';
 //import 'package:twentyminute/ui/theme.dart';
-import 'package:twentyminute/screens/home.dart';
+import 'package:twentyminute/screens/home_screen.dart';
 import 'package:twentyminute/ui/theme.dart';
-import 'package:twentyminute/ui/buttonWidget.dart';
-//import 'package:twentyminute/ui/customAppBar_Widget.dart';
+import 'package:twentyminute/ui/button_widget.dart';
+import 'package:twentyminute/ui/task_appbar_widget.dart';
 import 'package:twentyminute/ui/input_field.dart';
 
 class PickTaskLabel extends StatefulWidget {
@@ -56,13 +56,15 @@ class _PickTaskLabelState extends State<PickTaskLabel> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).primaryColor,
-      // appBar: CustomAppBar(
-      //   leadingWidget: IconButton(
-      //     icon: Icon(Icons.arrow_back),
-      //     onPressed: () => Get.back(),
-      //   ),
-      // ),
+      // backgroundColor: Theme.of(context).primaryColor,
+      backgroundColor: Colors.white,
+      appBar: TaskAppBar(
+        leadingWidget: IconButton(
+          icon: Icon(Icons.arrow_back),
+          color: Colors.black,
+          onPressed: () => Get.back(),
+        ),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(

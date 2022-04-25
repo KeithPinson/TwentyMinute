@@ -17,6 +17,7 @@ import 'dart:io' show Platform;
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 
+import 'package:get/get.dart';
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:desktop_window/desktop_window.dart';
@@ -31,7 +32,7 @@ import 'package:window_manager/window_manager.dart';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 
 import 'package:twentyminute/resources/preferences.dart';
-import 'package:twentyminute/screens/home.dart';
+import 'package:twentyminute/screens/home_screen.dart';
 import 'package:twentyminute/components/titlebar.dart';
 import 'package:twentyminute/components/app_bloc_observer.dart';
 import 'package:twentyminute/components/timer_bloc.dart';
@@ -144,7 +145,7 @@ class AppShell extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       initial: savedThemeMode ?? AdaptiveThemeMode.light,
-      builder: (light, dark) => MaterialApp(
+      builder: (light, dark) => GetMaterialApp(
         title: 'Twenty Minute',
         theme: light,
         darkTheme: dark,

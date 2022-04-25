@@ -1,3 +1,12 @@
+/// Task Controller
+///
+/// Controller for the database task list.
+///
+/// Copyright (c) Keith Pinson.
+///
+/// @see [[LICENSE]] file in the root directory of this source.
+///
+
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:twentyminute/resources/db_helper.dart';
@@ -31,6 +40,4 @@ class TaskController extends GetxController {
     await DBHelper().update(id!);
     getTask();
   }
-
-
 }
