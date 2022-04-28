@@ -28,8 +28,8 @@ class TaskLabel extends StatelessWidget {
             transition: Transition.downToUp,
             duration: const Duration(milliseconds: 500)
         );
-        const snackBar = SnackBar(content: Text('on tap'));
-        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        // const snackBar = SnackBar(content: Text('on tap'));
+        // ScaffoldMessenger.of(context).showSnackBar(snackBar);
       },
       child: const Padding(
         padding: EdgeInsets.symmetric(vertical: 11.0),

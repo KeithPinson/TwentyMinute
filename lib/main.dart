@@ -150,7 +150,6 @@ class AppShell extends StatelessWidget {
         theme: light,
         darkTheme: dark,
         debugShowCheckedModeBanner: false,
-        //home: const HomeScreen(),
         home: Scaffold(
           // appBar: AppBar(title: const Text('Twenty Minute')),
           body: WindowBorder(
