@@ -33,7 +33,7 @@ class Titlebar extends WindowTitleBarBox {
   Widget build(BuildContext context) {
 
     if (!isDesktop()) {
-      return Container();
+      return Container(height: 0);
     }
 
     final titlebarHeight = appWindow.titleBarHeight;

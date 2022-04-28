@@ -33,7 +33,7 @@ import 'package:bitsdojo_window/bitsdojo_window.dart';
 
 import 'package:twentyminute/resources/preferences.dart';
 import 'package:twentyminute/screens/home_screen.dart';
-import 'package:twentyminute/components/titlebar.dart';
+import 'package:twentyminute/ui/titlebar.dart';
 import 'package:twentyminute/components/app_bloc_observer.dart';
 import 'package:twentyminute/components/timer_bloc.dart';
 import 'package:twentyminute/resources/time_ticks.dart';
@@ -122,8 +122,10 @@ Future<void> main() async {
 
   doWhenWindowReady(() {
     const initialSize = Size(312, 600);
+    const maxSize = Size(640, 800);
     appWindow.minSize = initialSize;
     appWindow.size = initialSize;
+    appWindow.maxSize = maxSize;
     appWindow.alignment = Alignment.center;
     appWindow.show();
   });
