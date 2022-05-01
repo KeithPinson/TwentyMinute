@@ -39,7 +39,7 @@ dependencies:
   flutter_bloc: ^8.0.0
   bloc: ^8.0.1
   equatable: ^2.0.3
-  sqflite: ^2.0.1
+  sqflite: ^2.0.2+1
   shared_preferences: ^2.0.11
   easy_localization: ^3.0.0
   hive: ^2.0.4
@@ -55,6 +55,36 @@ dependencies:
   bitsdojo_window: ^0.1.1+1
   get: ^4.6.1
   intl: ^0.17.0
+
+  cv:
+
+  tekartik_app_flutter_sqflite:
+    git:
+      url: https://github.com/tekartik/app_flutter_utils.dart
+      path: app_sqflite
+      ref: dart2_3
+      version: '>=0.4.2'
+
+  # Call platformInit() to work with Windows and Linux
+  tekartik_app_platform:
+    git:
+      url: https://github.com/tekartik/app_flutter_utils.dart
+      ref: dart2_3
+      path: app_platform
+    version: '>=0.1.0'
+
+  tekartik_common_utils:
+    git:
+      url: https://github.com/tekartik/common_utils.dart
+      ref: dart2_3
+    version: '>=0.11.1'
+
+  tekartik_lints:
+    git:
+      url: https://github.com/tekartik/common.dart
+      ref: dart2_3
+      path: packages/lints
+    version: '>=0.1.0'
 
 dev_dependencies:
   flutter_test:

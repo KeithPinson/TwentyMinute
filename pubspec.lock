@@ -162,6 +162,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.4"
+  cv:
+    dependency: "direct main"
+    description:
+      name: cv
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.6"
   desktop_window:
     dependency: "direct main"
     description:
@@ -539,6 +546,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.2.4"
+  process_run:
+    dependency: transitive
+    description:
+      name: process_run
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.12.3+2"
   provider:
     dependency: transitive
     description:
@@ -676,14 +690,28 @@ packages:
       name: sqflite
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.1"
+    version: "2.0.2+1"
   sqflite_common:
     dependency: transitive
     description:
       name: sqflite_common
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.0"
+    version: "2.2.1+1"
+  sqflite_common_ffi:
+    dependency: transitive
+    description:
+      name: sqflite_common_ffi
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.1"
+  sqlite3:
+    dependency: transitive
+    description:
+      name: sqlite3
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.5.1"
   stack_trace:
     dependency: transitive
     description:
@@ -712,6 +740,69 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.0"
+  tekartik_app_flutter_sqflite:
+    dependency: "direct main"
+    description:
+      path: app_sqflite
+      ref: dart2_3
+      resolved-ref: "2020cbf3d3f469519ab31391843902ad977edda1"
+      url: "https://github.com/tekartik/app_flutter_utils.dart"
+    source: git
+    version: "0.5.1"
+  tekartik_app_platform:
+    dependency: "direct main"
+    description:
+      path: app_platform
+      ref: dart2_3
+      resolved-ref: "2020cbf3d3f469519ab31391843902ad977edda1"
+      url: "https://github.com/tekartik/app_flutter_utils.dart"
+    source: git
+    version: "0.3.1"
+  tekartik_common_utils:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: dart2_3
+      resolved-ref: acb180c1d1f5e4f2db11126a1bce90d65b7f3613
+      url: "https://github.com/tekartik/common_utils.dart"
+    source: git
+    version: "0.13.5"
+  tekartik_lints:
+    dependency: "direct main"
+    description:
+      path: "packages/lints"
+      ref: dart2_3
+      resolved-ref: a483b36b5f1628aa17a8e8a6e36958603c6626a1
+      url: "https://github.com/tekartik/common.dart"
+    source: git
+    version: "0.1.2"
+  tekartik_platform:
+    dependency: transitive
+    description:
+      path: platform
+      ref: dart2_3
+      resolved-ref: "6cc5189c605c61287acf242afc256442eaeaca49"
+      url: "https://github.com/tekartik/platform.dart"
+    source: git
+    version: "0.3.0"
+  tekartik_platform_browser:
+    dependency: transitive
+    description:
+      path: platform_browser
+      ref: dart2_3
+      resolved-ref: "6cc5189c605c61287acf242afc256442eaeaca49"
+      url: "https://github.com/tekartik/platform.dart"
+    source: git
+    version: "0.3.0"
+  tekartik_platform_io:
+    dependency: transitive
+    description:
+      path: platform_io
+      ref: dart2_3
+      resolved-ref: "6cc5189c605c61287acf242afc256442eaeaca49"
+      url: "https://github.com/tekartik/platform.dart"
+    source: git
+    version: "0.3.0"
   term_glyph:
     dependency: transitive
     description:
@@ -818,5 +909,5 @@ packages:
     source: hosted
     version: "3.1.0"
 sdks:
-  dart: ">=2.15.0 <3.0.0"
+  dart: ">=2.16.0 <3.0.0"
   flutter: ">=2.5.0"
