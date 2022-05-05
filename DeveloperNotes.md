@@ -33,8 +33,17 @@ Visual Studio Installer may not have updated the environment variables, they sho
 
 ## Step 1: Building the Apps
 
+To build the release version of the Windows app:
+
 ```bash
-> flutter build windows  :: Builds ./build/windows/runner/Release/<app name>.exe
+> flutter build windows  :: This builds exe file in ./build/windows/runner/Release/ directory
+```
+
+Alternatively:
+
+```bash
+> flutter create .
+> flutter run -d <"macos", "linux", or "windows"> 
 ```
 
 ## Step 2: Install the Dependencies
