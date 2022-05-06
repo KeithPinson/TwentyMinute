@@ -11,14 +11,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:twentyminute/ui/task_controller.dart';
-import 'package:twentyminute/components/task_model.dart';
+import 'package:twentyminute/components/task_controller.dart';
+import 'package:twentyminute/resources/task_db_model.dart';
 //import 'package:twentyminute/ui/theme.dart';
 import 'package:twentyminute/screens/home_screen.dart';
 import 'package:twentyminute/ui/theme.dart';
 import 'package:twentyminute/ui/button_widget.dart';
 import 'package:twentyminute/ui/task_appbar_widget.dart';
 import 'package:twentyminute/ui/input_field.dart';
+
 
 class PickTaskLabel extends StatefulWidget {
   const PickTaskLabel({Key? key}) : super(key: key);
@@ -28,7 +29,6 @@ class PickTaskLabel extends StatefulWidget {
 }
 
 class _PickTaskLabelState extends State<PickTaskLabel> {
-  final TaskController _taskController = Get.find();
   final _formKey = GlobalKey<FormState>();
 
   final TextEditingController _titleController = TextEditingController();
@@ -88,6 +88,7 @@ class _PickTaskLabelState extends State<PickTaskLabel> {
                   const SizedBox(
                     height: 25,
                   ),
+/*
                   InputField(
                     isEnabled: true,
                     hint: 'Enter Title',
@@ -102,7 +103,6 @@ class _PickTaskLabelState extends State<PickTaskLabel> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      //_colorPallete(),
                       ButtonWidget(
                           label: 'Add Task',
                           onTap: () async {
@@ -111,7 +111,7 @@ class _PickTaskLabelState extends State<PickTaskLabel> {
                             _submitStartTime();
                             _submitEndTime();
                             if (_formKey.currentState!.validate()) {
-                              final Task task = Task();
+                              final Task0 task = Task0();
                               _addTaskToDB(task);
                               await _taskController.addTask(task);
                               Get.back();
@@ -120,6 +120,7 @@ class _PickTaskLabelState extends State<PickTaskLabel> {
                           color: primaryClr)
                     ],
                   )
+*/
                 ],
               ),
             ),
@@ -129,51 +130,9 @@ class _PickTaskLabelState extends State<PickTaskLabel> {
     );
   }
 
-  // Widget _colorPallete() {
-  //   return Column(
-  //     crossAxisAlignment: CrossAxisAlignment.start,
-  //     children: [
-  //       Text(
-  //         'Color',
-  //         style: TextStyle(
-  //             color: Get.isDarkMode ? Colors.white : darkGreyClr,
-  //             fontWeight: FontWeight.bold,
-  //             fontSize: 17),
-  //       ),
-  //       Wrap(
-  //         children: List.generate(
-  //             3,
-  //             (index) => GestureDetector(
-  //                   onTap: () {
-  //                     debugPrint(_selectedColor.toString());
-  //                     setState(() {
-  //                       _selectedColor = index;
-  //                     });
-  //                   },
-  //                   child: Padding(
-  //                     padding: const EdgeInsets.only(right: 8.0, top: 5),
-  //                     child: CircleAvatar(
-  //                         child: _selectedColor == index
-  //                             ? Icon(
-  //                                 Icons.done,
-  //                                 color: Colors.white,
-  //                                 size: 16,
-  //                               )
-  //                             : SizedBox(),
-  //                         radius: 16,
-  //                         backgroundColor: index == 0
-  //                             ? primaryClr
-  //                             : index == 1
-  //                                 ? pinkClr
-  //                                 : orangeClr),
-  //                   ),
-  //                 )),
-  //       )
-  //     ],
-  //   );
-  // }
 
-  _addTaskToDB(Task task) {
+/*
+  _addTaskToDB(Task0 task) {
     task.isCompleted = 0;
     task.color = -_selectedColor;
     task.title = _titleController.text;
@@ -184,6 +143,7 @@ class _PickTaskLabelState extends State<PickTaskLabel> {
     task.startTime = _startDate;
     task.endTime = _endDate;
   }
+*/
 
   _selectDate(BuildContext context) async {
     final DateTime? selected = await showDatePicker(

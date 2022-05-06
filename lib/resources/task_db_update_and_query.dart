@@ -1,4 +1,4 @@
-/// DB Task Update and Query
+/// Task DB Update and Query
 ///
 /// Database update or query of a task.
 ///
@@ -26,15 +26,12 @@ import 'package:twentyminute/main.dart';
 import 'package:twentyminute/resources/task_db_provider.dart';
 import 'package:twentyminute/resources/task_db_model.dart';
 
-Future<Task?> getActiveTask(int? id) async {
+Future<List<Map<String, Object?>>> getActiveTasks() async {
   var list = (await taskProvider.db!.query('Tasks',
       columns: ['_id', 'isDeleted', 'label', 'description', 'status', 'startTime'],
-      where: 'isDeleted = 0 and status=${taskStatus.started}',
-      orderBy: 'startTime ASC'));
-//      whereArgs: <Object?>[id]));
-  if (list.isNotEmpty) {
-    return Task()..fromMap(list.first);
-  }
-  return null;
+      where: 'isDeleted = 0 AND status=${taskStatus.started}',
+      orderBy: 'startTime DESC'));
+
+  return list;
 }
 

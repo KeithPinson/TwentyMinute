@@ -28,6 +28,9 @@ import 'package:flutter_services_binding/flutter_services_binding.dart';
 import 'package:launch_at_startup/launch_at_startup.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:window_manager/window_manager.dart';
+import 'package:tekartik_app_flutter_sqflite/sqflite.dart';
+import 'package:tekartik_app_platform/app_platform.dart';
+import 'package:tekartik_common_utils/common_utils_import.dart';
 
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 
@@ -40,6 +43,7 @@ import 'package:twentyminute/resources/time_ticks.dart';
 // import 'package:twentyminute/components/theme_cubit.dart';
 // import 'package:twentyminute/resources/preferences.dart';
 import 'package:twentyminute/components/theme_cubit.dart';
+import 'package:twentyminute/resources/task_db_provider.dart';
 
 
 /// Note for localization:
@@ -54,6 +58,7 @@ import 'package:twentyminute/components/theme_cubit.dart';
 ///       ...
 ///     </dict>
 
+late DbTaskProvider taskProvider;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -101,6 +106,21 @@ Future<void> main() async {
   );
 
   final savedThemeMode = await AdaptiveTheme.getThemeMode();
+
+
+  platformInit();
+  // For dev on windows, find the proper sqlite3.dll
+  if (!kIsWeb) {
+    sqfliteWindowsFfiInit();
+  }
+  var packageName = 'com.keithpinson.twentyminute';
+
+  var databaseFactory = getDatabaseFactory(packageName: packageName);
+
+  taskProvider = DbTaskProvider(databaseFactory);
+
+  await taskProvider.ready;
+
 
   // await GetStorage.init();
 
