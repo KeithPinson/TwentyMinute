@@ -95,25 +95,28 @@ class DbTaskProvider {
     return null;
   }
 
+  var backlogStatus = taskStatus.backlog;
+
   Future _createDb(Database db) async {
     await db.execute('DROP TABLE If EXISTS Tasks');
-    await db.execute(
-        'CREATE TABLE Tasks('
-            'id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, '
-            'isDeleted INTEGER DEFAULT (0), '
-            'label TEXT DEFAULT (''), '
-            'description TEXT DEFAULT (''), '
-            'status INTEGER DEFAULT (${taskStatus.backlog}), '
-            'startTime INTEGER, '
-            'restartTime INTEGER, '
-            'endTime INTEGER, '
-            'elapsedSeconds INTEGER DEFAULT (0)');
+    await db.execute('CREATE TABLE Tasks('
+        '_id INTEGER PRIMARY KEY AUTOINCREMENT, '
+        'isDeleted INTEGER DEFAULT (0), '
+        'label TEXT DEFAULT (\'\'), '
+        'description TEXT DEFAULT (\'\'), '
+        'status INTEGER DEFAULT (${taskStatus.backlog.index}), '
+        'startTime INTEGER, '
+        'restartTime INTEGER, '
+        'endTime INTEGER, '
+        'elapsedSeconds INTEGER DEFAULT (0) '
+        ');'
+    );
     await db
         .execute('CREATE INDEX TaskStatus ON Tasks (status)');
     await db
         .execute('CREATE INDEX TaskStart ON Tasks (startTime)');
     await db
-        .execute('CREATE INDEX TaskEnd ON Tasks (startEnd)');
+        .execute('CREATE INDEX TaskEnd ON Tasks (endTime)');
     await _saveTask(
         db,
         Task()
