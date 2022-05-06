@@ -11,9 +11,9 @@ class TallyMarks extends StatelessWidget {
   const TallyMarks({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    const marks = ' ';
+    const marks = ' ';  // '5a12';
     return const Padding(
-      padding: EdgeInsets.symmetric(vertical: 60.0),
+      padding: EdgeInsets.symmetric(vertical: 3.0),
       child: Center(
         child: Text(
           marks,

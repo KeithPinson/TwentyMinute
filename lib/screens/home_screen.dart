@@ -78,7 +78,7 @@ class TimerView extends StatelessWidget {
         children: [
           const Background(),
           Column(
-            children: <Widget>[
+            children: const <Widget>[
               TaskLabel(),
               // HoldTimer()
               Timer(),
@@ -217,7 +217,7 @@ class TimerText extends StatelessWidget {
     final secondsStr = (duration % 60).floor().toString().padLeft(2, '0');
 
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 100.0),
+      padding: EdgeInsets.symmetric(vertical: 1.0),
       child: Center(
         child: Text(
           '$minutesStr:$secondsStr',

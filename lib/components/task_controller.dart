@@ -28,7 +28,6 @@ __ DeleteTask
 __ GetTaskCompleted
  */
 
-import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:twentyminute/resources/task_db_model.dart';
 import 'package:twentyminute/resources/task_db_update_and_query.dart';
@@ -55,7 +54,7 @@ Future<String?> getActiveTaskLabel() async {
     return activeTask.label.v;
   }
   else {
-    return 'Twenty Minute Task3';
+    return 'Twenty Minute Task';
   }
 }
 
