@@ -50,6 +50,7 @@ class _InputFieldState extends State<InputField> {
               return 'Please Enter ${widget.label}';
             }
           },
+          keyboardType: TextInputType.name,
           cursorColor: Get.isDarkMode ? Colors.white : darkGreyClr,
           style: TextStyle(color: Get.isDarkMode ? Colors.white : darkGreyClr),
           decoration: InputDecoration(
