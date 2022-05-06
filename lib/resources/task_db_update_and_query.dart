@@ -29,7 +29,7 @@ import 'package:twentyminute/resources/task_db_model.dart';
 Future<List<Map<String, Object?>>> getActiveTasks() async {
   var list = (await taskProvider.db!.query('Tasks',
       columns: ['_id', 'isDeleted', 'label', 'description', 'status', 'startTime'],
-      where: 'isDeleted = 0 AND status=${taskStatus.started}',
+      where: 'isDeleted = 0 AND status=${taskStatus.started.index}',
       orderBy: 'startTime DESC'));
 
   return list;
