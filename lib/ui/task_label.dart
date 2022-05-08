@@ -67,11 +67,11 @@ class _TaskLabelState extends State<TaskLabel> {
             // Show the label
             return InkWell(
               onTap: () {
-                Get.to(
-                    () => const PickTaskLabel(),
-                    transition: Transition.downToUp,
-                    duration: const Duration(milliseconds: 500)
-                );
+                // Get.to(
+                //     () => const PickTaskLabel(),
+                //     transition: Transition.downToUp,
+                //     duration: const Duration(milliseconds: 500)
+                // );
               },
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 11.0),
