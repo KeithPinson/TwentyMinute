@@ -15,7 +15,7 @@ part 'timer_bloc_state.dart';
 
 class TimerBloc extends Bloc<TimerEvent, TimerState> {
   final TimeTicks _ticks;
-  static const int _duration = 60 * 20;
+  static const int _duration = /* 3; // */ 60 * 20;
 
   StreamSubscription<int>? _tickerSubscription;
 
@@ -63,10 +63,11 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
   }
 
   void _onTicked(TimerTicked event, Emitter<TimerState> emit) {
-    emit(
-      event.duration > 0
-          ? TimerRunInProgress(event.duration)
-          : TimerRunComplete(),
-    );
+
+    if (event.duration > 0) {
+      emit(TimerRunInProgress(event.duration));
+    } else {
+      emit(const TimerRunComplete());
+    }
   }
 }
