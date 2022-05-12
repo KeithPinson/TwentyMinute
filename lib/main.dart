@@ -39,11 +39,13 @@ import 'package:twentyminute/screens/home_screen.dart';
 import 'package:twentyminute/ui/titlebar.dart';
 import 'package:twentyminute/components/app_bloc_observer.dart';
 import 'package:twentyminute/components/timer_bloc.dart';
+import 'package:twentyminute/components/tally_marks_observer.dart';
 import 'package:twentyminute/resources/time_ticks.dart';
 // import 'package:twentyminute/components/theme_cubit.dart';
 // import 'package:twentyminute/resources/preferences.dart';
 import 'package:twentyminute/components/theme_cubit.dart';
 import 'package:twentyminute/resources/task_db_provider.dart';
+
 
 
 /// Note for localization:
@@ -137,6 +139,7 @@ Future<void> main() async {
   //       useFallbackTranslations: true,
       AppShell(savedThemeMode: savedThemeMode),
     ),
+    blocObserver: TallymarksObserver(),
     storage: storage,
   );
 
