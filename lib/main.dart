@@ -37,9 +37,8 @@ import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:twentyminute/resources/preferences.dart';
 import 'package:twentyminute/screens/home_screen.dart';
 import 'package:twentyminute/ui/titlebar.dart';
-import 'package:twentyminute/components/app_bloc_observer.dart';
 import 'package:twentyminute/components/timer_bloc.dart';
-import 'package:twentyminute/components/tally_marks_observer.dart';
+import 'package:twentyminute/components/bloc_observer.dart';
 import 'package:twentyminute/resources/time_ticks.dart';
 // import 'package:twentyminute/components/theme_cubit.dart';
 // import 'package:twentyminute/resources/preferences.dart';
@@ -139,7 +138,7 @@ Future<void> main() async {
   //       useFallbackTranslations: true,
       AppShell(savedThemeMode: savedThemeMode),
     ),
-    blocObserver: TallymarksObserver(),
+    blocObserver: TallyMarksObserver(),
     storage: storage,
   );
 

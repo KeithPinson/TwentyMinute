@@ -17,7 +17,7 @@ import '../components/task_controller.dart';
 class TallyMarks extends StatelessWidget {
   const TallyMarks({Key? key}) : super(key: key);
 
-  String  getTallyMarks(int count) {
+  String  getTallyMarks(int? count) {
     var marks = ' ';  // */ '5a12';
 
     return marks;
@@ -29,14 +29,15 @@ class TallyMarks extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return BlocProvider(
-      create: (_) => TallyMarksCubit(),
+      create: (_) => TallyMarksCubit(0),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 3.0),
         child: Center(
-          child: BlocBuilder<TallyMarksCubit, int>(
+          child: BlocBuilder<TallyMarksCubit, TallyMarksState>(
+            buildWhen: (previous, current) => previous.tally != current.tally,
             builder: (context, state) {
               return Text(
-                getTallyMarks(state),
+                getTallyMarks(state.tally),
                 textAlign: TextAlign.center,
                 overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
