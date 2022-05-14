@@ -73,3 +73,45 @@ ascii character:     1 2 3 4 5 6 7 8 9 a b c d e f  A B C D E
                              |              |              |              |              |
 to get tally mark:  |1 2 3 4 5|1 2 3 4 5|1 2 3 4 5|1 2 3 4 5|
 
+## Problems with Upgrade to Flutter 3.0.0 or greater
+
+Older packages of `bitsdojo_window` and `adaptive_theme` will
+throw errors and warnings after upgrading to Flutter version 3.
+
+To roll-back the version:
+
+```bash
+> flutter downgrade 2.10.5
+```
+
+To stick with Flutter 3
+
+ - Live with `adaptive_theme` throwing warnings, it will eventually be fixed
+ - Patch `bitsdojo_window` (it may be fixed by the time you read this)
+
+<u>Adaptive_theme Warning</u>:
+
+```
+adaptive_theme.dart: warning ... Operand of null-aware operation ...
+```
+
+Ignore these until a official fix is made.
+
+<u>To patch 'Bitsdojo_window' before the fix is released</u>:
+
+Before the patch you will get an error revealing a namespace conflict:
+
+```
+'Size' is imported from both 'dart:ffi' and 'dart:ui'
+```
+
+Add the `hide Size` to the `import 'dart.ffi'` directives in the windows 
+and linux directories of the `bitsdojo_window` package, which can be found
+in the `.pub-cache` of the current version of Flutter on your system.
+
+The patch will simply look like this:
+
+```dart
+import 'dart:ffi' hide Size;
+```
+
