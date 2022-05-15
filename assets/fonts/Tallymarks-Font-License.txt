@@ -1,4 +1,4 @@
-Copyright (c) 2022, Keith Pinson ("me" at <my name without the space> dot com),
+Copyright (c) 2022, Keith Pinson,
 with Reserved Font Name "Tallymarks".
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
