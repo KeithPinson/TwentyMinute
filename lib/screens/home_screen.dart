@@ -19,7 +19,7 @@ import 'package:provider/provider.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
-import 'package:twentyminute/resources/tally_repository.dart';
+import 'package:twentyminute/resources/tally_marks_db_query.dart';
 import 'package:twentyminute/components/theme_cubit.dart';
 import 'package:twentyminute/components/timer_bloc.dart';
 import 'package:twentyminute/resources/time_ticks.dart';

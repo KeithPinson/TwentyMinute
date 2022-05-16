@@ -1,6 +1,6 @@
 /// Task DB Update and Query
 ///
-/// Database update or query of a task.
+/// Database update or query a task.
 ///
 /// Copyright (c) Keith Pinson.
 ///

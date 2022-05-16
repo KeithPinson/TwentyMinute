@@ -30,7 +30,7 @@ __ GetTaskCompleted
 
 import 'package:intl/intl.dart';
 import 'package:twentyminute/resources/task_db_model.dart';
-import 'package:twentyminute/resources/task_db_update_and_query.dart';
+import 'package:twentyminute/resources/task_db_query.dart';
 
 Future<int?> getActiveTaskId() async {
   var activeTaskList = await getActiveTasks();
