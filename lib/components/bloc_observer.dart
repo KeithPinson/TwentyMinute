@@ -11,8 +11,9 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
+import 'package:twentyminute/components/timer_bloc.dart';
 
-class TallyMarksObserver extends BlocObserver {
+class AppBlockObserver extends BlocObserver {
   @override
   void onChange(BlocBase bloc, Change change) {
     super.onChange(bloc, change);
@@ -34,7 +35,13 @@ class TallyMarksObserver extends BlocObserver {
   void onTransition(Bloc bloc, Transition transition) {
     super.onTransition(bloc, transition);
     if (kDebugMode) {
-      print('${bloc.runtimeType} -- $transition');
+      // print('${bloc.runtimeType} -- $transition');
+    }
+
+    if (transition.nextState == const TimerRunComplete()) {
+      if (kDebugMode) {
+        print('${bloc.runtimeType} -- $transition');
+      }
     }
   }
 

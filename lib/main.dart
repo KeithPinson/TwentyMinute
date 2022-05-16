@@ -138,7 +138,7 @@ Future<void> main() async {
   //       useFallbackTranslations: true,
       AppShell(savedThemeMode: savedThemeMode),
     ),
-    blocObserver: TallyMarksObserver(),
+    blocObserver: AppBlockObserver(),
     storage: storage,
   );
 
