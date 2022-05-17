@@ -18,7 +18,7 @@ class TallyMarks extends StatelessWidget {
   const TallyMarks({Key? key}) : super(key: key);
 
   String  getTallyMarks(int? count) {
-    var marks = ' ';  // */ '5a12';
+    var marks = ' '; // '$count';
 
     return marks;
   }
@@ -28,16 +28,21 @@ class TallyMarks extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return BlocProvider(
-      create: (_) => TallyMarksCubit(0),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 3.0),
-        child: Center(
-          child: BlocBuilder<TallyMarksCubit, TallyMarksState>(
-            buildWhen: (previous, current) => previous.tally != current.tally,
-            builder: (context, state) {
-              return Text(
-                getTallyMarks(state.tally),
+    return BlocConsumer<TimerBloc,TimerState>(
+      listener: (context,state) {
+        if (state == const TimerRunComplete()) {
+          // print( "BlocConsumer: TimerRunComplete" );
+        }
+      },
+      builder: (context,state) {
+        // return const Text( "13" );
+        if (state == const TimerRunComplete() ) {
+          // create: (_) => TallyMarksCubit(0);
+          return Padding(
+            padding: EdgeInsets.symmetric(vertical: 3.0),
+            child: Center(
+              child: Text(
+                getTallyMarks(1),
                 textAlign: TextAlign.center,
                 overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
@@ -45,11 +50,27 @@ class TallyMarks extends StatelessWidget {
                   fontSize: 32,
                 ),
                 // style: Theme.of(context).primaryTextTheme.bodyText1,
-              );
-            }
-          )
-        )
-      )
+              )
+            )
+          );
+        } else {
+          return const Padding(
+            padding: EdgeInsets.symmetric(vertical: 3.0),
+            child: Center(
+              child: Text(
+                ' ',
+                textAlign: TextAlign.center,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  fontFamily: 'TallyMarks',
+                  fontSize: 32,
+                ),
+                // style: Theme.of(context).primaryTextTheme.bodyText1,
+              )
+            )
+          );
+        }
+      },
     );
   }
 }
