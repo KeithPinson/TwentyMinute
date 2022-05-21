@@ -31,15 +31,19 @@ class TallyMarks extends StatelessWidget {
         ['1','2','3','4','5', '6','7','8','9','A',
          'B','C','D','E','F', 'G','H','I','J','K'];
 
+      // Groups of 4 by 5
       for (var t = div20; t > 0; t--) {
         marks = marks + chars[5-1] + chars[10-1] + chars[15-1] + chars[20-1];
       }
 
+      // The last 5s
       for (var f = 1; f <= div5; f++) {
         marks = marks + chars[(5*f)-1];
       }
 
-      marks = marks + chars[(div5*5)+rem5-1];
+      if (rem5 > 0) {
+        marks = marks + chars[(div5 * 5) + rem5 - 1];
+      }
     }
 
     return marks;
@@ -53,8 +57,8 @@ class TallyMarks extends StatelessWidget {
     return BlocConsumer<TimerBloc,TimerState> (
       listener: (context,state) async {
         if (state == const TimerRunComplete()) {
-          // marks = await getTallyMarkCountToday();
-          marks = 0;
+          marks = await getTallyMarkCountToday();
+          // marks = 0;
         }
       },
       builder: (context,state) {
