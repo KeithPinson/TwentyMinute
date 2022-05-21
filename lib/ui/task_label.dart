@@ -26,13 +26,13 @@ class TaskLabel extends StatefulWidget {
 }
 
 class _TaskLabelState extends State<TaskLabel> {
-  late Future<String?> taskInstance;
+  late Future<String?> taskActiveLabel;
 
   @override
   void initState() {
     super.initState();
 
-    taskInstance = getActiveTaskLabel();
+    taskActiveLabel = getActiveTaskLabel();
   }
 
   @override
@@ -40,7 +40,7 @@ class _TaskLabelState extends State<TaskLabel> {
 
     return Container(
       child: FutureBuilder<String?>(
-        future: taskInstance,
+        future: taskActiveLabel,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
 
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -51,7 +51,7 @@ class _TaskLabelState extends State<TaskLabel> {
                 padding: EdgeInsets.symmetric(vertical: 11.0),
                 child: Center(
                   child: Text(
-                    "",  // This should be very fast so show nothing
+                    "Nothing",  // This should be very fast so show nothing
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(

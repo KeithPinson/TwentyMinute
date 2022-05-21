@@ -122,11 +122,6 @@ Future<void> main() async {
 
   await taskProvider.ready;
 
-
-  // await GetStorage.init();
-
-  // Bloc will be used for managing application state
-  //
   HydratedBlocOverrides.runZoned(
     () => runApp(
   //     EasyLocalization(

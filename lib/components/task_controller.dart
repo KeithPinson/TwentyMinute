@@ -29,8 +29,12 @@ __ GetTaskCompleted
  */
 
 import 'package:intl/intl.dart';
+
+import 'package:twentyminute/main.dart';
 import 'package:twentyminute/resources/task_db_model.dart';
 import 'package:twentyminute/resources/task_db_query.dart';
+import 'package:twentyminute/resources/task_db_provider.dart';
+
 
 Future<int?> getActiveTaskId() async {
   var activeTaskList = await getActiveTasks();
@@ -58,3 +62,62 @@ Future<String?> getActiveTaskLabel() async {
   }
 }
 
+/*
+label
+description
+status
+startTime
+restartTime
+endTime
+elapsedSeconds
+*/
+
+Future addTask() async {
+  late Future<int?> taskActiveId;
+
+  // Check to see if the task meta data has been added
+  taskActiveId = getActiveTaskId();
+
+  // Add a blank new task
+  await taskProvider.saveTask(Task()
+    ..status.v = taskStatus.started.index
+    ..startTime.v = DateTime.now().millisecondsSinceEpoch
+    ..elapsedSeconds.v = 0);
+
+}
+
+
+Future startTask() async {
+  late Future<int?> taskActiveId;
+
+  // Check to see if the task meta data has been added
+  taskActiveId = getActiveTaskId();
+}
+
+Future endTask() async {
+  late Future<int?> taskActiveId;
+
+  // Check to see if the task meta data has been added
+  taskActiveId = getActiveTaskId();
+}
+
+Future pauseTask() async {
+  late Future<int?> taskActiveId;
+
+  // Check to see if the task meta data has been added
+  taskActiveId = getActiveTaskId();
+}
+
+Future restartTask() async {
+  late Future<int?> taskActiveId;
+
+  // Check to see if the task meta data has been added
+  taskActiveId = getActiveTaskId();
+}
+
+Future dismissTask() async {
+  late Future<int?> taskActiveId;
+
+  // Check to see if the task meta data has been added
+  taskActiveId = getActiveTaskId();
+}

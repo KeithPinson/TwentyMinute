@@ -8,12 +8,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:twentyminute/components/tally_marks_cubit.dart';
 
 import 'package:twentyminute/components/timer_bloc.dart';
 
-import '../components/task_controller.dart';
-import '../resources/tally_marks_db_query.dart';
+import '../components/tally_marks_controller.dart';
 
 class TallyMarks extends StatelessWidget {
   const TallyMarks({Key? key}) : super(key: key);
@@ -55,7 +53,7 @@ class TallyMarks extends StatelessWidget {
     return BlocConsumer<TimerBloc,TimerState> (
       listener: (context,state) async {
         if (state == const TimerRunComplete()) {
-          // marks = await getTallyMarksToday();
+          // marks = await getTallyMarkCountToday();
           marks = 0;
         }
       },
