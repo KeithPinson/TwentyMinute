@@ -73,6 +73,14 @@ ascii character:     1 2 3 4 5 6 7 8 9 a b c d e f  A B C D E
                              |              |              |              |              |
 to get tally mark:  |1 2 3 4 5|1 2 3 4 5|1 2 3 4 5|1 2 3 4 5|
 
+## To Rebuild Android
+
+```bash
+> flutter clean
+> flutter build apk
+> flutter run
+```
+
 ## Problems with Upgrade to Flutter 3.0.0 or greater
 
 Older packages of `bitsdojo_window` and `adaptive_theme` will
