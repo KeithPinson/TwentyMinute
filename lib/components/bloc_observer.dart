@@ -38,7 +38,7 @@ class AppBlockObserver extends BlocObserver {
       // print('${bloc.runtimeType} -- $transition');
     }
 
-    if (transition.nextState == const TimerRunComplete()) {
+    if (transition.nextState == const TimerRunCompleted()) {
       if (kDebugMode) {
         print('${bloc.runtimeType} -- $transition');
       }

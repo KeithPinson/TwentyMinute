@@ -21,4 +21,6 @@ class Preference{
   {
     return   preferences!.getBool(key);
   }
+
+  static const int duration = /*3; // */ 60 * 20;
 }

@@ -23,6 +23,7 @@ import 'package:twentyminute/resources/tally_marks_db_query.dart';
 import 'package:twentyminute/components/theme_cubit.dart';
 import 'package:twentyminute/components/timer_bloc.dart';
 import 'package:twentyminute/resources/time_ticks.dart';
+import 'package:twentyminute/resources/preferences.dart';
 import 'package:twentyminute/ui/tally_marks.dart';
 import 'package:twentyminute/ui/task_label.dart';
 
@@ -32,7 +33,10 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => TimerBloc(ticks: const TimeTicks()),
+      create: (_) => TimerBloc(
+        ticks: const TimeTicks(),
+        durationSeconds: Preference.duration,
+      ),
       child: const TimerView(),
     );
   }
@@ -100,19 +104,18 @@ class Timer extends StatelessWidget {
       builder: (context, state) {
         return InkWell(
           onTap: () {
-            if (state is TimerInitial) {
-              context
-                  .read<TimerBloc>()
-                  .add(TimerStarted(duration: state.duration));
+            // Transition from state to event
+            if (state is TimerRunReady) {
+              context.read<TimerBloc>().add(const TimerStart(duration: Preference.duration));
             }
             if (state is TimerRunInProgress) {
-              context.read<TimerBloc>().add(const TimerPaused());
+              context.read<TimerBloc>().add(const TimerPause());
             }
-            if (state is TimerRunPause) {
-              context.read<TimerBloc>().add(const TimerResumed());
+            if (state is TimerRunPaused) {
+              context.read<TimerBloc>().add(const TimerResume());
             }
-            if (state is TimerRunComplete) {
-              context.read<TimerBloc>().add(const TimerReset());
+            if (state is TimerRunCompleted || state is TimerRunCanceled) {
+              context.read<TimerBloc>().add(const TimerSet());
             }
           },
           onLongPress: () {
