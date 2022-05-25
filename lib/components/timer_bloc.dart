@@ -19,13 +19,13 @@ part 'timer_bloc_state.dart';
  * Initial state is TimerReady.
  *
  * Events:
- *  - onStart
- *  - onPause
- *  - onResume
- *  - onCancel
- *  - onFinishEarly
- *  - onTick
- *  - onSet
+ *  - onStart(),       TimerStart
+ *  - onPause(),       TimerPause
+ *  - onResume(),      TimerResume
+ *  - onCancel(),      TimerCancel
+ *  - onFinishEarly(), TimerFinishEarly
+ *  - onTick(),        TimerTick
+ *  - onSet(),         TimerSet
  *
  * States:
  *  - TimerRunReady
