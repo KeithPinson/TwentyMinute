@@ -13,7 +13,6 @@ import 'package:flutter/services.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:get/get.dart';
 
 import 'package:provider/provider.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
@@ -21,23 +20,33 @@ import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
 import 'package:twentyminute/resources/tally_marks_db_query.dart';
 import 'package:twentyminute/components/theme_cubit.dart';
+import 'package:twentyminute/components/task_bloc.dart';
 import 'package:twentyminute/components/timer_bloc.dart';
 import 'package:twentyminute/resources/time_ticks.dart';
 import 'package:twentyminute/resources/preferences.dart';
 import 'package:twentyminute/ui/tally_marks.dart';
 import 'package:twentyminute/ui/task_label.dart';
+import 'package:twentyminute/ui/timer.dart';
+
 
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => TimerBloc(
-        ticks: const TimeTicks(),
-        durationSeconds: Preference.duration,
-      ),
-      child: const TimerView(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<TimerBloc>(
+          create: (BuildContext context) => TimerBloc(
+            ticks: const TimeTicks(),
+            durationSeconds: Preference.duration,
+          ),
+        ),
+        BlocProvider<TaskBloc>(
+          create: (BuildContext context) => TaskBloc(),
+        ),
+      ],
+      child: const HomeScreenView(),
     );
   }
 }
@@ -73,8 +82,8 @@ Screen
   Tally Marks
  */
 
-class TimerView extends StatelessWidget {
-  const TimerView({Key? key}) : super(key: key);
+class HomeScreenView extends StatelessWidget {
+  const HomeScreenView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -94,53 +103,6 @@ class TimerView extends StatelessWidget {
     );
   }
 }
-
-class Timer extends StatelessWidget {
-  const Timer({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<TimerBloc, TimerState>(
-      buildWhen: (prev, state) => prev.runtimeType != state.runtimeType,
-      builder: (context, state) {
-        return InkWell(
-          onTap: () {
-            // Transition from state to event
-            if (state is TimerRunReady) {
-              context.read<TimerBloc>().add(const TimerStart(duration: Preference.duration));
-            }
-            if (state is TimerRunInProgress) {
-              context.read<TimerBloc>().add(const TimerPause());
-            }
-            if (state is TimerRunPaused) {
-              context.read<TimerBloc>().add(const TimerResume());
-            }
-            if (state is TimerRunCompleted || state is TimerRunCanceled) {
-              context.read<TimerBloc>().add(const TimerSet());
-            }
-          },
-          onLongPress: () {
-            const snackBar = SnackBar(content: Text('Long Press'));
-            ScaffoldMessenger.of(context).showSnackBar(snackBar);
-            // context.read<TimerBloc>().add(TimerReset())
-          },
-          child: Stack(
-            children: [
-              const Background(),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: const <Widget>[
-                  Center(child: TimerText()),
-                ],
-              ),
-            ],
-          ),
-        );
-      },
-    );
-  }
-}
-
 
 class HexColor extends Color {
   static int _getColorFromHex(String hexColor) {
@@ -208,28 +170,6 @@ final CircularSliderAppearance appearance03 = CircularSliderAppearance(
       angleRange: 360,
       size: 210.0,
       animationEnabled: false);
-
-
-class TimerText extends StatelessWidget {
-  const TimerText({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    final duration = context.select((TimerBloc bloc) => bloc.state.duration);
-    final minutesStr =
-    ((duration / 60) % 60).floor().toString().padLeft(2, '0');
-    final secondsStr = (duration % 60).floor().toString().padLeft(2, '0');
-
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 1.0),
-      child: Center(
-        child: Text(
-          '$minutesStr:$secondsStr',
-          style: Theme.of(context).textTheme.headline1,
-        )
-      )
-    );
-  }
-}
 
 
 class Background extends StatelessWidget {
