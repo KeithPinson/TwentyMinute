@@ -36,88 +36,141 @@ import 'package:twentyminute/resources/task_db_query.dart';
 import 'package:twentyminute/resources/task_db_provider.dart';
 
 
-Future<int?> getActiveTaskId() async {
+Future<int> getActiveTaskId() async {
   var activeTaskList = await getActiveTasks();
 
-  if (activeTaskList.isNotEmpty) {
-    var activeTask = Task()..fromMap(activeTaskList.first);
+  var taskId = 0;
 
-    return activeTask.id.v;
+  if (activeTaskList.length > 0) {
+    taskId = (Task()..fromMap(activeTaskList.first)).id.v ?? 0;
   }
-  else {
-    return 0;
-  }
+
+  return taskId;
 }
 
-Future<String?> getActiveTaskLabel() async {
+Future<String> getActiveTaskLabel() async {
   var activeTaskList = await getActiveTasks();
 
-  if (activeTaskList.isNotEmpty) {
-    var activeTask = Task()..fromMap(activeTaskList.first);
+  var taskLabel = 'Twenty Minute Task';
 
-    return activeTask.label.v;
+  if (activeTaskList.length > 0) {
+    taskLabel = (Task()..fromMap(activeTaskList.first)).label.v ?? 'Twenty Minute Task';
   }
-  else {
-    return 'Twenty Minute Task';
-  }
+
+  return taskLabel;
 }
 
 /*
 label
 description
 status
+  backlog
+  to do
+  started
+  done
 startTime
 restartTime
 endTime
 elapsedSeconds
 */
 
-Future addTask() async {
-  late Future<int?> taskActiveId;
 
-  // Check to see if the task meta data has been added
-  taskActiveId = getActiveTaskId();
+Future addTask(
+    String label,
+    {String description = '',
+     bool isBacklog = true} ) async {
+
+  // Tasks can be added in advance of starting and
+  // would at least have a label. These tasks are
+  // not active, see startTask().
 
   // Add a blank new task
-  await taskProvider.saveTask(Task()
-    ..status.v = taskStatus.started.index
-    ..startTime.v = DateTime.now().millisecondsSinceEpoch
+  await taskProvider.addTask(Task()
+    ..isDeleted.v = 0
+    ..label.v = label
+    ..description.v = description
+    ..status.v = isBacklog ? taskStatus.backlog.index : taskStatus.todo.index
+    ..startTime.v = 0
+    ..restartTime.v = 0
+    ..endTime.v = 0
     ..elapsedSeconds.v = 0);
-
 }
 
 
 Future startTask() async {
-  late Future<int?> taskActiveId;
+  var taskId = await getActiveTaskId();
 
-  // Check to see if the task meta data has been added
-  taskActiveId = getActiveTaskId();
+  if (taskId > 0) {
+    await taskProvider.updateTask(taskId, Task()
+      ..status.v = taskStatus.started.index
+      ..startTime.v = DateTime.now().millisecondsSinceEpoch
+      ..restartTime.v = 0
+      ..endTime.v = 0
+      ..elapsedSeconds.v = 0);
+  }
+  else {
+    // UpdateTask will add and update if taskId is zero
+    await taskProvider.updateTask(0, Task()
+      ..isDeleted.v = 0
+      ..label.v = ''
+      ..description.v = ''
+      ..status.v = taskStatus.started.index
+      ..startTime.v = DateTime.now().millisecondsSinceEpoch
+      ..restartTime.v = 0
+      ..endTime.v = 0
+      ..elapsedSeconds.v = 0);
+  }
+
+  taskId = await getActiveTaskId();
+  print( "  startTask() $taskId" );
 }
+
 
 Future endTask() async {
-  late Future<int?> taskActiveId;
+  var taskId = await getActiveTaskId();
 
-  // Check to see if the task meta data has been added
-  taskActiveId = getActiveTaskId();
+  print( "  endTask() $taskId" );
+
+  if (taskId > 0) {
+    // Calculate the elapsed seconds
+    var elapsedSeconds = 0; // TODO
+
+    await taskProvider.updateTask(taskId, Task()
+      ..status.v = taskStatus.done.index
+      ..endTime.v = DateTime.now().millisecondsSinceEpoch
+      ..elapsedSeconds.v = elapsedSeconds);
+  }
 }
+
 
 Future pauseTask() async {
-  late Future<int?> taskActiveId;
+  var taskId = await getActiveTaskId();
 
-  // Check to see if the task meta data has been added
-  taskActiveId = getActiveTaskId();
+  if (taskId > 0) {
+    // Update the elapsed seconds
+    var elapsedSeconds = 0; // TODO
+
+    await taskProvider.updateTask(taskId, Task()
+      ..elapsedSeconds.v = elapsedSeconds);
+  }
 }
+
 
 Future restartTask() async {
-  late Future<int?> taskActiveId;
+  var taskId = await getActiveTaskId();
 
-  // Check to see if the task meta data has been added
-  taskActiveId = getActiveTaskId();
+  if (taskId > 0) {
+    await taskProvider.updateTask(taskId, Task()
+      ..restartTime.v = DateTime.now().millisecondsSinceEpoch);
+  }
 }
 
-Future dismissTask() async {
-  late Future<int?> taskActiveId;
 
-  // Check to see if the task meta data has been added
-  taskActiveId = getActiveTaskId();
+Future dismissTask() async {
+  var taskId = await getActiveTaskId();
+
+  if (taskId > 0) {
+    await taskProvider.updateTask(taskId, Task()
+      ..isDeleted.v = 1);
+  }
 }

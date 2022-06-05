@@ -137,14 +137,23 @@ class DbTaskProvider {
   Future _saveTask(DatabaseExecutor? db, Task updatedTask) async {
     if (updatedTask.id.v != null) {
       await db!.update('Tasks', updatedTask.toMap(),
-          where: 'id = ?', whereArgs: <Object?>[updatedTask.id.v]);
+          where: '_id = ?', whereArgs: <Object?>[updatedTask.id.v]);
     } else {
       updatedTask.id.v = await db!.insert('Tasks', updatedTask.toMap());
     }
   }
 
-  Future saveTask(Task updatedTask) async {
-    await _saveTask(db, updatedTask);
+  Future addTask(Task task) async {
+     task.id.v = null;
+
+    await _saveTask(db, task);
+    _triggerUpdate();
+  }
+
+  Future updateTask(int id, Task task) async {
+    task.id.v = id > 0 ? id : null;
+
+    await _saveTask(db, task);
     _triggerUpdate();
   }
 

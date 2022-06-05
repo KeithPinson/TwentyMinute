@@ -20,6 +20,7 @@ import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
 import 'package:twentyminute/resources/tally_marks_db_query.dart';
 import 'package:twentyminute/components/theme_cubit.dart';
+import 'package:twentyminute/components/active_task_bloc.dart';
 import 'package:twentyminute/components/task_bloc.dart';
 import 'package:twentyminute/components/timer_bloc.dart';
 import 'package:twentyminute/resources/time_ticks.dart';
@@ -27,7 +28,6 @@ import 'package:twentyminute/resources/preferences.dart';
 import 'package:twentyminute/ui/tally_marks.dart';
 import 'package:twentyminute/ui/task_label.dart';
 import 'package:twentyminute/ui/timer.dart';
-
 
 
 class HomeScreen extends StatelessWidget {
@@ -41,6 +41,9 @@ class HomeScreen extends StatelessWidget {
             ticks: const TimeTicks(),
             durationSeconds: Preference.duration,
           ),
+        ),
+        BlocProvider<ActiveTaskBloc>(
+          create: (BuildContext context) => ActiveTaskBloc(),
         ),
         BlocProvider<TaskBloc>(
           create: (BuildContext context) => TaskBloc(),

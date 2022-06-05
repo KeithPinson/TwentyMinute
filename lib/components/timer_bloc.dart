@@ -16,7 +16,7 @@ part 'timer_bloc_event.dart';
 part 'timer_bloc_state.dart';
 
 /*
- * Initial state is TimerReady.
+ * Initial state is TimerRunReady.
  *
  * Events:
  *  - onStart(),       TimerStart
@@ -76,6 +76,7 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
 
   void _onStart(TimerStart event, Emitter<TimerState> emit) {
     if (state is TimerRunReady) {
+      startTask();
       emit(TimerRunInProgress(state.duration));
       _tickerSubscription?.cancel();
       _tickerSubscription = _ticks
@@ -88,6 +89,7 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
     if (state is TimerRunInProgress) {
       _tickerSubscription?.pause();
       emit(TimerRunPaused(state.duration));
+      pauseTask();
     }
   }
 
@@ -95,6 +97,7 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
     if (state is TimerRunPaused) {
       _tickerSubscription?.resume();
       emit(TimerRunInProgress(state.duration));
+      restartTask();
     }
   }
 
@@ -102,6 +105,7 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
     if (state is TimerRunInProgress || state is TimerRunPaused) {
       _tickerSubscription?.cancel();
       emit(TimerRunCanceled(state.duration));
+      dismissTask();
     }
   }
 
@@ -109,6 +113,7 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
     if (state is TimerRunInProgress) {
       _tickerSubscription?.cancel();
       emit(const TimerRunCompleted());
+      endTask();
     }
   }
 
@@ -119,6 +124,7 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
       emit(TimerRunInProgress(event.duration));
     } else {
       emit(const TimerRunCompleted());
+      endTask();
     }
   }
 
