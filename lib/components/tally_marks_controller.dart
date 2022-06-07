@@ -11,8 +11,6 @@ import 'package:twentyminute/resources/tally_marks_db_query.dart';
 Future<int> getTallyMarkCountToday() async {
   var tallyMarks = await getTallyMarksToday();
 
-  tallyMarks++;
-
   return tallyMarks;
 }
 
