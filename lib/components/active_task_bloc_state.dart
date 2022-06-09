@@ -17,14 +17,6 @@ abstract class ActiveTaskState extends Equatable {
   List<Object> get props => [activeTaskId, activeTaskLabel];
 }
 
-class ActiveTaskInitial extends ActiveTaskState {
-  const ActiveTaskInitial(int id, String label) : super(id, label);
-
-  @override
-  String toString() => 'ActiveTaskInitial { id: $activeTaskId, label: $activeTaskLabel }';
-}
-
-
 class ActiveTaskNone extends ActiveTaskState {
   const ActiveTaskNone() : super(0, "");
 
@@ -37,15 +29,15 @@ class ActiveTaskFinished extends ActiveTaskState {
   const ActiveTaskFinished(int id, String label) : super(id, label);
 
   @override
-  String toString() => 'ActiveTaskDone { id: $activeTaskId, label: $activeTaskLabel }';
+  String toString() => 'ActiveTaskFinished { id: $activeTaskId, label: $activeTaskLabel }';
 }
 
 
-class ActiveTaskPaused extends ActiveTaskState {
-  const ActiveTaskPaused(int id, String label) : super(id, label);
+class ActiveTaskHolding extends ActiveTaskState {
+  const ActiveTaskHolding(int id, String label) : super(id, label);
 
   @override
-  String toString() => 'ActiveTaskPaused { id: $activeTaskId, label: $activeTaskLabel }';
+  String toString() => 'ActiveTaskHolding { id: $activeTaskId, label: $activeTaskLabel }';
 }
 
 

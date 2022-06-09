@@ -12,6 +12,7 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:twentyminute/components/timer_bloc.dart';
+import 'package:twentyminute/components/active_task_bloc.dart';
 
 class AppBlockObserver extends BlocObserver {
   @override
@@ -36,6 +37,12 @@ class AppBlockObserver extends BlocObserver {
     super.onTransition(bloc, transition);
     if (kDebugMode) {
       // print('${bloc.runtimeType} -- $transition');
+    }
+
+    if (bloc.runtimeType == ActiveTaskBloc && transition.nextState.runtimeType == ActiveTaskHolding) {
+      if (kDebugMode) {
+        // print('${bloc.runtimeType} -- $transition');
+      }
     }
 
     if (transition.nextState == const TimerRunCompleted()) {

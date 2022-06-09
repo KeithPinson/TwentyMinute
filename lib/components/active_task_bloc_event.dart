@@ -17,7 +17,7 @@ abstract class ActiveTaskEvent extends Equatable {
 /*
  *  - onActiveTaskNone(), ActiveTaskNone
  *  - onActiveTaskDone(),  ActiveTaskDone
- *  - onActiveTaskPause(), ActiveTaskPause
+ *  - onActiveTaskHold(), ActiveTaskHold
  *  - onActiveTaskRun(), ActiveTaskRun
  */
 
@@ -31,8 +31,8 @@ class ActiveTaskDone extends ActiveTaskEvent {
 }
 
 
-class ActiveTaskPause extends ActiveTaskEvent {
-  const ActiveTaskPause();
+class ActiveTaskHold extends ActiveTaskEvent {
+  const ActiveTaskHold();
 }
 
 

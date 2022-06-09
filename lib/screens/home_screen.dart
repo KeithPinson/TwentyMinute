@@ -31,24 +31,40 @@ import 'package:twentyminute/ui/timer.dart';
 
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  HomeScreen({Key? key}) : super(key: key);
+
+  final timerBloc = TimerBloc(
+    ticks: const TimeTicks(),
+    durationSeconds: Preference.duration,
+  );
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider<TimerBloc>(
-          create: (BuildContext context) => TimerBloc(
-            ticks: const TimeTicks(),
-            durationSeconds: Preference.duration,
-          ),
+          create: (BuildContext context) => timerBloc,
         ),
         BlocProvider<ActiveTaskBloc>(
-          create: (BuildContext context) => ActiveTaskBloc(),
+          create: (BuildContext context) => ActiveTaskBloc(timerBloc: timerBloc),
         ),
         BlocProvider<TaskBloc>(
           create: (BuildContext context) => TaskBloc(),
         ),
       ],
+/*
+      child: MultiRepositoryProvider(
+        providers: [
+          // RepositoryProvider(
+          //   create: (context) => _authenticationRepository,
+          // ),
+          RepositoryProvider(
+            create: (context) => TaskController(),
+          ),
+        ],
+        child: const HomeScreenView(),
+      ),
+*/
       child: const HomeScreenView(),
     );
   }
