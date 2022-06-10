@@ -36,8 +36,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   desktop_window: ^0.4.0
   animated_text_kit: ^4.2.1
-  flutter_bloc: ^8.0.0
-  bloc: ^8.0.1
+  flutter_bloc: ^8.0.1
+  bloc: ^8.0.3
   bloc_concurrency: ^0.2.0
   equatable: ^2.0.3
   sqflite: ^2.0.2+1
@@ -53,7 +53,7 @@ dependencies:
   window_manager: ^0.2.3
   wave: ^0.2.0
   sleek_circular_slider: ^2.0.1
-  bitsdojo_window: ^0.1.1+1
+  bitsdojo_window: ^0.1.2
   get: ^4.6.1
   intl: ^0.17.0
   jiffy: ^5.0.0
