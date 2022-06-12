@@ -15,6 +15,7 @@ abstract class ActiveTaskEvent extends Equatable {
 }
 
 /*
+ * Events:
  *  - onActiveTaskNone(), ActiveTaskNone
  *  - onActiveTaskDone(),  ActiveTaskDone
  *  - onActiveTaskHold(), ActiveTaskHold

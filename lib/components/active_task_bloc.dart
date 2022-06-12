@@ -35,10 +35,10 @@ part 'active_task_bloc_state.dart';
  *  - ActiveTaskRunning
  *
  * Transition Event to State:
- *  - onActiveTaskClear ⤑ ActiveTaskNone
- *  - onActiveTaskDone ⤑ ActiveTaskFinished
- *  - onActiveTaskHold ⤑ ActiveTaskHolding
- *  - onActiveTaskRun ⤑ ActiveTaskRunning
+ *  - onActiveTaskClear ⤑ ActiveTaskNone if not ActiveTaskNone
+ *  - onActiveTaskDone ⤑ ActiveTaskFinished if not ActiveTaskDone
+ *  - onActiveTaskHold ⤑ ActiveTaskHolding if not ActiveTaskHolding
+ *  - onActiveTaskRun ⤑ ActiveTaskRunning if not ActiveTaskRunning
  *
  */
 
@@ -95,12 +95,11 @@ class ActiveTaskBloc extends Bloc<ActiveTaskEvent, ActiveTaskState> {
 
   void _onActiveTaskClear(
       ActiveTaskClear event,
-
       Emitter<ActiveTaskState> emit,
       ) async {
-    // emit(const ActiveTaskState.waiting());
-    // var taskId = await getActiveTaskId();
-    // emit(const ActiveTaskState.success());
+    if (state is! ActiveTaskFinished) {
+      emit(const ActiveTaskFinished(0, " "));
+    }
   }
 
   void _onActiveTaskDone(
