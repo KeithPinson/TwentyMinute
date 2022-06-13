@@ -50,7 +50,7 @@ class ActiveTaskBloc extends Bloc<ActiveTaskEvent, ActiveTaskState> {
    *
    * TimerState           ActiveTaskEvent
    * ----------           ---------------
-   *                      ActiveTaskNone (triggered by task bloc)
+   *                      ActiveTaskClear (Initial state ActiveTaskNone)
    * TimerRunCompleted    ActiveTaskDone
    * TimerRunReady        ActiveTaskHold
    * TimerRunInProgress   ActiveTaskRun
@@ -97,8 +97,8 @@ class ActiveTaskBloc extends Bloc<ActiveTaskEvent, ActiveTaskState> {
       ActiveTaskClear event,
       Emitter<ActiveTaskState> emit,
       ) async {
-    if (state is! ActiveTaskFinished) {
-      emit(const ActiveTaskFinished(0, " "));
+    if (state is! ActiveTaskNone) {
+      emit(const ActiveTaskNone());
     }
   }
 
