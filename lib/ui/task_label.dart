@@ -44,7 +44,7 @@ class _TaskLabelState extends State<TaskLabel> {
 
     return BlocConsumer<ActiveTaskBloc,ActiveTaskState> (
       listener: (context,state) async {
-        activeTaskLabel =  state.activeTaskLabel;  // await getTallyMarks();
+        activeTaskLabel =  state.activeTaskLabel;
       },
       builder: (context,state) {
         if (state.activeTaskId > 0) {

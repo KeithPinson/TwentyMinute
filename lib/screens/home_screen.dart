@@ -23,6 +23,7 @@ import 'package:twentyminute/components/theme_cubit.dart';
 import 'package:twentyminute/components/active_task_bloc.dart';
 import 'package:twentyminute/components/task_bloc.dart';
 import 'package:twentyminute/components/timer_bloc.dart';
+import 'package:twentyminute/components/tally_marks_bloc.dart';
 import 'package:twentyminute/resources/time_ticks.dart';
 import 'package:twentyminute/resources/preferences.dart';
 import 'package:twentyminute/ui/tally_marks.dart';
@@ -38,18 +39,26 @@ class HomeScreen extends StatelessWidget {
     durationSeconds: Preference.duration,
   );
 
+  late final activeTaskBloc = ActiveTaskBloc(
+    timerBloc: timerBloc,
+  );
+
   @override
   Widget build(BuildContext context) {
+
     return MultiBlocProvider(
       providers: [
         BlocProvider<TimerBloc>(
           create: (BuildContext context) => timerBloc,
         ),
         BlocProvider<ActiveTaskBloc>(
-          create: (BuildContext context) => ActiveTaskBloc(timerBloc: timerBloc),
+          create: (BuildContext context) => activeTaskBloc,
         ),
         BlocProvider<TaskBloc>(
           create: (BuildContext context) => TaskBloc(),
+        ),
+        BlocProvider<TallyMarksBloc>(
+          create: (BuildContext context) => TallyMarksBloc(activeTaskBloc: activeTaskBloc),
         ),
       ],
 /*
