@@ -11,6 +11,7 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
+import 'package:twentyminute/components/tally_marks_bloc.dart';
 import 'package:twentyminute/components/timer_bloc.dart';
 import 'package:twentyminute/components/active_task_bloc.dart';
 
@@ -39,9 +40,15 @@ class AppBlockObserver extends BlocObserver {
       // print('${bloc.runtimeType} -- $transition');
     }
 
-    if (bloc.runtimeType == ActiveTaskBloc && transition.nextState.runtimeType == ActiveTaskHolding) {
+    // if (bloc.runtimeType == ActiveTaskBloc && transition.nextState.runtimeType == ActiveTaskHolding) {
+    //   if (kDebugMode) {
+    //     print('${bloc.runtimeType} -- $transition');
+    //   }
+    // }
+
+    if (bloc.runtimeType == TallyMarksBloc && transition.nextState.runtimeType == TallyMarksCounting) {
       if (kDebugMode) {
-        // print('${bloc.runtimeType} -- $transition');
+        print('${bloc.runtimeType} -- $transition');
       }
     }
 
