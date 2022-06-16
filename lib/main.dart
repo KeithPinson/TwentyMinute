@@ -24,7 +24,6 @@ import 'package:desktop_window/desktop_window.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:flutter_services_binding/flutter_services_binding.dart';
 import 'package:launch_at_startup/launch_at_startup.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:window_manager/window_manager.dart';
@@ -180,7 +179,7 @@ class AppShell extends StatelessWidget {
                   child: Column(
                     children: <Widget>[
                       Titlebar(),
-                      const HomeScreen(),
+                      HomeScreen(),
                     ],
                   ),
                 ),
