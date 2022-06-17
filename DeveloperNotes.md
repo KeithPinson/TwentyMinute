@@ -2,8 +2,6 @@
 
 # Twenty Minute Developer Notes
 
-(This is the outline from the ReactNative version. It may not need to be so extensive.)
-
 [TOC]
 
 ## Step 0: Installation 
@@ -46,80 +44,52 @@ Alternatively:
 > flutter run -d <"macos", "linux", or "windows"> 
 ```
 
-## Step 2: Install the Dependencies
+## …
 
-## Step 3: Check Windows 10 Version
 
-## Step 4: Windows -- Update Icons
 
-## Step 5: Windows -- App Window Size
+---
 
-## Step 6: Windows -- Transparency
+## Architecture
 
-## Step 7: Windows -- Always On Top Button
+The home screen of the app mirrors the outline the architecture,
 
-## High-Contrast Mode
+- Active Task
+- Timer
+- Tally Marks
 
-## Tally Marks
+Beneath the Active Task is another whole architecture supporting tasks. And, beneath the Tally Marks is an architecture of reporting work done.
 
-<u>In Unicode:</u>
+### Active Task
 
-1D377 &#x1D377; Tally Mark One
-1D378 &#x1D378; Tally Mark Five
+An active task is simply an id reference to a task. It listens to the time to determine its status of: 
 
-<u>With custom font use</u>
+- Run
+- Hold
+- Done
+- Clear (meaning none or unknown)
 
-ascii character:     1 2 3 4 5 6 7 8 9 a b c d e f  A B C D E
-                             |              |              |              |              |
-to get tally mark:  |1 2 3 4 5|1 2 3 4 5|1 2 3 4 5|1 2 3 4 5|
+### Timer
 
-## To Rebuild Android
+Timers by default are 20 minutes. Each second triggers a tick event. A timer has a status either:
 
-```bash
-> flutter clean
-> flutter build apk
-> flutter run
-```
+- Run in progress
+- Run paused
+- Run canceled
+- Run complete
+- Run ready (a pre-run state, run is ready but never has been started)
 
-## Problems with Upgrade to Flutter 3.0.0 or greater
+### Tally Marks
 
-Older packages of `bitsdojo_window` and `adaptive_theme` will
-throw errors and warnings after upgrading to Flutter version 3.
+Tally marks are a minimal progress indicator. Tally marks listen to the Active Task for when it is done and then queries the task repository to count the tally marks. Since tally marks are tied to the database through a database lookup they have an internal status of:
 
-To roll-back the version:
+- Counting
+- Counted
+- Count failed
+- Count ready (this is a pre-count state)
 
-```bash
-> flutter downgrade 2.10.5
-```
+## Task Architecture
 
-To stick with Flutter 3
 
- - Live with `adaptive_theme` throwing warnings, it will eventually be fixed
- - Patch `bitsdojo_window` (it may be fixed by the time you read this)
 
-<u>Adaptive_theme Warning</u>:
-
-```
-adaptive_theme.dart: warning ... Operand of null-aware operation ...
-```
-
-Ignore these until a official fix is made.
-
-<u>To patch 'Bitsdojo_window' before the fix is released</u>:
-
-Before the patch you will get an error revealing a namespace conflict:
-
-```
-'Size' is imported from both 'dart:ffi' and 'dart:ui'
-```
-
-Add the `hide Size` to the `import 'dart.ffi'` directives in the windows 
-and linux directories of the `bitsdojo_window` package, which can be found
-in the `.pub-cache` of the current version of Flutter on your system.
-
-The patch will simply look like this:
-
-```dart
-import 'dart:ffi' hide Size;
-```
-
+## Report Architecture
