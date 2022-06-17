@@ -13,6 +13,7 @@ import 'package:tekartik_app_flutter_sqflite/sqflite.dart';
 import 'package:tekartik_common_utils/common_utils_import.dart';
 import 'package:twentyminute/main.dart';
 import 'package:twentyminute/resources/task_db_model.dart';
+import 'package:twentyminute/resources/task_status.dart';
 
 Task snapshotToTask(Map<String, Object?> snapshot) {
   return Task()..fromMap(snapshot);
@@ -95,7 +96,7 @@ class DbTaskProvider {
     return null;
   }
 
-  var backlogStatus = taskStatus.backlog;
+  var backlogStatus = TaskStatus.backlog;
 
   Future _createDb(Database db) async {
     await db.execute('DROP TABLE If EXISTS Tasks');
@@ -104,7 +105,7 @@ class DbTaskProvider {
         'isDeleted INTEGER DEFAULT (0), '
         'label TEXT DEFAULT (\'\'), '
         'description TEXT DEFAULT (\'\'), '
-        'status INTEGER DEFAULT (${taskStatus.backlog.index}), '
+        'status INTEGER DEFAULT (${TaskStatus.backlog.index}), '
         'startTime INTEGER, '
         'restartTime INTEGER, '
         'endTime INTEGER, '

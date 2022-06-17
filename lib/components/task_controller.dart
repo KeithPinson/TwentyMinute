@@ -34,6 +34,7 @@ import 'package:twentyminute/main.dart';
 import 'package:twentyminute/resources/task_db_model.dart';
 import 'package:twentyminute/resources/task_db_query.dart';
 import 'package:twentyminute/resources/task_db_provider.dart';
+import 'package:twentyminute/resources/task_status.dart';
 
 
 Future<int> getActiveTaskId() async {
@@ -41,7 +42,7 @@ Future<int> getActiveTaskId() async {
 
   var taskId = 0;
 
-  if (activeTaskList.length > 0) {
+  if (activeTaskList.isNotEmpty) {
     taskId = (Task()..fromMap(activeTaskList.first)).id.v ?? 0;
   }
 
@@ -53,7 +54,7 @@ Future<String> getActiveTaskLabel() async {
 
   var taskLabel = 'Twenty Minute Task';
 
-  if (activeTaskList.length > 0) {
+  if (activeTaskList.isNotEmpty) {
     taskLabel = (Task()..fromMap(activeTaskList.first)).label.v ?? 'Twenty Minute Task';
   }
 
@@ -89,7 +90,7 @@ Future addTask(
     ..isDeleted.v = 0
     ..label.v = label
     ..description.v = description
-    ..status.v = isBacklog ? taskStatus.backlog.index : taskStatus.todo.index
+    ..status.v = isBacklog ? TaskStatus.backlog.index : TaskStatus.todo.index
     ..startTime.v = 0
     ..restartTime.v = 0
     ..endTime.v = 0
@@ -102,7 +103,7 @@ Future startTask() async {
 
   if (taskId > 0) {
     await taskProvider.updateTask(taskId, Task()
-      ..status.v = taskStatus.started.index
+      ..status.v = TaskStatus.started.index
       ..startTime.v = DateTime.now().millisecondsSinceEpoch
       ..restartTime.v = 0
       ..endTime.v = 0
@@ -114,7 +115,7 @@ Future startTask() async {
       ..isDeleted.v = 0
       ..label.v = ''
       ..description.v = ''
-      ..status.v = taskStatus.started.index
+      ..status.v = TaskStatus.started.index
       ..startTime.v = DateTime.now().millisecondsSinceEpoch
       ..restartTime.v = 0
       ..endTime.v = 0
@@ -136,7 +137,7 @@ Future endTask() async {
     var elapsedSeconds = 0; // TODO
 
     await taskProvider.updateTask(taskId, Task()
-      ..status.v = taskStatus.done.index
+      ..status.v = TaskStatus.done.index
       ..endTime.v = DateTime.now().millisecondsSinceEpoch
       ..elapsedSeconds.v = elapsedSeconds);
   }

@@ -7,10 +7,11 @@
 /// @see [[LICENSE]] file in the root directory of this source.
 ///
 
+import 'package:flutter/foundation.dart';
 import 'package:jiffy/jiffy.dart';
 
 import 'package:twentyminute/main.dart';
-import 'package:twentyminute/resources/task_db_model.dart';
+import 'package:twentyminute/resources/task_status.dart';
 
 Future<List<Map<String, Object?>>> getTallyMarkList(
     int startTimeRange, int endTimeRange) async {
@@ -18,7 +19,7 @@ Future<List<Map<String, Object?>>> getTallyMarkList(
 
   list = (await taskProvider.db!.query('Tasks',
       columns: ['_id', 'isDeleted', 'label', 'description', 'status', 'endTime'],
-      where: 'isDeleted = 0 AND status=${taskStatus.done.index} '
+      where: 'isDeleted = 0 AND status=${TaskStatus.done.index} '
           'AND endTime >= $startTimeRange '
           'AND endTime < $endTimeRange'));
 
@@ -30,9 +31,12 @@ Future<int> getTallyMarks(Jiffy startTime, Jiffy endTime) async {
       startTime.dateTime.millisecondsSinceEpoch,
       endTime.dateTime.millisecondsSinceEpoch);
 
-  if( list.length > 0 ) {
-    print("getTallyMarks() ${list.last} of ${list.length}");
+  if( list.isNotEmpty ) {
+    if (kDebugMode) {
+      print("getTallyMarks() ${list.last} of ${list.length}");
+    }
   }
+
   return list.length;
 }
 

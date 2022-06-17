@@ -8,23 +8,16 @@
 ///
 
 import 'package:cv/cv.dart';
+import 'package:twentyminute/resources/task_status.dart';
 
 const String dbName = 'task.db';
 const int kVersion1 = 1;
-
-enum taskStatus {
-  backlog,
-  todo,
-  started,
-  done
-}
 
 
 abstract class DbRecord extends CvModelBase {
   final id = CvField<int>('_id');
   final isDeleted = CvField<int>('isDeleted');
 }
-
 
 class Task extends DbRecord {
   final label = CvField<String>('label');

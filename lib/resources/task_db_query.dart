@@ -23,13 +23,12 @@ __ GetTaskCompleted
 
 import 'package:intl/intl.dart';
 import 'package:twentyminute/main.dart';
-import 'package:twentyminute/resources/task_db_provider.dart';
-import 'package:twentyminute/resources/task_db_model.dart';
+import 'package:twentyminute/resources/task_status.dart';
 
 Future<List<Map<String, Object?>>> getActiveTasks() async {
   var list = (await taskProvider.db!.query('Tasks',
       columns: ['_id', 'isDeleted', 'label', 'description', 'status', 'startTime'],
-      where: 'isDeleted = 0 AND status=${taskStatus.started.index}',
+      where: 'isDeleted = 0 AND status=${TaskStatus.started.index}',
       orderBy: 'startTime DESC'));
 
   return list;

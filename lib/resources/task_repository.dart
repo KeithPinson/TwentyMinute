@@ -12,14 +12,8 @@ import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 
-/*
-enum taskStatus {
-  backlog,
-  to//do,
-  started,
-  done
-}
-*/
+import 'package:twentyminute/resources/task_status.dart';
+
 
 class TaskRepository extends Equatable {
   const TaskRepository(
