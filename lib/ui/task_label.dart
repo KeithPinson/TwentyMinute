@@ -10,7 +10,6 @@
 
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
@@ -24,10 +23,10 @@ class TaskLabel extends StatefulWidget {
   const TaskLabel({Key? key}) : super(key: key);
 
   @override
-  _TaskLabelState createState() => _TaskLabelState();
+  TaskLabelState createState() => TaskLabelState();
 }
 
-class _TaskLabelState extends State<TaskLabel> {
+class TaskLabelState extends State<TaskLabel> {
   late Future<String?> taskActiveLabel;
 
   @override

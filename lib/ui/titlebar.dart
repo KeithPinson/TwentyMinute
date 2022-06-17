@@ -66,7 +66,7 @@ class WindowButtons extends StatefulWidget {
   const WindowButtons({Key? key}) : super(key: key);
 
   @override
-  _WindowButtonsState createState() => _WindowButtonsState();
+  WindowButtonsState createState() => WindowButtonsState();
 }
 
 
@@ -86,7 +86,7 @@ class RestoreWindowButton extends WindowButton {
 }
 
 
-class _WindowButtonsState extends State<WindowButtons> {
+class WindowButtonsState extends State<WindowButtons> {
   void maximizeOrRestore() {
     setState(() {
       appWindow.maximizeOrRestore();

@@ -23,10 +23,10 @@ class InputField extends StatefulWidget {
   final bool isEnabled;
 
   @override
-  _InputFieldState createState() => _InputFieldState();
+  InputFieldState createState() => InputFieldState();
 }
 
-class _InputFieldState extends State<InputField> {
+class InputFieldState extends State<InputField> {
   @override
   Widget build(BuildContext context) {
     return Column(
