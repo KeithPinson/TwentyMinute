@@ -1,13 +1,6 @@
-/// Task Controller
+/// Active Task Controller
 ///
-/// Controller for the task list.
-///
-/// Tasks are not a comprehensive list of all work done or all work
-/// to be done. They should be thought of as snapshot of recently
-/// looked-up work to do and recent work completed.
-///
-/// Another data provider should be used for comprehensive reports
-/// regarding work done and another set of providers for work planned.
+/// Controller for the Active Task.
 ///
 /// Copyright (c) Keith Pinson.
 ///

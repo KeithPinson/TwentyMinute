@@ -8,7 +8,6 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:twentyminute/components/task_controller.dart';
 import 'package:twentyminute/resources/time_ticks.dart';
 import 'package:twentyminute/resources/preferences.dart';
 
@@ -76,7 +75,6 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
 
   void _onStart(TimerStart event, Emitter<TimerState> emit) {
     if (state is TimerRunReady) {
-      startTask();
       emit(TimerRunInProgress(state.duration));
       _tickerSubscription?.cancel();
       _tickerSubscription = _ticks
@@ -89,15 +87,15 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
     if (state is TimerRunInProgress) {
       _tickerSubscription?.pause();
       emit(TimerRunPaused(state.duration));
-      pauseTask();
     }
   }
 
-  void _onResume(TimerResume resume, Emitter<TimerState> emit) {
+  void _onResume(TimerResume resume, Emitter<TimerState> emit) async {
     if (state is TimerRunPaused) {
       _tickerSubscription?.resume();
+      emit(TimerResumeRun(state.duration));
+      await Future<void>.delayed(const Duration(milliseconds: 100));
       emit(TimerRunInProgress(state.duration));
-      restartTask();
     }
   }
 
@@ -105,7 +103,6 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
     if (state is TimerRunInProgress || state is TimerRunPaused) {
       _tickerSubscription?.cancel();
       emit(TimerRunCanceled(state.duration));
-      dismissTask();
     }
   }
 
@@ -113,7 +110,6 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
     if (state is TimerRunInProgress) {
       _tickerSubscription?.cancel();
       emit(const TimerRunCompleted());
-      endTask();
     }
   }
 
@@ -124,7 +120,6 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
       emit(TimerRunInProgress(event.duration));
     } else {
       emit(const TimerRunCompleted());
-      endTask();
     }
   }
 
