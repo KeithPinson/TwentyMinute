@@ -116,14 +116,14 @@ Future startTask() async {
   }
 
   taskId = await getActiveTaskId();
-  print( "  startTask() $taskId" );
+  // print( "  startTask() $taskId" );
 }
 
 
 Future endTask() async {
   var taskId = await getActiveTaskId();
 
-  print( "  endTask() $taskId" );
+  // print( "  endTask() $taskId" );
 
   if (taskId > 0) {
     // Calculate the elapsed seconds
