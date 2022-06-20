@@ -1,4 +1,4 @@
-/// Tally Marks Cubit
+/// Tally Marks Bloc
 ///
 /// Copyright (c) Keith Pinson.
 ///
@@ -12,6 +12,8 @@ import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:equatable/equatable.dart';
 
 import 'package:twentyminute/components/active_task_bloc.dart';
+import 'package:twentyminute/components/tally_marks_controller.dart';
+
 
 part 'tally_marks_bloc_event.dart';
 part 'tally_marks_bloc_state.dart';
@@ -83,6 +85,8 @@ class TallyMarksBloc extends Bloc<TallyMarksBlocEvent, TallyMarksBlocState> {
       ) async {
     if (state is! TallyMarksCounting) {
       emit(const TallyMarksCounting());
+      var count = await getTallyMarksCountToday();
+      emit(TallyMarksCounted(count));
     }
   }
 

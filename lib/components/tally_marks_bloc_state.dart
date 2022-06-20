@@ -33,7 +33,7 @@ class TallyMarksCounting extends TallyMarksBlocState {
 
 
 class TallyMarksCounted extends TallyMarksBlocState {
-  const TallyMarksCounted() : super(0);
+  const TallyMarksCounted(count) : super(count);
 
   @override
   String toString() => 'TallyMarksCounted {}';

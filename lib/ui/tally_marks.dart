@@ -22,10 +22,7 @@ class TallyMarks extends StatefulWidget {
 class TallyMarksState extends State<TallyMarks> {
   late Future<String> marks;
 
-  Future<String> getTallyMarks() async {
-    var count = await Future.delayed(const Duration(milliseconds: 200))
-        .then((onValue) => getTallyMarksCountToday());
-
+  Future<String> getTallyMarks(count) async {
     var marks = ' ';
 
     if (count > 0) {
@@ -69,7 +66,9 @@ class TallyMarksState extends State<TallyMarks> {
   void initState() {
     super.initState();
 
-    marks = getTallyMarks();
+    var count = getTallyMarksCountToday();
+
+    marks = getTallyMarks(count);
   }
 
   @override
@@ -79,17 +78,19 @@ class TallyMarksState extends State<TallyMarks> {
 
     return BlocConsumer<TallyMarksBloc,TallyMarksBlocState> (
       listener: (context,state) async {
-        tallyMarks = await getTallyMarks();
-
-        // tallyMarks = state.tally;
+        if (state is TallyMarksCounted ) {
+          tallyMarks = await getTallyMarks(state.tally);
+        }
       },
+      buildWhen: (previous, current) => previous.tally != current.tally,
       builder: (context,state) {
-        if (state == const TallyMarksCounted()) {
+        if (state is TallyMarksCounted) {
 
           return Padding(
               padding: EdgeInsets.symmetric(vertical: 3.0),
               child: Center(
                   child: Text(
+                    // "${state.tally}",
                     tallyMarks,
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,
