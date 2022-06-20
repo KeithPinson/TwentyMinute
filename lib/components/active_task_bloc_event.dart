@@ -36,6 +36,9 @@ class ActiveTaskHold extends ActiveTaskEvent {
   const ActiveTaskHold();
 }
 
+class ActiveTaskResume extends ActiveTaskEvent {
+  const ActiveTaskResume();
+}
 
 class ActiveTaskRun extends ActiveTaskEvent {
   const ActiveTaskRun();

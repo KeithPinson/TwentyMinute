@@ -12,6 +12,7 @@ import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:equatable/equatable.dart';
 
 import 'package:twentyminute/components/timer_bloc.dart';
+import 'package:twentyminute/components/active_task_controller.dart';
 
 part 'active_task_bloc_event.dart';
 part 'active_task_bloc_state.dart';
@@ -24,20 +25,24 @@ part 'active_task_bloc_state.dart';
  *
  * Events:
  *  - onActiveTaskClear(), ActiveTaskClear
- *  - onActiveTaskDone(), ActiveTaskDone
+ *  - onActiveTaskDone(),  ActiveTaskDone
  *  - onActiveTaskHold(), ActiveTaskHold
+ *  - onActiveTaskResume(), ActiveTaskResume
  *  - onActiveTaskRun(), ActiveTaskRun
  *
  * States:
  *  - ActiveTaskNone
  *  - ActiveTaskFinished
  *  - ActiveTaskHolding
+ *  - ActiveTaskResume
  *  - ActiveTaskRunning
  *
  * Transition Event to State:
  *  - onActiveTaskClear ⤑ ActiveTaskNone if not ActiveTaskNone
- *  - onActiveTaskDone ⤑ ActiveTaskFinished if not ActiveTaskDone
+ *  - onActiveTaskDone ⤑ ActiveTaskFinished if not ActiveTaskFinished
  *  - onActiveTaskHold ⤑ ActiveTaskHolding if not ActiveTaskHolding
+ *  (Timer will emit Resume and Run one after the other)
+ *  - onActiveTaskResume ⤑ ActiveTaskHolding if ActiveTaskHolding
  *  - onActiveTaskRun ⤑ ActiveTaskRunning if not ActiveTaskRunning
  *
  */
@@ -54,6 +59,7 @@ class ActiveTaskBloc extends Bloc<ActiveTaskEvent, ActiveTaskState> {
    * TimerRunCompleted    ActiveTaskDone
    * TimerRunReady        ActiveTaskHold
    * TimerRunInProgress   ActiveTaskRun
+   * TimerResumeRun       ActiveTaskResume
    * TimerRunPaused       ActiveTaskHold
    * TimerRunCanceled     ActiveTaskHold
    *
@@ -67,6 +73,9 @@ class ActiveTaskBloc extends Bloc<ActiveTaskEvent, ActiveTaskState> {
     _timerSubscription = timerBloc.stream.listen((state) {
       if (state is TimerRunCompleted) {
         add(const ActiveTaskDone());
+      }
+      else if (state is TimerResumeRun) {
+        add(const ActiveTaskResume());
       }
       else if (state is TimerRunInProgress) {
         add(const ActiveTaskRun());
@@ -90,6 +99,7 @@ class ActiveTaskBloc extends Bloc<ActiveTaskEvent, ActiveTaskState> {
     if (event is ActiveTaskClear) return _onActiveTaskClear(event, emit);
     if (event is ActiveTaskDone) return _onActiveTaskDone(event, emit);
     if (event is ActiveTaskHold) return _onActiveTaskHold(event, emit);
+    if (event is ActiveTaskResume) return _onActiveTaskResume(event, emit);
     if (event is ActiveTaskRun) return _onActiveTaskRun(event, emit);
   }
 
@@ -98,6 +108,7 @@ class ActiveTaskBloc extends Bloc<ActiveTaskEvent, ActiveTaskState> {
       Emitter<ActiveTaskState> emit,
       ) async {
     if (state is! ActiveTaskNone) {
+      dismissTask();
       emit(const ActiveTaskNone());
     }
   }
@@ -107,6 +118,7 @@ class ActiveTaskBloc extends Bloc<ActiveTaskEvent, ActiveTaskState> {
       Emitter<ActiveTaskState> emit,
       ) async {
     if (state is! ActiveTaskFinished) {
+      endTask();
       emit(const ActiveTaskFinished(0, " "));
     }
   }
@@ -116,7 +128,19 @@ class ActiveTaskBloc extends Bloc<ActiveTaskEvent, ActiveTaskState> {
       Emitter<ActiveTaskState> emit,
       ) async {
     if (state is! ActiveTaskHolding) {
+      pauseTask();
       emit(const ActiveTaskHolding(0, " "));
+    }
+  }
+
+  void _onActiveTaskResume(
+      ActiveTaskResume event,
+      Emitter<ActiveTaskState> emit,
+      ) async {
+    if (state is ActiveTaskHolding) {
+      restartTask();
+      // We don't change the state.
+      // Should be followed by timer in progress which triggers task run
     }
   }
 
@@ -125,6 +149,7 @@ class ActiveTaskBloc extends Bloc<ActiveTaskEvent, ActiveTaskState> {
       Emitter<ActiveTaskState> emit,
       ) async {
     if (state is! ActiveTaskRunning) {
+      startTask();
       emit(const ActiveTaskRunning(0, " "));
     }
   }
