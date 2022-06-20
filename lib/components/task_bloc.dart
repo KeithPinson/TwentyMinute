@@ -11,7 +11,7 @@ import 'package:equatable/equatable.dart';
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 
-import 'package:twentyminute/components/task_controller.dart';
+import 'package:twentyminute/components/active_task_controller.dart';
 
 
 part 'task_bloc_event.dart';

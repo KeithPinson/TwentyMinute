@@ -11,7 +11,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:twentyminute/components/task_controller.dart';
+import 'package:twentyminute/components/active_task_controller.dart';
 import 'package:twentyminute/resources/task_db_model.dart';
 //import 'package:twentyminute/ui/theme.dart';
 import 'package:twentyminute/screens/home_screen.dart';
