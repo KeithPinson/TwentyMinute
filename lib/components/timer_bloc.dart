@@ -99,10 +99,12 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
     }
   }
 
-  void _onCancel(TimerCancel event, Emitter<TimerState> emit) {
+  void _onCancel(TimerCancel event, Emitter<TimerState> emit) async {
     if (state is TimerRunInProgress || state is TimerRunPaused) {
       _tickerSubscription?.cancel();
       emit(TimerRunCanceled(state.duration));
+      await Future<void>.delayed(const Duration(milliseconds: 100));
+      emit(TimerRunReady(_durationSeconds));
     }
   }
 
