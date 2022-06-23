@@ -41,38 +41,76 @@ class Timer extends StatelessWidget {
     return BlocBuilder<TimerBloc, TimerState>(
       buildWhen: (prev, state) => prev.runtimeType != state.runtimeType,
       builder: (context, state) {
-        return InkWell(
-          onTap: () {
-            // Transition from state to event
-            if (state is TimerRunReady) {
-              context.read<TimerBloc>().add(const TimerStart(duration: Preference.duration));
-            }
-            if (state is TimerRunInProgress) {
-              context.read<TimerBloc>().add(const TimerPause());
-            }
-            if (state is TimerRunPaused) {
-              context.read<TimerBloc>().add(const TimerResume());
-            }
-            if (state is TimerRunCompleted || state is TimerRunCanceled) {
-              context.read<TimerBloc>().add(const TimerSet());
-            }
-          },
-          onLongPress: () {
-            const snackBar = SnackBar(content: Text('Long Press'));
-            ScaffoldMessenger.of(context).showSnackBar(snackBar);
-            // context.read<TimerBloc>().add(TimerReset())
-          },
-          child: Stack(
-            children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: const <Widget>[
-                  Center(child: TimerText()),
-                ],
-              ),
-            ],
-          ),
+        var toolTipText = "";
+
+        return Tooltip(
+          waitDuration: const Duration(milliseconds: 900),
+          // triggerMode: ,
+          message: toolTipText,
+          child: InkWell(
+            onTap: () {
+              // Transition from state to event
+              if (state is TimerRunReady) {
+                context.read<TimerBloc>().add(const TimerStart(duration: Preference.duration));
+              }
+              if (state is TimerRunInProgress) {
+                context.read<TimerBloc>().add(const TimerPause());
+              }
+              if (state is TimerRunPaused) {
+                context.read<TimerBloc>().add(const TimerResume());
+              }
+              if (state is TimerRunCompleted || state is TimerRunCanceled) {
+                context.read<TimerBloc>().add(const TimerSet());
+              }
+            },
+            onLongPress: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext dialogContext) {
+                  return AlertDialog(
+                    content: Row(
+                      children: const <Widget>[
+                        Expanded(
+                          child: Text("Finish Early or Reset the timer?"),
+                        ),
+                      ],
+                    ),
+                    actions: <Widget>[
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                          // const snackBar = SnackBar(content: Text('Timer Finished Early'));
+                          // ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                          context.read<TimerBloc>().add(const TimerFinishEarly());
+                        },
+                        child: Text("Finish Early"),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                          // const snackBar = SnackBar(content: Text('Timer Reset'));
+                          // ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                          context.read<TimerBloc>().add(const TimerCancel());
+                        },
+                        child: Text("Reset"),
+                      ),
+                    ]
+                  );
+                }
+              );
+            },
+            child: Stack(
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: const <Widget>[
+                    Center(child: TimerText()),
+                  ],
+                ),
+              ],
+            ),
+          )
         );
       },
     );
