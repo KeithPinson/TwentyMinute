@@ -109,7 +109,7 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
   }
 
   void _onFinishEarly(TimerFinishEarly event, Emitter<TimerState> emit) {
-    if (state is TimerRunInProgress) {
+    if (state is TimerRunInProgress || state is TimerRunPaused) {
       _tickerSubscription?.cancel();
       emit(const TimerRunCompleted());
     }
