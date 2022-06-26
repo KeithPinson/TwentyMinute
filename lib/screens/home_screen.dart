@@ -17,10 +17,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:provider/provider.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
+import 'package:twentyminute/components/alert_bloc.dart';
 
 import 'package:twentyminute/resources/tally_marks_db_query.dart';
 import 'package:twentyminute/components/theme_cubit.dart';
 import 'package:twentyminute/components/active_task_bloc.dart';
+import 'package:twentyminute/components/alert_bloc.dart';
 import 'package:twentyminute/components/task_bloc.dart';
 import 'package:twentyminute/components/timer_bloc.dart';
 import 'package:twentyminute/components/tally_marks_bloc.dart';
@@ -59,6 +61,9 @@ class HomeScreen extends StatelessWidget {
         ),
         BlocProvider<TallyMarksBloc>(
           create: (BuildContext context) => TallyMarksBloc(activeTaskBloc: activeTaskBloc),
+        ),
+        BlocProvider<AlertBloc>(
+          create: (BuildContext context) => AlertBloc(timerBloc: timerBloc),
         ),
       ],
 /*

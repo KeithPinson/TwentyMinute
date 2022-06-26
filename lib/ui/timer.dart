@@ -8,6 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:twentyminute/components/alert_bloc.dart';
 import 'package:twentyminute/components/timer_bloc.dart';
 import 'package:twentyminute/resources/preferences.dart';
 
@@ -108,8 +109,18 @@ class Timer extends StatelessWidget {
                     Center(child: TimerText()),
                   ],
                 ),
+                BlocConsumer<AlertBloc,AlertState> (
+                  listener: (context,state) async {
+                    if (state.runtimeType == AlertPlaying) {
+                      print("Alert Playing");
+                    }
+                  },
+                  builder: (context,state) {
+                    return const Text("");
+                  }
+                ),
               ],
-            ),
+            )
           )
         );
       },

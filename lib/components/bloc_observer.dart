@@ -14,6 +14,8 @@ import 'package:flutter/foundation.dart';
 import 'package:twentyminute/components/tally_marks_bloc.dart';
 import 'package:twentyminute/components/timer_bloc.dart';
 import 'package:twentyminute/components/active_task_bloc.dart';
+import 'package:twentyminute/components/alert_bloc.dart';
+
 
 class AppBlockObserver extends BlocObserver {
   @override
@@ -41,6 +43,12 @@ class AppBlockObserver extends BlocObserver {
     }
 
     // if (bloc.runtimeType == ActiveTaskBloc && transition.nextState.runtimeType == ActiveTaskHolding) {
+    //   if (kDebugMode) {
+    //     print('${bloc.runtimeType} -- $transition');
+    //   }
+    // }
+
+    // if (bloc.runtimeType == AlertBloc && transition.nextState.runtimeType == AlertPlaying) {
     //   if (kDebugMode) {
     //     print('${bloc.runtimeType} -- $transition');
     //   }
