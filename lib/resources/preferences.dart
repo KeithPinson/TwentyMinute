@@ -7,6 +7,17 @@
 
 import 'package:shared_preferences/shared_preferences.dart';
 
+enum DayOfWeek {
+  sunday,
+  monday,
+  tuesday,
+  wednesday,
+  thursday,
+  friday,
+  saturday,
+  everyday,
+}
+
 class Preference{
 
   static SharedPreferences? preferences;
@@ -23,4 +34,7 @@ class Preference{
   }
 
   static const int duration = /*3; // */ 60 * 20;
+
+  static const DayOfWeek tallyMarksDayOfWeek = DayOfWeek.everyday;
+  static const int tallyMarksMinuteOfDay = 0;  // Midnight
 }
