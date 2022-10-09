@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "918717065113",
+    "project_id": "twentyminute-b75f4",
+    "storage_bucket": "twentyminute-b75f4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:918717065113:android:d26c99d5a77dfa0beb9508",
+        "android_client_info": {
+          "package_name": "com.keithpinson.twentyminute"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "918717065113-nqpm1b1u3unhi2akc0j3j5h4jrbobltv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJOpe7ezedPdGeL6jvaqxA6HadUFSUDM4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "918717065113-nqpm1b1u3unhi2akc0j3j5h4jrbobltv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
