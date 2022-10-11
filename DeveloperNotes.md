@@ -50,6 +50,17 @@ Alternatively:
 
 ---
 
+## Design Pattern
+
+We are using a design pattern like MVC (Model-View-Controller) or one of its variants. The names are different but the structure is similar and should be self-evident. This code will be found in the `lib/` folder of the project.
+
+- Components (Business Logic)
+- Resources (Data Resources)
+- Screens (Named Views aka screens, pages, modal dialogs)
+- UI (Widgets)
+
+In terms of the quantity of changes to the code the order should be: UI → Screens  → Components → Resources, where UI changes will happen a lot and Resource changes will happen hardly at all after the initial code is working.
+
 ## Architecture
 
 The home screen of the app mirrors the outline the architecture,
