@@ -99,24 +99,25 @@ class TallyMarksState extends State<TallyMarks> {
                       fontSize: 32,
                     ),
                     // style: Theme.of(context).primaryTextTheme.bodyText1,
+                    maxLines: 1,
                   )
-              )
+              ),
           );
         } else {
           return const Padding(
-              padding: EdgeInsets.symmetric(vertical: 3.0),
-              child: Center(
-                  child: Text(
-                    ' ',
-                    textAlign: TextAlign.center,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontFamily: 'TallyMarks',
-                      fontSize: 32,
-                    ),
-                    // style: Theme.of(context).primaryTextTheme.bodyText1,
-                  )
-              )
+            padding: EdgeInsets.symmetric(vertical: 3.0),
+            child: Center(
+              child: Text(
+                ' ',
+                textAlign: TextAlign.center,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  fontFamily: 'TallyMarks',
+                  fontSize: 32,
+                ),
+                // style: Theme.of(context).primaryTextTheme.bodyText1,
+              ),
+            ),
           );
         }
       },
