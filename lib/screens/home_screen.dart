@@ -17,8 +17,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:provider/provider.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
-import 'package:twentyminute/components/alert_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
+import 'package:twentyminute/components/alert_bloc.dart';
 import 'package:twentyminute/resources/tally_marks_db_query.dart';
 import 'package:twentyminute/components/theme_cubit.dart';
 import 'package:twentyminute/components/active_task_bloc.dart';
@@ -129,20 +130,48 @@ class HomeScreenView extends StatelessWidget {
               // const HoldTimer(),
               const Timer(),
               Row(
-                children: const <Widget>[
+                children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.fromLTRB(10, 10, 0, 10),
-                    child: Icon(Icons.arrow_back_ios_new_rounded),
+                    padding: const EdgeInsets.fromLTRB(10, 10, 0, 10),
+                    // child: Icon(Icons.arrow_back_ios_new_rounded),
+                    child: IconButton(
+                      onPressed: () {
+                      },
+                      icon: SvgPicture.asset(
+                        'assets/icons/screen-left-lt.svg',
+                        semanticsLabel: 'Screen Left',
+                        height: 48,
+                        width: 46,
+                      ),
+                      // icon: const ImageIcon(
+                      //   AssetImage('assets/images/screen-left-lt.png'),
+                      //   size: 48,
+                      // ),
+                    ),
                   ),
                   Flexible(
-                    child: Padding(
-                      padding: EdgeInsets.all(10),
-                      child: TallyMarks(),
+                    child: InkWell(
+                      onTap: () => {},
+                      // onHover: () => { var b = 200; },
+                      child: const Padding(
+                        padding: EdgeInsets.all(10),
+                        child: TallyMarks(),
+                      ),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.fromLTRB(0, 10, 10, 10),
-                    child: Icon(Icons.arrow_forward_ios_rounded),
+                    padding: const EdgeInsets.fromLTRB(0, 10, 10, 10),
+                    // child: Icon(Icons.arrow_forward_ios_rounded),
+                    child: IconButton(
+                      onPressed: () {
+                      },
+                      icon: SvgPicture.asset(
+                        'assets/icons/screen-right-lt.svg',
+                        semanticsLabel: 'Screen Left',
+                        height: 48,
+                        width: 46,
+                      ),
+                    ),
                   ),
                 ],
               ),

@@ -26,6 +26,7 @@ dependencies:
   firebase_auth: ^3.11.2
   firebase_core: ^1.24.0
   flutter_bloc: ^8.0.1
+  flutter_svg: ^1.1.5
   flutter_vibrate: ^1.3.0
   get: ^4.6.1
   google_sign_in: ^5.4.2
@@ -86,6 +87,8 @@ flutter:
 
   assets:
     - assets/i18n/
+    - assets/icons/
+    - assets/images/
 
   fonts:
    - family: Tallymarks
