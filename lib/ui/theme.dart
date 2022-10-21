@@ -53,6 +53,10 @@ class AppThemes {
   });
 
   static final lightTheme = ThemeData(
+    focusColor: textSwatch.shade600,
+    hoverColor: textSwatch.shade500,
+    splashColor: textSwatch.shade400,
+
     primarySwatch: primarySwatch,
     brightness: Brightness.light,
     scaffoldBackgroundColor: textSwatch.shade100,
@@ -105,6 +109,9 @@ class AppThemes {
   );
 
   static final darkTheme = lightTheme.copyWith(
+    focusColor: textSwatch.shade400,
+    hoverColor: textSwatch.shade500,
+    splashColor: textSwatch.shade600,
     brightness: Brightness.dark,
     scaffoldBackgroundColor: const Color(0xFF24242a),
     backgroundColor: const Color(0xFF24242a),
