@@ -29,6 +29,7 @@ import 'package:twentyminute/components/timer_bloc.dart';
 import 'package:twentyminute/components/tally_marks_bloc.dart';
 import 'package:twentyminute/resources/time_ticks.dart';
 import 'package:twentyminute/resources/preferences.dart';
+import 'package:twentyminute/ui/navigate.dart';
 import 'package:twentyminute/ui/tally_marks.dart';
 import 'package:twentyminute/ui/task_label.dart';
 import 'package:twentyminute/ui/timer.dart';
@@ -138,27 +139,12 @@ class HomeScreenViewState extends State<HomeScreenView> {
         children: [
           const Background(),
           Column(
-            children: const <Widget>[
-
-              //
-              // Task Label
-              //
-              TaskLabel(),
-
-              //
-              // Holding Time
-              //
+            children: <Widget>[
+              const TaskLabel(),
               // const HoldTimer(),
-
-              //
-              // Countdown Time
-              //
-              Timer(),
-
-              //
-              // Tally Marks
-              //
-              TallyMarks(),
+              const Timer(),
+              const TallyMarks(),
+              Navigate(),
             ],
           ),
         ],
