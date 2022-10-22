@@ -86,11 +86,18 @@ class TallyMarksState extends State<TallyMarks> {
       builder: (context,state) {
         if (state is TallyMarksCounted) {
 
-          return Padding(
-              padding: EdgeInsets.symmetric(vertical: 3.0),
-              child: Center(
+          return Flexible(
+            child: InkWell(
+              onTap: () => {
+                // setState(() { hoverLeft = false; }),
+              },
+              onHover: (hovering) => {
+                // setState(() { hoverTally = hovering; }),
+              },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 3.0),
+                child: Center(
                   child: Text(
-                    // "${state.tally}",
                     tallyMarks,
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,
@@ -101,21 +108,33 @@ class TallyMarksState extends State<TallyMarks> {
                     // style: Theme.of(context).primaryTextTheme.bodyText1,
                     maxLines: 1,
                   )
+                ),
               ),
+            ),
           );
         } else {
-          return const Padding(
-            padding: EdgeInsets.symmetric(vertical: 3.0),
-            child: Center(
-              child: Text(
-                ' ',
-                textAlign: TextAlign.center,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  fontFamily: 'TallyMarks',
-                  fontSize: 32,
+          return Flexible(
+            child: InkWell(
+              onTap: () => {
+                // setState(() { hoverLeft = false; }),
+              },
+              onHover: (hovering) => {
+                // setState(() { hoverTally = hovering; }),
+              },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 3.0),
+                child: Center(
+                    child: Text(
+                      tallyMarks,
+                      textAlign: TextAlign.center,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        fontFamily: 'TallyMarks',
+                        fontSize: 32,
+                      ),
+                      maxLines: 1,
+                    )
                 ),
-                // style: Theme.of(context).primaryTextTheme.bodyText1,
               ),
             ),
           );

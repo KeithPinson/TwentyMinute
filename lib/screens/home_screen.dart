@@ -116,65 +116,49 @@ Screen
   Tally Marks
  */
 
-class HomeScreenView extends StatelessWidget {
+class HomeScreenView extends StatefulWidget {
   const HomeScreenView({Key? key}) : super(key: key);
+
+  @override
+  HomeScreenViewState createState() => HomeScreenViewState();
+}
+
+class HomeScreenViewState extends State<HomeScreenView> {
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+
     return SafeArea(
       child: Stack(
         children: [
           const Background(),
           Column(
-            children: <Widget>[
-              const TaskLabel(),
+            children: const <Widget>[
+
+              //
+              // Task Label
+              //
+              TaskLabel(),
+
+              //
+              // Holding Time
+              //
               // const HoldTimer(),
-              const Timer(),
-              Row(
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(10, 10, 0, 10),
-                    // child: Icon(Icons.arrow_back_ios_new_rounded),
-                    child: IconButton(
-                      onPressed: () {
-                      },
-                      icon: SvgPicture.asset(
-                        'assets/icons/screen-left-lt.svg',
-                        semanticsLabel: 'Screen Left',
-                        height: 48,
-                        width: 46,
-                      ),
-                      // icon: const ImageIcon(
-                      //   AssetImage('assets/images/screen-left-lt.png'),
-                      //   size: 48,
-                      // ),
-                    ),
-                  ),
-                  Flexible(
-                    child: InkWell(
-                      onTap: () => {},
-                      // onHover: () => { var b = 200; },
-                      child: const Padding(
-                        padding: EdgeInsets.all(10),
-                        child: TallyMarks(),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 10, 10, 10),
-                    // child: Icon(Icons.arrow_forward_ios_rounded),
-                    child: IconButton(
-                      onPressed: () {
-                      },
-                      icon: SvgPicture.asset(
-                        'assets/icons/screen-right-lt.svg',
-                        semanticsLabel: 'Screen Left',
-                        height: 48,
-                        width: 46,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+
+              //
+              // Countdown Time
+              //
+              Timer(),
+
+              //
+              // Tally Marks
+              //
+              TallyMarks(),
             ],
           ),
         ],
