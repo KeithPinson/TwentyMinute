@@ -22,7 +22,6 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:desktop_window/desktop_window.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:get/get.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -172,7 +171,7 @@ class AppShell extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       initial: savedThemeMode ?? AdaptiveThemeMode.light,
-      builder: (light, dark) => GetMaterialApp(
+      builder: (light, dark) => MaterialApp(
         title: 'Twenty Minute',
         theme: light,
         darkTheme: dark,
