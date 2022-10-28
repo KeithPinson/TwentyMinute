@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:twentyminute/ui/theme.dart';
 
 class ButtonWidget extends StatelessWidget {

@@ -12,7 +12,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get.dart';
 import 'package:twentyminute/components/active_task_bloc.dart';
 import 'package:twentyminute/ui/pick_task_label.dart';
 import 'package:twentyminute/components/active_task_controller.dart';

@@ -9,7 +9,6 @@
 
 import 'package:flutter/material.dart';
 //import 'package:twentyminute/ui/theme_services.dart';
-import 'package:get/get.dart';
 import 'package:twentyminute/ui/theme.dart';
 
 class TaskAppBar extends StatelessWidget with PreferredSizeWidget {

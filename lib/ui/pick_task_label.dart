@@ -9,7 +9,6 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:twentyminute/components/active_task_controller.dart';
 import 'package:twentyminute/resources/task_db_model.dart';
@@ -62,7 +61,7 @@ class _PickTaskLabelState extends State<PickTaskLabel> {
         leadingWidget: IconButton(
           icon: Icon(Icons.arrow_back_ios),
           color: Colors.black,
-          onPressed: () => Get.back(),
+          onPressed: () => {},//Get.back(),
         ),
       ),
       body: SafeArea(
@@ -75,11 +74,11 @@ class _PickTaskLabelState extends State<PickTaskLabel> {
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
+                    children: const [
                       Text(
                         "Add Task",
                         style: TextStyle(
-                            color: Get.isDarkMode ? Colors.white : darkGreyClr,
+                            // color: Get.isDarkMode ? Colors.white : darkGreyClr,
                             fontSize: 23,
                             fontWeight: FontWeight.bold),
                       )
