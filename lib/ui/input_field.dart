@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:twentyminute/ui/theme.dart';
 //import 'package:twentyminute/ui/theme_services.dart';
 
@@ -34,8 +33,8 @@ class InputFieldState extends State<InputField> {
       children: [
         Text(
           widget.label,
-          style: TextStyle(
-              color: Get.isDarkMode ? Colors.white : darkGreyClr,
+          style: const TextStyle(
+              // color: Get.isDarkMode ? Colors.white : darkGreyClr,
               fontWeight: FontWeight.bold,
               fontSize: 17),
         ),
@@ -51,27 +50,27 @@ class InputFieldState extends State<InputField> {
             }
           },
           keyboardType: TextInputType.name,
-          cursorColor: Get.isDarkMode ? Colors.white : darkGreyClr,
-          style: TextStyle(color: Get.isDarkMode ? Colors.white : darkGreyClr),
+          // cursorColor: Get.isDarkMode ? Colors.white : darkGreyClr,
+          // style: TextStyle(color: Get.isDarkMode ? Colors.white : darkGreyClr),
           decoration: InputDecoration(
             suffixIcon: widget.iconOrdrop == 'icon'
                 ? Icon(
                     widget.icondata,
-                    color: Get.isDarkMode ? Colors.white : Colors.grey,
+                    // color: Get.isDarkMode ? Colors.white : Colors.grey,
                   )
-                : Container(margin: EdgeInsets.only(right: 10), child: widget.widget),
+                : Container(margin: const EdgeInsets.only(right: 10), child: widget.widget),
             hintText: widget.hint,
             hintStyle:
-                TextStyle(color: Get.isDarkMode ? Colors.white70 : Colors.grey),
+              const TextStyle(color: Colors.white70), // TextStyle(color: Get.isDarkMode ? Colors.white70 : Colors.grey),
             enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(
+                borderSide: const BorderSide(
                     width: 1,
-                    color: Get.isDarkMode ? Colors.white70 : primaryClr),
+                    color: Colors.white70), // color: Get.isDarkMode ? Colors.white70 : primaryClr),
                 borderRadius: BorderRadius.circular(10)),
             focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(
+              borderSide: const BorderSide(
                   width: 1,
-                  color: Get.isDarkMode ? Colors.white70 : primaryClr),
+                  color: Colors.white70), // color: Get.isDarkMode ? Colors.white70 : primaryClr),
               borderRadius: BorderRadius.circular(10),
             ),
           ),
