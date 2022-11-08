@@ -21,37 +21,18 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // appBar: AppBar(title: const Text('Twenty Minute')),
-      body: WindowBorder(
-        color: Colors.blueGrey.shade400,
-        width: 1,
-        child: SafeArea(
-          child: Row(
-              children: [
-                const Background(),
-                Expanded(
-                  child: Column(
-                    children: <Widget>[
-                      Titlebar(),
-                      Flexible(
-                        child: PageView(
-                          controller: controller,
-                          children: [
-                            const Dashboard(),
-                            HomeScreen(),
-                            const Tasks_edit(),
-                          ],
-                        ),
-                      ),
-                      // Navigate(page: controller.page ?? 0.0),
-                      // Navigate(),
-                    ],
-                  ),
-                ),
-              ]
-          ),
-        ),
+    return Scaffold( body:
+      SafeArea( child:
+        Stack( children: [
+          const Background(),
+          Titlebar(),
+          PageView( controller: controller,
+                    children: [
+            const Tasks_edit(),
+            HomeScreen(),
+            const Dashboard(),
+          ])
+        ])
       ),
     );
   }

@@ -1,10 +1,11 @@
-/// This AppShell is part of the Main starting point of the app.
+/// This App Shell is part of the Main starting point of the app.
 ///
 /// Here we define a stateless widget shell that controls aspects
 /// of the entire app, including:
 ///
 ///      - light/dark/high-contrast
 ///      - locale/region
+///      - Material/Cupertino/Other UI wrapper
 ///
 /// Copyright (c) Keith Pinson.
 ///
@@ -29,24 +30,31 @@ class AppShell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AdaptiveTheme(
-      light: ThemeData.light().copyWith(
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      dark: ThemeData.dark().copyWith(
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      initial: savedThemeMode ?? AdaptiveThemeMode.light,
-
-      builder: (light, dark) => MaterialApp/*.router*/(
-        title: 'Twenty Minute',
-        theme: light,
-        darkTheme: dark,
-        debugShowCheckedModeBanner: false,
-        // routerDelegate: routemasterDelegate,
-        home: App(),
-      ),
+    return MaterialApp(
+      title: 'Twenty Minute',
+      debugShowCheckedModeBanner: false,
+      home: App(),
     );
+
+    // return AdaptiveTheme(
+    //   light: ThemeData.light().copyWith(
+    //     visualDensity: VisualDensity.adaptivePlatformDensity,
+    //   ),
+    //   dark: ThemeData.dark().copyWith(
+    //     visualDensity: VisualDensity.adaptivePlatformDensity,
+    //   ),
+    //   initial: savedThemeMode ?? AdaptiveThemeMode.light,
+    //
+      // builder: (light, dark) => MaterialApp.router(
+      //   title: 'Twenty Minute',
+      //   theme: light,
+      //   darkTheme: dark,
+      //   debugShowCheckedModeBanner: false,
+      //   routerDelegate: routemasterDelegate,
+      //   routeInformationParser: const RoutemasterParser(),
+      //   // home: App(),
+      // ),
+    // );
   }
 
 // @override

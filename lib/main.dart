@@ -3,14 +3,14 @@
 /// This is broken into 3 files:
 ///
 ///               main: Persistence and initialization
-///     main_app_shell: Visual themes and localization
-///           main_app: Routing and Core UI
+///         main_shell: Visual themes and localization
+///           main_app: Routing
 ///
 /// The main_app nests inside the main_app_shell which
 /// nests inside of the main file.
 ///
 ///    main.dart
-///     ┗━ main_app_shell.dart
+///     ┗━ main_shell.dart
 ///         ┗━ main_app.dart
 ///
 /// Copyright (c) Keith Pinson.
@@ -21,6 +21,7 @@
 import 'dart:io' show Platform;
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:adaptive_theme/adaptive_theme.dart';
@@ -37,12 +38,10 @@ import 'package:twentyminute/components/bloc_observer.dart';
 import 'package:twentyminute/resources/task_db_provider.dart';
 import 'package:twentyminute/screens/dashboard.dart';
 import 'package:twentyminute/screens/home_screen.dart';
-// import 'package:twentyminute/screens/routes.dart';
 import 'package:twentyminute/screens/tasks_edit.dart';
-import 'package:twentyminute/ui/navigate.dart';
 import 'package:twentyminute/ui/titlebar.dart';
 
-part 'main_app_shell.dart';
+part 'main_shell.dart';
 part 'main_app.dart';
 
 
@@ -79,20 +78,6 @@ Future<void> main() async {
 
 
   //
-  // Init sizes when ready
-  //
-  doWhenWindowReady(() {
-    const initialSize = Size(312, 312);
-    const maxSize = Size(640, 800);
-    appWindow.minSize = initialSize;
-    appWindow.size = initialSize;
-    appWindow.maxSize = maxSize;
-    appWindow.alignment = Alignment.center;
-    appWindow.show();
-  });
-
-
-  //
   // Init BLOC features
   //
   final storage = await HydratedStorage.build(
@@ -109,7 +94,21 @@ Future<void> main() async {
     () => runApp(
       AppShell(savedThemeMode: savedThemeMode),  // AppShell widget
     ),
-    blocObserver: AppBlockObserver(),
+    blocObserver: AppBlocObserver(),
     storage: storage,
   );
+
+
+  //
+  // Init sizes when ready
+  //
+  doWhenWindowReady(() {
+    const initialSize = Size(312, 312);
+    const maxSize = Size(640, 800);
+    appWindow.minSize = initialSize;
+    appWindow.size = initialSize;
+    appWindow.maxSize = maxSize;
+    appWindow.alignment = Alignment.center;
+    appWindow.show();
+  });
 }
