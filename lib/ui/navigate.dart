@@ -1,17 +1,25 @@
+/// Navigation Widget
+///
+/// Copyright (c) Keith Pinson.
+///
+/// @see [[LICENSE]] file in the root directory of this source.
+///
+
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 
 class Navigate extends StatefulWidget {
-  const Navigate({Key? key}) : super(key: key);
+  final double page;
+  Navigate({Key? key, required this.page}) : super(key: key);
+
+  final controller = PageController(initialPage: 1);
 
   @override
   NavigateState createState() => NavigateState();
 }
 
 class NavigateState extends State<Navigate> {
-  final controller = PageController(viewportFraction: 0.8, keepPage: true);
-
   var pages = [];
 
   @override
@@ -21,9 +29,10 @@ class NavigateState extends State<Navigate> {
 
   @override
   Widget build(BuildContext context) {
-    if (pages.length > 1) {
+    if (/*pages.length*/3 > 1) {
       return Row(
         children: [
+          // Text("c:${widget.page}"),
           const Padding(
             padding: EdgeInsets.fromLTRB(10, 10, 0, 10),
             child: Icon(Icons.arrow_back_ios_new_rounded),
@@ -33,7 +42,7 @@ class NavigateState extends State<Navigate> {
               padding: const EdgeInsets.all(10),
               child: Center(
                 child: SmoothPageIndicator(
-                  controller: controller,
+                  controller: widget.controller,
                   count: 3, // pages.length,
                   effect: const WormEffect (
                     dotHeight: 16,
