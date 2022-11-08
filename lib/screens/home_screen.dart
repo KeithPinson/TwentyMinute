@@ -13,7 +13,6 @@ import 'package:flutter/services.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
-
 import 'package:provider/provider.dart';
 
 import 'package:twentyminute/components/alert_bloc.dart';
@@ -26,6 +25,7 @@ import 'package:twentyminute/components/timer_bloc.dart';
 import 'package:twentyminute/components/tally_marks_bloc.dart';
 import 'package:twentyminute/resources/time_ticks.dart';
 import 'package:twentyminute/resources/preferences.dart';
+import 'package:twentyminute/ui/navigate.dart';
 import 'package:twentyminute/ui/tally_marks.dart';
 import 'package:twentyminute/ui/task_label.dart';
 import 'package:twentyminute/ui/timer.dart';
@@ -130,16 +130,14 @@ class HomeScreenViewState extends State<HomeScreenView> {
   @override
   Widget build(BuildContext context) {
 
-    return Stack(
-      children: [
-        Column(
-          children: const <Widget>[
-            TaskLabel(),
-            // const HoldTimer(),
-            Timer(),
-            TallyMarks(),
-          ],
-        ),
+    return Column(
+      children: <Widget>[
+        const TaskLabel(),
+        // const HoldTimer(),
+        const Timer(),
+        const TallyMarks(),
+        Navigate(page: 1.0)
+        // Navigate(page: controller.page ?? 0.0),
       ],
     );
   }
