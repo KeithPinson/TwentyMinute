@@ -39,7 +39,9 @@ import 'package:twentyminute/resources/task_db_provider.dart';
 import 'package:twentyminute/screens/dashboard.dart';
 import 'package:twentyminute/screens/home_screen.dart';
 import 'package:twentyminute/screens/tasks_edit.dart';
-import 'package:twentyminute/ui/titlebar.dart';
+import 'package:twentyminute/ui/navigate.dart';
+import 'package:twentyminute/ui/task_label.dart';
+import 'package:twentyminute/ui/window_titlebar.dart';
 
 part 'main_shell.dart';
 part 'main_app.dart';

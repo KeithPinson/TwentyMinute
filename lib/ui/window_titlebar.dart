@@ -13,9 +13,9 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 
-class Titlebar extends WindowTitleBarBox {
+class WindowTitlebar extends WindowTitleBarBox {
   final Widget? child;
-  Titlebar({Key? key, this.child}) : super(key: key);
+  WindowTitlebar({Key? key, this.child}) : super(key: key);
 
   bool isDesktop() {
     bool isDesktop = false;
