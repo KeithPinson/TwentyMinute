@@ -24,6 +24,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:provider/provider.dart';
+
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
@@ -34,8 +38,15 @@ import 'package:tekartik_app_flutter_sqflite/sqflite.dart';
 import 'package:tekartik_app_platform/app_platform.dart';
 import 'package:tekartik_common_utils/common_utils_import.dart';
 
+import 'package:twentyminute/components/active_task_bloc.dart';
+import 'package:twentyminute/components/alert_bloc.dart';
+import 'package:twentyminute/components/task_bloc.dart';
+import 'package:twentyminute/components/timer_bloc.dart';
+import 'package:twentyminute/components/tally_marks_bloc.dart';
 import 'package:twentyminute/components/bloc_observer.dart';
+import 'package:twentyminute/resources/preferences.dart';
 import 'package:twentyminute/resources/task_db_provider.dart';
+import 'package:twentyminute/resources/time_ticks.dart';
 import 'package:twentyminute/screens/dashboard.dart';
 import 'package:twentyminute/screens/home_screen.dart';
 import 'package:twentyminute/screens/tasks_edit.dart';
