@@ -1,0 +1,9 @@
+#!/bin/cat
+# This folder is for resources used only
+# by developer or for the build, for
+# example the project commit types.
+#
+# Assets that are incorporated and
+# released in the app itself should
+# be kept in the /assets folder.
+#
