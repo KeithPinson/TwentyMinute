@@ -1,4 +1,4 @@
-![Twenty Minute](BuildResources/icons/20min_logo.png "Twenty Minute")
+![Twenty Minute](DocResources/20min_logo.png "Twenty Minute")
 
 A *"no interrupts"* Twenty Minute Timer
 
