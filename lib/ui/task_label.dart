@@ -46,48 +46,61 @@ class TaskLabelState extends State<TaskLabel> {
       },
       builder: (context,state) {
         if (state.activeTaskId > 0) {
-          return InkWell(
-            onTap: () {
-              // Get.to(
-              //     () => const PickTaskLabel(),
-              //     transition: Transition.downToUp,
-              //     duration: const Duration(milliseconds: 500)
-              // );
-            },
-            child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 11.0),
-              child: Center(
-                child: Text(
-                  activeTaskLabel,
-                  textAlign: TextAlign.center,
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                    fontSize: 20,
-                  ),
+          return
+          InkWell(
+              onTap: () {
+                // Get.to(
+                //     () => const PickTaskLabel(),
+                //     transition: Transition.downToUp,
+                //     duration: const Duration(milliseconds: 500)
+                // );
+              },
+              child:
+            Padding(
+                padding: const EdgeInsets.symmetric(vertical: 11.0),
+                child:
+              FittedBox(
+                  clipBehavior: Clip.none,
+                  alignment: Alignment.center,
+                  fit: BoxFit.scaleDown,
+                  child:
+                Text(
+                    activeTaskLabel,
+                    textAlign: TextAlign.center,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      fontSize: 20,
+                    ),
                 ),
               ),
             )
           );
         }
         else {
-          return InkWell(
-            onTap: () {
+          return
+          InkWell(
+              hoverColor: Colors.blue,
+              onTap: () {
               // Get.to(
               //     () => const PickTaskLabel(),
               //     transition: Transition.downToUp,
               //     duration: const Duration(milliseconds: 500)
               // );
-            },
-            child: const Padding(
-              padding: EdgeInsets.symmetric(vertical: 11.0),
-              child: Center(
-                child: Text(
-                  "Twenty Minute Task",
-                  textAlign: TextAlign.center,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontSize: 20,
-                  ),
+              },
+              child:
+            const Padding(
+                padding: EdgeInsets.symmetric(vertical: 11.0),
+                child:
+              Center(
+                  heightFactor: 1.0,
+                  child:
+                Text(
+                    "Twenty Minute Task",
+                    textAlign: TextAlign.center,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
                 ),
               ),
             )
