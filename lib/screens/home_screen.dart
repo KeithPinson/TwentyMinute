@@ -32,53 +32,12 @@ import 'package:twentyminute/ui/timer.dart';
 
 
 class HomeScreen extends StatelessWidget {
-  HomeScreen({Key? key}) : super(key: key);
-
-  final timerBloc = TimerBloc(
-    ticks: const TimeTicks(),
-    durationSeconds: Preference.duration,
-  );
-
-  late final activeTaskBloc = ActiveTaskBloc(
-    timerBloc: timerBloc,
-  );
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
 
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider<TimerBloc>(
-          create: (BuildContext context) => timerBloc,
-        ),
-        BlocProvider<ActiveTaskBloc>(
-          create: (BuildContext context) => activeTaskBloc,
-        ),
-        BlocProvider<TaskBloc>(
-          create: (BuildContext context) => TaskBloc(),
-        ),
-        BlocProvider<TallyMarksBloc>(
-          create: (BuildContext context) => TallyMarksBloc(activeTaskBloc: activeTaskBloc),
-        ),
-        BlocProvider<AlertBloc>(
-          create: (BuildContext context) => AlertBloc(timerBloc: timerBloc),
-        ),
-      ],
-/*
-      child: MultiRepositoryProvider(
-        providers: [
-          // RepositoryProvider(
-          //   create: (context) => _authenticationRepository,
-          // ),
-          RepositoryProvider(
-            create: (context) => TaskController(),
-          ),
-        ],
-        child: const HomeScreenView(),
-      ),
-*/
-      child: const HomeScreenView(),
-    );
+    return const HomeScreenView();
   }
 }
 
@@ -130,16 +89,15 @@ class HomeScreenViewState extends State<HomeScreenView> {
   @override
   Widget build(BuildContext context) {
 
-    return Column(
-      children: <Widget>[
-        const TaskLabel(),
-        // const HoldTimer(),
-        const Timer(),
-        const TallyMarks(),
-        Navigate(page: 1.0)
-        // Navigate(page: controller.page ?? 0.0),
-      ],
-    );
+    return
+    ListView(
+        physics: const BouncingScrollPhysics(),
+        clipBehavior: Clip.antiAlias,
+        children: const <Widget>[
+      TaskLabel(),
+      // HoldTimer(),
+      Timer(),
+      TallyMarks(),
+    ]);
   }
 }
-
