@@ -22,13 +22,15 @@ class TimerText extends StatelessWidget {
     ((duration / 60) % 60).floor().toString().padLeft(2, '0');
     final secondsStr = (duration % 60).floor().toString().padLeft(2, '0');
 
-    return Padding(
+    return
+    Padding(
         padding: const EdgeInsets.symmetric(vertical: 1.0),
-        child: Center(
-            child: Text(
-              '$minutesStr:$secondsStr',
-              style: Theme.of(context).textTheme.headline1,
-            )
+        child:
+      Center(
+          child: Text(
+            '$minutesStr:$secondsStr',
+            style: Theme.of(context).textTheme.headline1,
+          )
         )
     );
   }
@@ -44,85 +46,92 @@ class Timer extends StatelessWidget {
       builder: (context, state) {
         var toolTipText = "";
 
-        return Tooltip(
-          waitDuration: const Duration(milliseconds: 900),
-          // triggerMode: ,
-          message: toolTipText,
-          child: InkWell(
-            onTap: () {
-              // Transition from state to event
-              if (state is TimerRunReady) {
-                context.read<TimerBloc>().add(const TimerStart(duration: Preference.duration));
-              }
-              if (state is TimerRunInProgress) {
-                context.read<TimerBloc>().add(const TimerPause());
-              }
-              if (state is TimerRunPaused) {
-                context.read<TimerBloc>().add(const TimerResume());
-              }
-              if (state is TimerRunCompleted || state is TimerRunCanceled) {
-                context.read<TimerBloc>().add(const TimerSet());
-              }
-            },
-            onLongPress: () {
-              showDialog(
-                context: context,
-                builder: (BuildContext dialogContext) {
-                  return AlertDialog(
-                    content: Row(
-                      children: const <Widget>[
-                        Expanded(
-                          child: Text("Finish Early or Reset the timer?"),
-                        ),
-                      ],
-                    ),
-                    actions: <Widget>[
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                          // const snackBar = SnackBar(content: Text('Timer Finished Early'));
-                          // ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                          context.read<TimerBloc>().add(const TimerFinishEarly());
-                        },
-                        child: Text("Finish Early"),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                          // const snackBar = SnackBar(content: Text('Timer Reset'));
-                          // ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                          context.read<TimerBloc>().add(const TimerCancel());
-                        },
-                        child: Text("Reset"),
-                      ),
-                    ]
-                  );
+        return
+          InkWell(
+              // hoverColor: Colors.blue.shade100,
+              hoverColor: Colors.blueGrey.shade100,
+              onTap: () {
+                // Transition from state to event
+                if (state is TimerRunReady) {
+                  context.read<TimerBloc>().add(const TimerStart(duration: Preference.duration));
                 }
-              );
-            },
-            child: Stack(
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: const <Widget>[
-                    Center(child: TimerText()),
-                  ],
-                ),
-                BlocConsumer<AlertBloc,AlertState> (
-                  listener: (context,state) async {
-                    if (state.runtimeType == AlertPlaying) {
-                      print("Alert Playing");
-                    }
-                  },
-                  builder: (context,state) {
-                    return const Text("");
+                if (state is TimerRunInProgress) {
+                  context.read<TimerBloc>().add(const TimerPause());
+                }
+                if (state is TimerRunPaused) {
+                  context.read<TimerBloc>().add(const TimerResume());
+                }
+                if (state is TimerRunCompleted || state is TimerRunCanceled) {
+                  context.read<TimerBloc>().add(const TimerSet());
+                }
+              },
+              onLongPress: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext dialogContext) {
+                    return AlertDialog(
+                      content: Row(
+                        children: const <Widget>[
+                          Expanded(
+                            child: Text("Finish Early or Reset the timer?"),
+                          ),
+                        ],
+                      ),
+                      actions: <Widget>[
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                            // const snackBar = SnackBar(content: Text('Timer Finished Early'));
+                            // ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                            context.read<TimerBloc>().add(const TimerFinishEarly());
+                          },
+                          child: Text("Finish Early"),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                            // const snackBar = SnackBar(content: Text('Timer Reset'));
+                            // ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                            context.read<TimerBloc>().add(const TimerCancel());
+                          },
+                          child: const Text("Reset"),
+                        ),
+                      ]
+                    );
                   }
-                ),
-              ],
-            )
-          )
-        );
+                );
+              },
+              child:
+            Stack(
+                children: [
+              const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 1.0),
+                  child:
+                Center(
+                    heightFactor: 1.0,
+                    child:
+                  TimerText()
+                )
+              ),
+
+              //   // Tooltip(
+              //   //     waitDuration: const Duration(milliseconds: 900),
+              //   //     // triggerMode: ,
+              //   //     message: toolTipText,
+              //   //     child: TimerText()
+              //   // )
+              BlocConsumer<AlertBloc,AlertState> (
+                listener: (context,state) async {
+                  if (state.runtimeType == AlertPlaying) {
+                    print("Alert Playing");
+                  }
+                },
+                builder: (context,state) {
+                  return const Text("");
+                }
+              ),
+            ])
+          );
       },
     );
   }
