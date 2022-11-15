@@ -75,6 +75,7 @@ class TallyMarksState extends State<TallyMarks> {
   Widget build(BuildContext context) {
 
     var tallyMarks = ' ';
+    // tallyMarks = 'AAAAAAAAAAAAAAAAAAAAAA';
 
     return BlocConsumer<TallyMarksBloc,TallyMarksBlocState> (
       listener: (context,state) async {
@@ -86,55 +87,66 @@ class TallyMarksState extends State<TallyMarks> {
       builder: (context,state) {
         if (state is TallyMarksCounted) {
 
-          return Flexible(
-            child: InkWell(
+          return
+          InkWell(
+              hoverColor: Colors.blueGrey.shade100,
               onTap: () => {
                 // setState(() { hoverLeft = false; }),
               },
               onHover: (hovering) => {
                 // setState(() { hoverTally = hovering; }),
               },
-              child: Padding(
+              child:
+            Padding(
                 padding: const EdgeInsets.symmetric(vertical: 3.0),
-                child: Center(
-                  child: Text(
-                    tallyMarks,
-                    textAlign: TextAlign.center,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      fontFamily: 'TallyMarks',
-                      fontSize: 32,
-                    ),
-                    // style: Theme.of(context).primaryTextTheme.bodyText1,
-                    maxLines: 1,
-                  )
-                ),
-              ),
-            ),
-          );
-        } else {
-          return Flexible(
-            child: InkWell(
-              onTap: () => {
-                // setState(() { hoverLeft = false; }),
-              },
-              onHover: (hovering) => {
-                // setState(() { hoverTally = hovering; }),
-              },
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 3.0),
-                child: Center(
-                    child: Text(
+                child:
+              Center(
+                  child:
+                Wrap(
+                    children: [
+                  Text(
                       tallyMarks,
                       textAlign: TextAlign.center,
-                      overflow: TextOverflow.ellipsis,
+                      // overflow: TextOverflow.ellipsis,
+                      overflow: TextOverflow.visible,
+                      style: const TextStyle(
+                        fontFamily: 'TallyMarks',
+                        fontSize: 32,
+                      )
+                  ),
+                ])
+              )
+            )
+          );
+        } else {
+          return
+          InkWell(
+              hoverColor: Colors.blueGrey.shade100,
+              onTap: () => {
+                // setState(() { hoverLeft = false; }),
+              },
+              onHover: (hovering) => {
+                // setState(() { hoverTally = hovering; }),
+              },
+              child:
+            Padding(
+                padding: const EdgeInsets.symmetric(vertical: 3.0),
+                child:
+              Center(
+                  child:
+                Wrap(
+                    children: [
+                  Text(
+                      tallyMarks,
+                      textAlign: TextAlign.center,
+                      // overflow: TextOverflow.ellipsis,
+                      overflow: TextOverflow.visible,
                       style: const TextStyle(
                         fontFamily: 'TallyMarks',
                         fontSize: 32,
                       ),
-                      maxLines: 1,
-                    )
-                ),
+                  ),
+                ],)
               ),
             ),
           );
