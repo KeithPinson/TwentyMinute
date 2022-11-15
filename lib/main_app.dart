@@ -22,18 +22,29 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold( body:
+      Stack( children: [
+      const Background(),
       SafeArea( child:
-        Stack( children: [
-          const Background(),
-          Titlebar(),
-          PageView( controller: controller,
-                    children: [
-            const Tasks_edit(),
-            HomeScreen(),
-            const Dashboard(),
-          ])
-        ])
-      ),
+        Column( children: [
+          WindowTitlebar(),
+          Expanded(
+              child:
+            PageView( controller: controller,
+                      children: const [
+              Tasks_edit(),
+              HomeScreen(),
+              Dashboard(),
+            ]),
+          ),
+          Container(
+              decoration: BoxDecoration(color:Colors.grey.shade300),
+              child:
+            Container(height:40)
+            // Navigate(page: 1.0)
+          ),
+        ]),
+        ),
+      ])
     );
   }
 }
