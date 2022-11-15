@@ -90,14 +90,17 @@ class HomeScreenViewState extends State<HomeScreenView> {
   Widget build(BuildContext context) {
 
     return
-    ListView(
-        physics: const BouncingScrollPhysics(),
-        clipBehavior: Clip.antiAlias,
-        children: const <Widget>[
-      TaskLabel(),
-      // HoldTimer(),
-      Timer(),
-      TallyMarks(),
-    ]);
+    Center( child:
+      ListView(
+          shrinkWrap: true,
+          physics: const BouncingScrollPhysics(),
+          clipBehavior: Clip.antiAlias,
+          children: const <Widget>[
+        TaskLabel(),
+        // HoldTimer(),
+        Timer(),
+        TallyMarks(),
+      ])
+    );
   }
 }
