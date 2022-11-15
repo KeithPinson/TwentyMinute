@@ -26,14 +26,55 @@ part of 'main.dart';
 class AppShell extends StatelessWidget {
   final AdaptiveThemeMode? savedThemeMode;  // adaptive_theme for dynamic day/night theme support
 
-  const AppShell({Key? key, this.savedThemeMode}) : super(key: key);
+  AppShell({Key? key, this.savedThemeMode}) : super(key: key);
+
+  final timerBloc = TimerBloc(
+    ticks: const TimeTicks(),
+    durationSeconds: Preference.duration,
+  );
+
+  late final activeTaskBloc = ActiveTaskBloc(
+    timerBloc: timerBloc,
+  );
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Twenty Minute',
-      debugShowCheckedModeBanner: false,
-      home: App(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<TimerBloc>(
+          create: (BuildContext context) => timerBloc,
+        ),
+        BlocProvider<ActiveTaskBloc>(
+          create: (BuildContext context) => activeTaskBloc,
+        ),
+        BlocProvider<TaskBloc>(
+          create: (BuildContext context) => TaskBloc(),
+        ),
+        BlocProvider<TallyMarksBloc>(
+          create: (BuildContext context) => TallyMarksBloc(activeTaskBloc: activeTaskBloc),
+        ),
+        BlocProvider<AlertBloc>(
+          create: (BuildContext context) => AlertBloc(timerBloc: timerBloc),
+        ),
+      ],
+/*
+      child: MultiRepositoryProvider(
+        providers: [
+          // RepositoryProvider(
+          //   create: (context) => _authenticationRepository,
+          // ),
+          RepositoryProvider(
+            create: (context) => TaskController(),
+          ),
+        ],
+        child: const HomeScreenView(),
+      ),
+*/
+      child: MaterialApp(
+        title: 'Twenty Minute',
+        debugShowCheckedModeBanner: false,
+        home: App(),
+      )
     );
 
     // return AdaptiveTheme(
