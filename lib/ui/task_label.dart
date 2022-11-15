@@ -48,6 +48,7 @@ class TaskLabelState extends State<TaskLabel> {
         if (state.activeTaskId > 0) {
           return
           InkWell(
+              hoverColor: Colors.blueGrey.shade100,
               onTap: () {
                 // Get.to(
                 //     () => const PickTaskLabel(),
@@ -79,7 +80,7 @@ class TaskLabelState extends State<TaskLabel> {
         else {
           return
           InkWell(
-              hoverColor: Colors.blue,
+              hoverColor: Colors.blueGrey.shade100,
               onTap: () {
               // Get.to(
               //     () => const PickTaskLabel(),
